@@ -504,7 +504,7 @@ export default function App() {
 
           {/* Nearby Routes */}
           <div className="space-y-4">
-            <SectionHeader title="Vicino a" icon={MapPin} subtitle="distanza in linea d'aria" />
+            <SectionHeader title="VICINO A" icon={MapPin} subtitle="distanza in linea d'aria" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {nearbyRoutes.map(route => (
                 <button
@@ -537,7 +537,7 @@ export default function App() {
                       DA DOVE SONO IO
                     </div>
                     <div className="text-gray-500 text-[10px] font-black uppercase tracking-widest">
-                      DISTANZA IN LINEA D'ARIA
+                      distanza in linea d'aria
                     </div>
                   </div>
                   <div className="text-right relative z-10">
@@ -639,7 +639,7 @@ export default function App() {
           <div className="space-y-3">
             <CompareMetric label="Quota Valico" v1={`${route1.quota}m`} v2={`${route2.quota}m`} />
             <CompareMetric label="Regione" v1={route1.regione} v2={route2.regione} />
-            <CompareMetric label="Sviluppo KM" v1={`${route1.km}km`} v2={`${route2.km}km`} />
+            <CompareMetric label="Lunghezza" v1={`${route1.km}km`} v2={`${route2.km}km`} />
             <CompareMetric label="Tornanti" v1={route1.tornanti} v2={route2.tornanti} />
             <CompareMetric label="Pendenza Max" v1={route1.pendenza} v2={route2.pendenza} />
             <CompareMetric label="Grip Rating" v1={`${route1.grip}/10`} v2={`${route2.grip}/10`} />

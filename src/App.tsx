@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   MapPin, 
@@ -20,12 +20,32 @@ import {
   ChevronRight,
   Gauge,
   Activity,
-  Compass
+  Compass,
+  Star
 } from 'lucide-react';
 import { routes } from './data/routes';
 import { Route, View } from './types';
 
 const KAWASAKI_GREEN = '#66FF00';
+
+const parseCoordinates = (coordStr: string) => {
+  const parts = coordStr.split(' ');
+  const lat = parseFloat(parts[0].replace('°', ''));
+  const lon = parseFloat(parts[2].replace('°', ''));
+  return { lat, lon };
+};
+
+const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const R = 6371; // Earth's radius in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+};
 
 export default function App() {
   const [currentView, setCurrentView] = useState<View>('onboarding');
@@ -34,19 +54,54 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [regionFilter, setRegionFilter] = useState('Tutte');
   const [compareIds, setCompareIds] = useState<[string, string]>(['', '']);
+  const [userLocation, setUserLocation] = useState<{ lat: number, lon: number } | null>(null);
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    const saved = localStorage.getItem('gaiaa_favorites');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('gaiaa_favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude
+          });
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    }
+  }, []);
+
+  const toggleFavorite = (id: string) => {
+    setFavorites(prev => 
+      prev.includes(id) ? prev.filter(fid => fid !== id) : [...prev, id]
+    );
+  };
 
   const regions = useMemo(() => {
     const uniqueRegions = Array.from(new Set(routes.map(r => r.regione)));
-    return ['Tutte', ...uniqueRegions];
+    return ['Tutte', 'Preferiti', ...uniqueRegions];
   }, []);
 
   const filteredRoutes = useMemo(() => {
     return routes.filter(r => {
       const matchesSearch = r.nome.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesRegion = regionFilter === 'Tutte' || r.regione === regionFilter;
+      const matchesRegion = regionFilter === 'Tutte' 
+        ? true 
+        : regionFilter === 'Preferiti'
+          ? favorites.includes(r.id)
+          : r.regione === regionFilter;
       return matchesSearch && matchesRegion;
     });
-  }, [searchQuery, regionFilter]);
+  }, [searchQuery, regionFilter, favorites]);
 
   const handleRouteClick = (route: Route) => {
     setSelectedRoute(route);
@@ -69,11 +124,14 @@ export default function App() {
     </span>
   );
 
-  const SectionHeader = ({ title, icon: Icon }: { title: string, icon: any }) => (
+  const SectionHeader = ({ title, icon: Icon, subtitle }: { title: string, icon: any, subtitle?: string }) => (
     <div className="flex items-center gap-2 mb-4">
       <div className="w-1 h-6 bg-[#66FF00]" />
       <Icon size={16} className="text-[#66FF00]" />
-      <h3 className="text-white font-black uppercase tracking-widest text-xs">{title}</h3>
+      <div className="flex items-baseline gap-2">
+        <h3 className="text-white font-black uppercase tracking-widest text-xs">{title}</h3>
+        {subtitle && <span className="text-gray-500 text-[10px] lowercase font-medium italic">{subtitle}</span>}
+      </div>
     </div>
   );
 
@@ -275,34 +333,49 @@ export default function App() {
       </div>
 
       <div className="grid gap-6">
-        {filteredRoutes.map(route => (
-          <motion.div
-            key={route.id}
-            layoutId={route.id}
-            onClick={() => handleRouteClick(route)}
-            className="bg-[#151515] border border-white/5 rounded-2xl overflow-hidden cursor-pointer hover:border-[#66FF00]/40 transition-all group relative"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#66FF00]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#66FF00]/10 transition-all" />
-            
-            <div className="p-6 relative">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <Badge className="border-[#66FF00] text-[#66FF00]">{route.regione}</Badge>
-                    <Badge className="border-white/20 text-gray-500">{route.provincia}</Badge>
+        {filteredRoutes.length > 0 ? (
+          filteredRoutes.map(route => (
+            <motion.div
+              key={route.id}
+              layoutId={route.id}
+              onClick={() => handleRouteClick(route)}
+              className="bg-[#151515] border border-white/5 rounded-2xl overflow-hidden cursor-pointer hover:border-[#66FF00]/40 transition-all group relative"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#66FF00]/5 blur-3xl -mr-16 -mt-16 group-hover:bg-[#66FF00]/10 transition-all" />
+              
+              <div className="p-6 relative">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <Badge className="border-[#66FF00] text-[#66FF00]">{route.regione}</Badge>
+                      <Badge className="border-white/20 text-gray-500">{route.provincia}</Badge>
+                    </div>
+                    <h3 className="text-3xl font-black text-white group-hover:text-[#66FF00] transition-colors italic uppercase leading-none">{route.nome}</h3>
                   </div>
-                  <h3 className="text-3xl font-black text-white group-hover:text-[#66FF00] transition-colors italic uppercase leading-none">{route.nome}</h3>
-                </div>
-                <div className="flex flex-col items-end">
-                  <div className="text-[10px] text-gray-400 font-black uppercase mb-1">Rating</div>
-                  <div className="bg-[#66FF00] text-black px-3 py-1 rounded font-black text-xl italic">
-                    {route.voto}
+                  <div className="flex flex-col items-end gap-2">
+                    <div className="flex flex-col items-end">
+                      <div className="text-[10px] text-gray-400 font-black uppercase mb-1">Rating</div>
+                      <div className="bg-[#66FF00] text-black px-3 py-1 rounded font-black text-xl italic">
+                        {route.voto}
+                      </div>
+                    </div>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleFavorite(route.id);
+                      }}
+                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all"
+                    >
+                      <Star 
+                        size={20} 
+                        className={favorites.includes(route.id) ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-500"} 
+                      />
+                    </button>
                   </div>
                 </div>
-              </div>
               
               <div className="grid grid-cols-3 gap-3">
-                <StatBox label="Distanza" value={`${route.km} KM`} icon={<Activity size={12} />} />
+                <StatBox label="Lunghezza" value={`${route.km} KM`} icon={<Activity size={12} />} />
                 <StatBox label="Tornanti" value={route.tornanti} icon={<Gauge size={12} />} />
                 <StatBox label="Quota" value={`${route.quota}M`} icon={<Compass size={12} />} />
               </div>
@@ -312,7 +385,15 @@ export default function App() {
               </div>
             </div>
           </motion.div>
-        ))}
+        ))
+      ) : (
+        <div className="py-20 text-center">
+          <Star size={48} className="mx-auto text-gray-800 mb-4 opacity-20" />
+          <p className="text-gray-600 font-black uppercase tracking-widest italic">
+            {regionFilter === 'Preferiti' ? 'Nessun Percorso Preferito' : 'Nessun percorso trovato'}
+          </p>
+        </div>
+      )}
       </div>
     </div>
   );
@@ -329,6 +410,26 @@ export default function App() {
 
   const DettaglioView = () => {
     if (!selectedRoute) return null;
+
+    const userDistance = useMemo(() => {
+      if (!userLocation) return null;
+      const currentCoords = parseCoordinates(selectedRoute.coordinate);
+      return calculateDistance(userLocation.lat, userLocation.lon, currentCoords.lat, currentCoords.lon);
+    }, [selectedRoute, userLocation]);
+
+    const nearbyRoutes = useMemo(() => {
+      const currentCoords = parseCoordinates(selectedRoute.coordinate);
+      return routes
+        .filter(r => r.id !== selectedRoute.id)
+        .map(r => {
+          const coords = parseCoordinates(r.coordinate);
+          const distance = calculateDistance(currentCoords.lat, currentCoords.lon, coords.lat, coords.lon);
+          return { ...r, distance };
+        })
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 2);
+    }, [selectedRoute]);
+
     return (
       <div className="min-h-screen bg-[#0A0A0A] pb-40">
         <div className="sticky top-0 z-40 bg-[#0A0A0A]/80 backdrop-blur-2xl p-6 flex items-center justify-between border-b border-white/5">
@@ -353,7 +454,7 @@ export default function App() {
           {/* Dashboard Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <DashboardStat label="Quota Massima" value={`${selectedRoute.quota}m`} />
-            <DashboardStat label="Sviluppo" value={`${selectedRoute.km}km`} />
+            <DashboardStat label="Lunghezza" value={`${selectedRoute.km}km`} />
             <DashboardStat label="Tornanti" value={selectedRoute.tornanti} />
             <DashboardStat label="Dislivello" value={`${selectedRoute.dislivello}m`} />
           </div>
@@ -401,8 +502,70 @@ export default function App() {
             </div>
           </div>
 
+          {/* Nearby Routes */}
+          <div className="space-y-4">
+            <SectionHeader title="Vicino a" icon={MapPin} subtitle="distanza in linea d'aria" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {nearbyRoutes.map(route => (
+                <button
+                  key={route.id}
+                  onClick={() => handleRouteClick(route)}
+                  className="bg-[#151515] p-5 rounded-2xl border border-white/5 flex items-center justify-between group hover:border-[#66FF00]/30 transition-all text-left"
+                >
+                  <div>
+                    <div className="text-white font-black italic uppercase text-lg group-hover:text-[#66FF00] transition-colors">
+                      {route.nome}
+                    </div>
+                    <div className="text-gray-500 text-[10px] font-black uppercase tracking-widest">
+                      {route.regione}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[#66FF00] font-mono font-black text-xl">
+                      {route.distance.toFixed(1)}
+                      <span className="text-[10px] ml-1">KM</span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+              
+              {userDistance !== null && (
+                <div className="bg-[#151515] p-5 rounded-2xl border border-[#66FF00]/20 flex items-center justify-between text-left relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-[#66FF00]/5 blur-2xl -mr-12 -mt-12" />
+                  <div className="relative z-10">
+                    <div className="text-[#66FF00] font-black italic uppercase text-lg">
+                      DA DOVE SONO IO
+                    </div>
+                    <div className="text-gray-500 text-[10px] font-black uppercase tracking-widest">
+                      DISTANZA IN LINEA D'ARIA
+                    </div>
+                  </div>
+                  <div className="text-right relative z-10">
+                    <div className="text-[#66FF00] font-mono font-black text-xl">
+                      {userDistance.toFixed(1)}
+                      <span className="text-[10px] ml-1">KM</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
           {/* Action Area */}
-          <div className="pt-12 pb-20 space-y-8">
+          <div className="pt-12 pb-20 space-y-4">
+            <button 
+              onClick={() => toggleFavorite(selectedRoute.id)}
+              className="w-full py-5 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center gap-3 hover:bg-white/10 transition-all group"
+            >
+              <Star 
+                size={24} 
+                className={favorites.includes(selectedRoute.id) ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-500 group-hover:text-gray-400"} 
+              />
+              <span className={`text-sm font-black uppercase tracking-widest ${favorites.includes(selectedRoute.id) ? "text-[#FFD700]" : "text-gray-400 group-hover:text-gray-300"}`}>
+                {favorites.includes(selectedRoute.id) ? "Rimuovi dai Preferiti" : "Aggiungi ai Preferiti"}
+              </span>
+            </button>
+
             <button 
               onClick={() => openGoogleMaps(selectedRoute.coordinate)}
               className="w-full py-6 bg-[#66FF00] text-black rounded-2xl font-black text-2xl uppercase tracking-tighter flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 transition-all ninja-glow-strong skew-btn"

@@ -159,6 +159,24 @@ export default function App() {
     </div>
   );
 
+  const MotorcycleGreetingIcon = ({ size = 22, className = "" }: { size?: number, className?: string }) => (
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      className={className}
+    >
+      <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5" />
+      <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v9" />
+      <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8a7 7 0 0 0 7 7h1a2 2 0 0 0 2-2v-1" />
+    </svg>
+  );
+
   const Badge = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
     <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter border ${className}`}>
       {children}
@@ -1110,40 +1128,135 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      <section>
-        <SectionHeader title="L'Autore" icon={Bike} />
-        <div className="bg-[#151515] p-8 rounded-3xl border border-white/5 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-5">
-            <Heart size={100} />
-          </div>
-          <p className="text-[#66FF00] text-3xl font-black italic uppercase mb-4">Gaia</p>
-          <p className="text-gray-400 text-xl font-medium italic leading-snug relative z-10">
-            "Giovane raider appassionata di curve e panorami mozzafiato. Ho creato GAIAA per condividere la mia passione con la community dei motociclisti."
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <SectionHeader title="Canali Ufficiali" icon={Activity} />
-        <div className="grid gap-4">
-          <ContactLink label="TikTok" value="@gaiantheninja" href="https://tiktok.com/@gaiantheninja" />
-        </div>
-      </section>
-
-      <section className="pt-8">
-        <a 
-          href="https://ko-fi.com/gaiantheninja" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="w-full py-6 bg-white text-black rounded-2xl font-black text-2xl uppercase tracking-tighter flex items-center justify-center gap-4 hover:bg-[#66FF00] transition-all skew-btn"
-        >
-          <Heart fill="currentColor" size={24} />
-          <span>Supporta GAIAA</span>
-        </a>
-      </section>
     </div>
   );
+
+  const CommunityView = () => {
+    const appUrl = window.location.href;
+    const shareMessage = `Ciao! Ti segnalo GAIAA - 1000 curve, un'app gratuita per scoprire i migliori percorsi moto in Italia 🏍️ ${appUrl}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+
+    return (
+      <div className="p-8 pb-40 max-w-3xl mx-auto space-y-16">
+        <div className="mb-12">
+          <GaiAASmallTitle />
+          <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Community</h1>
+          <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Uniti dalla passione per le curve</p>
+        </div>
+
+        {/* 1. Lo spirito */}
+        <section className="space-y-6">
+          <SectionHeader title="Lo Spirito" icon={Heart} />
+          <div className="bg-[#151515] p-8 rounded-3xl border border-white/5 space-y-6">
+            <div className="space-y-2">
+              <p className="text-white italic text-xl font-medium leading-relaxed">
+                "Dove gli altri vedono una strada, i rider vedono la libertà. Ho sempre pensato che una curva non sia solo un cambio di direzione, ma un battito del cuore. GAIAA è nata così: dal desiderio di mappare quelle emozioni. Mi serviva qualcosa che mi aiutasse a scegliere la destinazione, dove andare e volevo un modo semplice per farlo. Ora che lo sto costruendo lo voglio condividere con voi."
+              </p>
+              <p className="text-right italic text-lg" style={{ color: KAWASAKI_GREEN }}>Gaia</p>
+            </div>
+            <div className="h-px bg-white/5 w-full" />
+            <p className="text-gray-400 font-medium leading-relaxed">
+              La nostra community di rider si incontra su WhatsApp e non cerca solo la meta, ma gode di ogni singolo metro del viaggio. Per questo GAIAA non è solo un'app, è il nostro modo di dirci: <span className="text-[#66FF00] font-black italic">"Ci vediamo in piazza e poi andiamo in cima"</span>. È la bussola per chi, come noi, trova la pace solo quando il motore ruggisce tra i tornanti.
+            </p>
+          </div>
+        </section>
+
+        {/* 2. Partecipa */}
+        <section className="space-y-6">
+          <SectionHeader title="Partecipa" icon={Navigation} />
+          <div className="bg-[#151515] p-8 rounded-3xl border border-white/5">
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              Ti va di seguirmi su TikTok? Hai scoperto un nuovo percorso mozzafiato? Hai notato un errore o un aggiornamento necessario? La tua voce è fondamentale per far crescere GAIAA.
+            </p>
+            <a 
+              href="https://www.tiktok.com/@gaiantheninja" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-[#66FF00]/50 transition-all group"
+            >
+              <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.21-1.35 2.06-.11.97.23 1.99 1.05 2.58.62.42 1.4.53 2.14.44.93-.11 1.84-.79 2.14-1.68.3-.8.26-1.68.27-2.52.02-3.85-.01-7.71.02-11.56z"/></svg>
+              </div>
+              <div>
+                <div className="text-white font-black italic uppercase tracking-widest text-sm">TikTok</div>
+                <div className="text-[#66FF00] font-bold text-xs">@GAIANTHENINJA</div>
+              </div>
+              <ExternalLink size={16} className="ml-auto text-gray-600" />
+            </a>
+          </div>
+        </section>
+
+        {/* 3. Condividi l'app */}
+        <section className="space-y-6">
+          <SectionHeader title="Condividi l'app" icon={ExternalLink} />
+          <div className="space-y-4">
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-6 bg-[#25D366] text-white rounded-2xl font-black text-xl uppercase tracking-tighter flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 transition-all shadow-[0_10px_30px_rgba(37,211,102,0.2)]"
+            >
+              <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              <span>Condividi su WhatsApp</span>
+            </a>
+
+            <div className="bg-[#151515] p-8 rounded-3xl border border-white/5 space-y-8">
+              <div className="flex items-center gap-3">
+                <div className="w-1 h-6 bg-[#66FF00] rounded-full" />
+                <h3 className="text-white font-black uppercase italic tracking-wider text-sm">Come installarla sul tuo telefono</h3>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8 text-left">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-[#66FF00] font-black uppercase text-[10px] tracking-widest">
+                    <div className="w-1.5 h-1.5 bg-[#66FF00] rounded-full" />
+                    iOS (iPhone)
+                  </div>
+                  <ol className="text-gray-400 text-xs space-y-3 list-decimal pl-4 font-medium">
+                    <li>Apri il link in <span className="text-white">Safari</span></li>
+                    <li>Tocca l'icona <span className="text-white">Condividi</span> (quadrato con freccia)</li>
+                    <li>Seleziona <span className="text-white">"Aggiungi alla schermata Home"</span></li>
+                    <li>Tocca <span className="text-white">"Aggiungi"</span></li>
+                  </ol>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-[#66FF00] font-black uppercase text-[10px] tracking-widest">
+                    <div className="w-1.5 h-1.5 bg-[#66FF00] rounded-full" />
+                    Android
+                  </div>
+                  <ol className="text-gray-400 text-xs space-y-3 list-decimal pl-4 font-medium">
+                    <li>Apri il link in <span className="text-white">Chrome</span></li>
+                    <li>Tocca i <span className="text-white">tre puntini</span> in alto a destra</li>
+                    <li>Seleziona <span className="text-white">"Aggiungi a schermata Home"</span></li>
+                    <li>Conferma toccando <span className="text-white">"Aggiungi"</span></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Sostieni Gaia */}
+        <section className="space-y-6">
+          <SectionHeader title="Sostieni Gaia" icon={Droplets} />
+          <div className="bg-[#151515] p-8 rounded-3xl border border-white/5 text-center space-y-6">
+            <p className="text-gray-400 font-medium leading-relaxed max-w-xl mx-auto">
+              GAIAA è un progetto indipendente, nato per passione e offerto gratuitamente a tutti i rider. Se l'app ti aiuta a scoprire nuove strade e vivere meglio la tua passione, puoi supportare il mio lavoro offrendomi un caffè simbolico. Ogni piccolo gesto aiuta a mantenere i server attivi e a mappare nuove curve!
+            </p>
+            <a 
+              href="https://ko-fi.com/gaiantheninja" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 px-10 py-5 bg-[#FF5E5B] text-white rounded-2xl font-black text-xl uppercase tracking-tighter hover:scale-[1.05] active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,94,91,0.3)] skew-btn"
+            >
+              <span>Offrimi un caffè ☕</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    );
+  };
 
   const ContactLink = ({ label, value, href }: { label: string, value: string, href: string }) => (
     <a href={href} target="_blank" rel="noopener noreferrer" className="bg-[#151515] p-6 rounded-2xl flex items-center justify-between group border border-white/5 hover:border-[#66FF00]/30 transition-all">
@@ -1171,38 +1284,44 @@ export default function App() {
           {currentView === 'mappa' && <MapView />}
           {currentView === 'dettaglio' && <DettaglioView />}
           {currentView === 'confronta' && <ConfrontaView />}
+          {currentView === 'community' && <CommunityView />}
           {currentView === 'info' && <InfoView />}
         </motion.div>
       </AnimatePresence>
 
       {/* Navigation Bar */}
       {currentView !== 'dettaglio' && (
-        <nav className="fixed bottom-6 left-6 right-6 z-50">
-          <div className="max-w-md mx-auto bg-[#151515]/80 backdrop-blur-2xl border border-white/10 rounded-3xl px-8 py-5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex justify-between items-center">
-            <NavButton 
-              active={currentView === 'onboarding'} 
-              onClick={() => setCurrentView('onboarding')} 
-              icon={<Bike size={22} />} 
-            />
+        <nav className="fixed bottom-6 left-4 right-4 z-50">
+          <div className="max-w-md mx-auto bg-[#151515]/80 backdrop-blur-2xl border border-white/10 rounded-3xl px-4 py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex justify-between items-center">
             <NavButton 
               active={currentView === 'percorsi'} 
               onClick={() => setCurrentView('percorsi')} 
-              icon={<Navigation size={22} />} 
+              icon={<Navigation size={20} />} 
+              label="Percorsi"
             />
             <NavButton 
               active={currentView === 'mappa'} 
               onClick={() => setCurrentView('mappa')} 
-              icon={<MapIcon size={22} />} 
+              icon={<MapIcon size={20} />} 
+              label="Maps"
             />
             <NavButton 
               active={currentView === 'confronta'} 
               onClick={() => setCurrentView('confronta')} 
-              icon={<Scale size={22} />} 
+              icon={<Scale size={20} />} 
+              label="Vs"
+            />
+            <NavButton 
+              active={currentView === 'community'} 
+              onClick={() => setCurrentView('community')} 
+              icon={<MotorcycleGreetingIcon size={20} />} 
+              label="GAIAA"
             />
             <NavButton 
               active={currentView === 'info'} 
               onClick={() => setCurrentView('info')} 
-              icon={<Info size={22} />} 
+              icon={<Info size={20} />} 
+              label="Info"
             />
           </div>
         </nav>
@@ -1211,13 +1330,14 @@ export default function App() {
   );
 }
 
-function NavButton({ active, onClick, icon }: { active: boolean, onClick: () => void, icon: React.ReactNode }) {
+function NavButton({ active, onClick, icon, label }: { active: boolean, onClick: () => void, icon: React.ReactNode, label: string }) {
   return (
     <button 
       onClick={onClick}
-      className={`flex flex-col items-center transition-all relative ${active ? 'text-[#66FF00] scale-110' : 'text-gray-400 hover:text-gray-200'}`}
+      className={`flex flex-col items-center gap-1 transition-all relative ${active ? 'text-[#66FF00] scale-105' : 'text-gray-400 hover:text-gray-200'}`}
     >
       {icon}
+      <span className="text-[8px] font-black uppercase tracking-wider leading-none">{label}</span>
       {active && (
         <motion.div 
           layoutId="nav-glow"

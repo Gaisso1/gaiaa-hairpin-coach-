@@ -20,4 +20,4 @@ export interface Route {
   voto: string;
 }
 
-export type View = 'onboarding' | 'disclaimer' | 'percorsi' | 'dettaglio' | 'confronta' | 'info' | 'mappa';
+export type View = 'onboarding' | 'disclaimer' | 'percorsi' | 'dettaglio' | 'confronta' | 'info' | 'mappa' | 'community';

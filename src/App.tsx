@@ -152,6 +152,13 @@ export default function App() {
 
   // --- COMPONENTS ---
 
+  const GaiAASmallTitle = () => (
+    <div className="text-sm font-black tracking-tighter mb-1 leading-none italic">
+      <span className="text-white">GAI</span>
+      <span style={{ color: KAWASAKI_GREEN }}>AA</span>
+    </div>
+  );
+
   const Badge = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
     <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter border ${className}`}>
       {children}
@@ -331,6 +338,7 @@ export default function App() {
   const PercorsiView = () => (
     <div className="pb-32 pt-8 px-6 max-w-4xl mx-auto">
       <div className="mb-10">
+        <GaiAASmallTitle />
         <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Percorsi</h1>
         <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Esplora le 1000 curve</p>
       </div>
@@ -811,6 +819,7 @@ export default function App() {
     return (
       <div className="p-8 pb-40 max-w-5xl mx-auto">
         <div className="mb-12">
+          <GaiAASmallTitle />
           <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Confronta</h1>
           <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Analisi Tecnica Comparativa</p>
         </div>
@@ -901,6 +910,7 @@ export default function App() {
     return (
       <div className="p-8 pb-40 max-w-5xl mx-auto h-screen flex flex-col">
         <div className="mb-8">
+          <GaiAASmallTitle />
           <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Mappa</h1>
           <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Esplora i percorsi sul territorio</p>
         </div>
@@ -960,6 +970,7 @@ export default function App() {
   const InfoView = () => (
     <div className="p-8 pb-40 max-w-3xl mx-auto space-y-16">
       <div className="mb-12">
+        <GaiAASmallTitle />
         <h1 className="text-3xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Informazioni</h1>
         <p className="text-gray-500 font-bold text-[10px] uppercase tracking-[0.3em]">GAIAA Project Hub</p>
       </div>
@@ -1172,31 +1183,26 @@ export default function App() {
               active={currentView === 'onboarding'} 
               onClick={() => setCurrentView('onboarding')} 
               icon={<Bike size={22} />} 
-              label="Ciao" 
             />
             <NavButton 
               active={currentView === 'percorsi'} 
               onClick={() => setCurrentView('percorsi')} 
               icon={<Navigation size={22} />} 
-              label="Percorsi" 
             />
             <NavButton 
               active={currentView === 'mappa'} 
               onClick={() => setCurrentView('mappa')} 
               icon={<MapIcon size={22} />} 
-              label="Mappa" 
             />
             <NavButton 
               active={currentView === 'confronta'} 
               onClick={() => setCurrentView('confronta')} 
               icon={<Scale size={22} />} 
-              label="Confronta" 
             />
             <NavButton 
               active={currentView === 'info'} 
               onClick={() => setCurrentView('info')} 
               icon={<Info size={22} />} 
-              label="Info" 
             />
           </div>
         </nav>
@@ -1205,14 +1211,13 @@ export default function App() {
   );
 }
 
-function NavButton({ active, onClick, icon, label }: { active: boolean, onClick: () => void, icon: React.ReactNode, label: string }) {
+function NavButton({ active, onClick, icon }: { active: boolean, onClick: () => void, icon: React.ReactNode }) {
   return (
     <button 
       onClick={onClick}
-      className={`flex flex-col items-center gap-1.5 transition-all relative ${active ? 'text-[#66FF00] scale-110' : 'text-gray-400 hover:text-gray-200'}`}
+      className={`flex flex-col items-center transition-all relative ${active ? 'text-[#66FF00] scale-110' : 'text-gray-400 hover:text-gray-200'}`}
     >
       {icon}
-      <span className="text-[9px] font-black uppercase tracking-[0.15em]">{label}</span>
       {active && (
         <motion.div 
           layoutId="nav-glow"

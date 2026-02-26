@@ -21,14 +21,38 @@ import {
   Gauge,
   Activity,
   Compass,
-  Star
+  Star,
+  Map as MapIcon
 } from 'lucide-react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { routes } from './data/routes';
 import { Route, View } from './types';
+
+// Fix for Leaflet default marker icons
+// @ts-ignore
+import icon from 'leaflet/dist/images/marker-icon.png';
+// @ts-ignore
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const KAWASAKI_GREEN = '#66FF00';
 
 const parseCoordinates = (coordStr: string) => {
+  if (coordStr.includes(',')) {
+    const parts = coordStr.split(',').map(p => p.trim());
+    return { lat: parseFloat(parts[0]), lon: parseFloat(parts[1]) };
+  }
   const parts = coordStr.split(' ');
   const lat = parseFloat(parts[0].replace('°', ''));
   const lon = parseFloat(parts[2].replace('°', ''));
@@ -470,7 +494,7 @@ export default function App() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 relative z-10">
               <SpecItem label="Provincia" value={selectedRoute.provincia} />
               <SpecItem label="Pendenza Media/Max" value={selectedRoute.pendenza} />
-              <SpecItem label="Larghezza Strada" value={`${selectedRoute.larghezza}m`} />
+              <SpecItem label="Larghezza Media Carreggiata" value={`${selectedRoute.larghezza}m`} />
               <SpecItem label="Grip Rating" value={`${selectedRoute.grip}/10`} />
               <SpecItem label="Esposizione" value={selectedRoute.esposizione} />
               <SpecItem label="Apertura" value={selectedRoute.apertura} />
@@ -666,6 +690,91 @@ export default function App() {
       </div>
     </div>
   );
+
+  const MapView = () => {
+    const mapMarkers = useMemo(() => {
+      return routes.map(route => {
+        const coords = parseCoordinates(route.coordinate);
+        return {
+          ...route,
+          lat: coords.lat,
+          lon: coords.lon
+        };
+      });
+    }, []);
+
+    const MapBounds = () => {
+      const map = useMap();
+      useEffect(() => {
+        if (mapMarkers.length > 0) {
+          const bounds = L.latLngBounds(mapMarkers.map(m => [m.lat, m.lon]));
+          if (userLocation) {
+            bounds.extend([userLocation.lat, userLocation.lon]);
+          }
+          map.fitBounds(bounds, { padding: [50, 50] });
+        }
+      }, [map, mapMarkers]);
+      return null;
+    };
+
+    return (
+      <div className="p-8 pb-40 max-w-5xl mx-auto h-screen flex flex-col">
+        <div className="mb-8">
+          <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Mappa</h1>
+          <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Esplora i percorsi sul territorio</p>
+        </div>
+        
+        <div className="flex-grow w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
+          <MapContainer 
+            center={userLocation ? [userLocation.lat, userLocation.lon] : [45.5, 10.5]} 
+            zoom={userLocation ? 10 : 7} 
+            style={{ height: '100%', width: '100%', background: '#151515' }}
+            zoomControl={true}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            
+            <MarkerClusterGroup>
+              {mapMarkers.map(marker => (
+                <Marker key={marker.id} position={[marker.lat, marker.lon]}>
+                  <Popup>
+                    <div className="p-1 min-w-[150px]">
+                      <h3 className="font-black uppercase italic text-sm mb-1 text-black">{marker.nome}</h3>
+                      <div className="text-[9px] text-gray-500 uppercase font-bold mb-3">{marker.regione}</div>
+                      <button 
+                        onClick={() => handleRouteClick(marker)}
+                        className="w-full py-2 bg-[#66FF00] text-black rounded font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-opacity"
+                      >
+                        Vedi Dettaglio
+                      </button>
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
+            </MarkerClusterGroup>
+
+            {userLocation && (
+              <Marker 
+                position={[userLocation.lat, userLocation.lon]}
+                icon={L.divIcon({
+                  className: 'user-marker-container',
+                  html: `<div class="user-marker-pulse"></div><div class="user-marker-dot"></div>`,
+                  iconSize: [20, 20],
+                  iconAnchor: [10, 10]
+                })}
+              >
+                <Popup><span className="text-black font-bold">La tua posizione</span></Popup>
+              </Marker>
+            )}
+            
+            <MapBounds />
+          </MapContainer>
+        </div>
+      </div>
+    );
+  };
 
   const InfoView = () => (
     <div className="p-8 pb-40 max-w-3xl mx-auto space-y-16">
@@ -867,6 +976,7 @@ export default function App() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           {currentView === 'percorsi' && <PercorsiView />}
+          {currentView === 'mappa' && <MapView />}
           {currentView === 'dettaglio' && <DettaglioView />}
           {currentView === 'confronta' && <ConfrontaView />}
           {currentView === 'info' && <InfoView />}
@@ -888,6 +998,12 @@ export default function App() {
               onClick={() => setCurrentView('percorsi')} 
               icon={<Navigation size={22} />} 
               label="Percorsi" 
+            />
+            <NavButton 
+              active={currentView === 'mappa'} 
+              onClick={() => setCurrentView('mappa')} 
+              icon={<MapIcon size={22} />} 
+              label="Mappa" 
             />
             <NavButton 
               active={currentView === 'confronta'} 

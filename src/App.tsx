@@ -22,7 +22,17 @@ import {
   Activity,
   Compass,
   Star,
-  Map as MapIcon
+  Map as MapIcon,
+  Cloud,
+  Sun,
+  CloudRain,
+  CloudSnow,
+  Wind,
+  Eye,
+  Thermometer,
+  Droplets,
+  Snowflake,
+  CloudLightning
 } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -432,6 +442,175 @@ export default function App() {
     </div>
   );
 
+  const WeatherSection = ({ route }: { route: Route }) => {
+    const [weather, setWeather] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+      const fetchWeather = async () => {
+        try {
+          const { lat, lon } = parseCoordinates(route.coordinate);
+          const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,wind_speed_10m,visibility&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max&timezone=auto`
+          );
+          if (!response.ok) throw new Error();
+          const data = await response.json();
+          setWeather(data);
+          setError(false);
+        } catch (err) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchWeather();
+    }, [route]);
+
+    const getWeatherIcon = (code: number, size = 20) => {
+      if (code === 0) return <Sun size={size} className="text-yellow-400" />;
+      if (code <= 3) return <Cloud size={size} className="text-gray-400" />;
+      if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return <CloudRain size={size} className="text-blue-400" />;
+      if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) return <CloudSnow size={size} className="text-white" />;
+      if (code >= 95) return <CloudLightning size={size} className="text-purple-400" />;
+      return <Cloud size={size} className="text-gray-400" />;
+    };
+
+    const getWeatherLabel = (code: number) => {
+      if (code === 0) return "Sereno";
+      if (code <= 3) return "Nuvoloso";
+      if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return "Pioggia";
+      if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) return "Neve";
+      if (code >= 95) return "Temporale";
+      return "Variabile";
+    };
+
+    if (loading) return (
+      <div className="bg-[#151515] p-8 rounded-3xl border border-white/5 animate-pulse">
+        <div className="h-4 w-32 bg-white/10 rounded mb-4" />
+        <div className="h-24 bg-white/5 rounded-2xl" />
+      </div>
+    );
+    
+    if (error) return (
+      <div className="bg-[#151515] p-6 rounded-3xl border border-red-500/20 text-center">
+        <p className="text-red-400 font-black uppercase text-[10px] tracking-widest">Meteo temporaneamente non disponibile.</p>
+      </div>
+    );
+
+    const current = weather.current;
+    const daily = weather.daily;
+    const hourly = weather.hourly;
+    const isHighAltitude = parseInt(route.quota) > 1000;
+
+    return (
+      <div className="bg-[#151515] rounded-3xl p-8 border border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-4 opacity-5">
+          <Cloud size={120} />
+        </div>
+        
+        <SectionHeader title="Condizioni Meteo" icon={Cloud} />
+
+        {/* Current Weather */}
+        <div className="grid grid-cols-2 gap-6 mb-8 relative z-10">
+          <div className="flex items-center gap-4">
+            <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+              {getWeatherIcon(current.weather_code, 32)}
+            </div>
+            <div>
+              <div className={`text-3xl font-black italic ${isHighAltitude ? 'text-[#66FF00]' : 'text-white'}`}>
+                {Math.round(current.temperature_2m)}°C
+              </div>
+              <div className="text-[10px] text-gray-500 font-black uppercase tracking-widest">
+                {getWeatherLabel(current.weather_code)}
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <div className="text-[9px] text-gray-500 font-black uppercase mb-1">Vento</div>
+              <div className={`text-sm font-black italic ${!isHighAltitude ? 'text-[#66FF00]' : 'text-white'}`}>
+                {current.wind_speed_10m} <span className="text-[10px]">km/h</span>
+              </div>
+            </div>
+            <div>
+              <div className="text-[9px] text-gray-500 font-black uppercase mb-1">Visibilità</div>
+              <div className="text-sm font-black italic text-white">
+                {(current.visibility / 1000).toFixed(1)} <span className="text-[10px]">km</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* High Altitude Warnings */}
+        {isHighAltitude && (
+          <div className="mb-8 grid grid-cols-2 gap-4">
+            <div className={`p-3 rounded-xl border ${current.temperature_2m < 3 ? 'bg-blue-500/10 border-blue-500/30' : 'bg-white/5 border-white/5'}`}>
+              <div className="flex items-center gap-2 mb-1">
+                <Snowflake size={12} className={current.temperature_2m < 3 ? 'text-blue-400' : 'text-gray-500'} />
+                <span className="text-[9px] font-black uppercase text-gray-400">Rischio Ghiaccio</span>
+              </div>
+              <div className={`text-xs font-black uppercase ${current.temperature_2m < 3 ? 'text-blue-400' : 'text-white'}`}>
+                {current.temperature_2m < 3 ? 'ELEVATO' : 'BASSO'}
+              </div>
+            </div>
+            <div className={`p-3 rounded-xl border ${current.weather_code >= 71 && current.weather_code <= 86 ? 'bg-white/10 border-white/30' : 'bg-white/5 border-white/5'}`}>
+              <div className="flex items-center gap-2 mb-1">
+                <CloudSnow size={12} className="text-white" />
+                <span className="text-[9px] font-black uppercase text-gray-400">Neve</span>
+              </div>
+              <div className="text-xs font-black uppercase text-white">
+                {current.weather_code >= 71 && current.weather_code <= 86 ? 'IN CORSO' : 'ASSENTE'}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Today's Forecast */}
+        <div className="mb-8">
+          <div className="text-[10px] text-gray-500 font-black uppercase tracking-widest mb-4">Oggi</div>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-white/5 p-3 rounded-2xl border border-white/5 text-center">
+              <div className="text-[8px] text-gray-500 font-black uppercase mb-2">Mattina</div>
+              <div className="flex justify-center mb-2">{getWeatherIcon(hourly.weather_code[9], 18)}</div>
+              <div className="text-sm font-black italic text-white">{Math.round(hourly.temperature_2m[9])}°C</div>
+            </div>
+            <div className="bg-white/5 p-3 rounded-2xl border border-white/5 text-center">
+              <div className="text-[8px] text-gray-500 font-black uppercase mb-2">Pomeriggio</div>
+              <div className="flex justify-center mb-2">{getWeatherIcon(hourly.weather_code[15], 18)}</div>
+              <div className="text-sm font-black italic text-white">{Math.round(hourly.temperature_2m[15])}°C</div>
+            </div>
+            <div className="bg-white/5 p-3 rounded-2xl border border-white/5 text-center">
+              <div className="text-[8px] text-gray-500 font-black uppercase mb-2">Sera</div>
+              <div className="flex justify-center mb-2">{getWeatherIcon(hourly.weather_code[21], 18)}</div>
+              <div className="text-sm font-black italic text-white">{Math.round(hourly.temperature_2m[21])}°C</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Tomorrow's Forecast */}
+        <div className="pt-6 border-t border-white/5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="text-[10px] text-gray-500 font-black uppercase tracking-widest">Domani</div>
+              {getWeatherIcon(daily.weather_code[1], 24)}
+              <div className="text-xl font-black italic text-white">
+                {Math.round(daily.temperature_2m_min[1])}° / {Math.round(daily.temperature_2m_max[1])}°
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-[9px] text-gray-500 font-black uppercase mb-1">Pioggia</div>
+              <div className={`text-sm font-black italic ${!isHighAltitude && daily.precipitation_probability_max[1] > 30 ? 'text-[#66FF00]' : 'text-white'}`}>
+                {daily.precipitation_probability_max[1]}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const DettaglioView = () => {
     if (!selectedRoute) return null;
 
@@ -574,6 +753,8 @@ export default function App() {
               )}
             </div>
           </div>
+
+          <WeatherSection route={selectedRoute} />
 
           {/* Action Area */}
           <div className="pt-12 pb-20 space-y-4">

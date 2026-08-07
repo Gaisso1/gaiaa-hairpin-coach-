@@ -23,4 +23,4 @@ export interface Route {
   gpxAvailable?: boolean;
 }
 
-export type View = 'onboarding' | 'disclaimer' | 'percorsi' | 'dettaglio' | 'confronta' | 'info' | 'mappa' | 'community';
+export type View = 'onboarding' | 'disclaimer' | 'percorsi' | 'dettaglio' | 'confronta' | 'info' | 'mappa' | 'community' | 'anello';

@@ -33,9 +33,19 @@ import {
   Droplets,
   Snowflake,
   CloudLightning,
-  Globe
+  Globe,
+  Repeat,
+  RotateCcw,
+  Download,
+  Sparkles,
+  Locate,
+  Check,
+  Play,
+  RefreshCw,
+  Sliders,
+  ListFilter
 } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -385,6 +395,30 @@ export default function App() {
         <GaiAASmallTitle />
         <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Percorsi</h1>
         <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Esplora le 1000 curve</p>
+      </div>
+
+      {/* Giro ad Anello Banner CTA */}
+      <div 
+        onClick={() => setCurrentView('anello')}
+        className="mb-8 p-5 bg-gradient-to-r from-[#151515] via-[#1a2e10] to-[#151515] rounded-3xl border border-[#66FF00]/30 hover:border-[#66FF00] transition-all cursor-pointer group shadow-[0_10px_30px_rgba(102,255,0,0.1)] flex items-center justify-between"
+      >
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-[#66FF00]/10 rounded-2xl border border-[#66FF00]/30 text-[#66FF00] group-hover:scale-110 transition-transform shrink-0">
+            <RotateCcw size={28} />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 bg-[#66FF00] text-black text-[10px] font-black uppercase tracking-wider rounded">NUOVO</span>
+              <h3 className="text-white font-black italic uppercase tracking-wider text-base group-hover:text-[#66FF00] transition-colors">
+                Giro ad Anello (Loop Generator)
+              </h3>
+            </div>
+            <p className="text-gray-400 text-xs font-medium mt-1">
+              Pianifica itinerari ad anello partendo da te con 2, 3 o 4 passi montani!
+            </p>
+          </div>
+        </div>
+        <ChevronRight size={24} className="text-[#66FF00] group-hover:translate-x-1 transition-transform shrink-0 hidden sm:block" />
       </div>
 
       <div className="sticky top-4 z-30 mb-8">
@@ -1381,6 +1415,617 @@ export default function App() {
     );
   };
 
+  // --- GIRO AD ANELLO (LOOP GENERATOR) VIEW ---
+  const GiroAnelloView = () => {
+    const [startCity, setStartCity] = useState("Sondrio");
+    const [startCoords, setStartCoords] = useState({ lat: 46.1687, lon: 9.8718 });
+    const [isGpsLoading, setIsGpsLoading] = useState(false);
+    const [searchCityQuery, setSearchCityQuery] = useState("");
+    const [showCityDropdown, setShowCityDropdown] = useState(false);
+
+    const [maxRadius, setMaxRadius] = useState<number>(100);
+    const [passCount, setPassCount] = useState<number>(3);
+    const [countryFilter, setCountryFilter] = useState<string>("Tutti");
+
+    const [selectedLoopIndex, setSelectedLoopIndex] = useState<number>(0);
+    const [refreshSeed, setRefreshSeed] = useState<number>(0);
+
+    const STARTING_HUBS = [
+      { name: "Sondrio", lat: 46.1687, lon: 9.8718, region: "Lombardia" },
+      { name: "Milano", lat: 45.4642, lon: 9.1900, region: "Lombardia" },
+      { name: "Brescia", lat: 45.5416, lon: 10.2118, region: "Lombardia" },
+      { name: "Bergamo", lat: 45.6983, lon: 9.6773, region: "Lombardia" },
+      { name: "Torino", lat: 45.0703, lon: 7.6869, region: "Piemonte" },
+      { name: "Trento", lat: 46.0679, lon: 11.1211, region: "Trentino" },
+      { name: "Bolzano", lat: 46.4983, lon: 11.3548, region: "Alto Adige" },
+      { name: "Verona", lat: 45.4384, lon: 10.9916, region: "Veneto" },
+      { name: "Aosta", lat: 45.7370, lon: 7.3198, region: "Valle d'Aosta" },
+      { name: "Cuneo", lat: 44.3844, lon: 7.5427, region: "Piemonte" },
+      { name: "Belluno", lat: 46.1384, lon: 12.2173, region: "Veneto" },
+      { name: "Udine", lat: 46.0626, lon: 13.2372, region: "Friuli" },
+      { name: "Lugano (CH)", lat: 46.0037, lon: 8.9511, region: "Ticino" },
+      { name: "St. Moritz (CH)", lat: 46.4908, lon: 9.8355, region: "Grigioni" },
+      { name: "Innsbruck (AT)", lat: 47.2692, lon: 11.4041, region: "Tirolo" },
+      { name: "Lienz (AT)", lat: 46.8290, lon: 12.7690, region: "Tirolo" },
+    ];
+
+    const handleUseGps = () => {
+      if (!navigator.geolocation) {
+        alert("La geolocalizzazione non è supportata dal tuo browser.");
+        return;
+      }
+      setIsGpsLoading(true);
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setStartCoords({ lat: pos.coords.latitude, lon: pos.coords.longitude });
+          setStartCity("Posizione GPS Attuale");
+          setIsGpsLoading(false);
+        },
+        () => {
+          alert("Impossibile recuperare la posizione GPS. Assicurati di aver concesso i permessi.");
+          setIsGpsLoading(false);
+        },
+        { timeout: 10000, enableHighAccuracy: true }
+      );
+    };
+
+    const candidatePasses = useMemo(() => {
+      return routes.map(r => {
+        const coords = parseCoordinates(r.coordinate);
+        return {
+          ...r,
+          lat: coords.lat,
+          lon: coords.lon
+        };
+      }).filter(r => {
+        if (isNaN(r.lat) || isNaN(r.lon) || r.lat === 0 || r.lon === 0) return false;
+        
+        const isAsphalt = r.superficie && !r.superficie.toLowerCase().includes('sterrat') && !r.superficie.toLowerCase().includes('terra');
+        if (!isAsphalt) return false;
+
+        if (countryFilter !== "Tutti" && r.stato !== countryFilter) return false;
+
+        const dist = calculateDistance(startCoords.lat, startCoords.lon, r.lat, r.lon);
+        return dist <= maxRadius && dist > 2;
+      });
+    }, [startCoords, maxRadius, countryFilter]);
+
+    const generatedLoops = useMemo(() => {
+      if (candidatePasses.length < passCount) return [];
+
+      const passesWithGeo = candidatePasses.map(p => {
+        const distToStart = calculateDistance(startCoords.lat, startCoords.lon, p.lat, p.lon);
+        const angle = Math.atan2(p.lat - startCoords.lat, p.lon - startCoords.lon) * (180 / Math.PI);
+        const normAngle = (angle + 360) % 360;
+        return { ...p, distToStart, normAngle };
+      });
+
+      passesWithGeo.sort((a, b) => a.normAngle - b.normAngle);
+
+      const loopsList: {
+        id: string;
+        title: string;
+        passes: typeof passesWithGeo;
+        totalKm: number;
+        estimatedHours: string;
+        maxElevation: number;
+      }[] = [];
+
+      const step = 360 / passCount;
+      const offsets = [0, 25, 50, 75, 110, 140, 180, 220];
+
+      for (const offset of offsets) {
+        const selectedPasses: typeof passesWithGeo = [];
+        const usedIds = new Set<string>();
+
+        for (let i = 0; i < passCount; i++) {
+          const targetAngle = (offset + i * step + refreshSeed * 17) % 360;
+          
+          const sectorCandidates = passesWithGeo.filter(p => {
+            if (usedIds.has(p.id)) return false;
+            let diff = Math.abs(p.normAngle - targetAngle);
+            if (diff > 180) diff = 360 - diff;
+            return diff <= 65;
+          });
+
+          if (sectorCandidates.length > 0) {
+            sectorCandidates.sort((a, b) => (b.rating || 4) - (a.rating || 4));
+            const pickIndex = (refreshSeed + i) % sectorCandidates.length;
+            const chosen = sectorCandidates[pickIndex] || sectorCandidates[0];
+            selectedPasses.push(chosen);
+            usedIds.add(chosen.id);
+          }
+        }
+
+        if (selectedPasses.length === passCount) {
+          selectedPasses.sort((a, b) => a.normAngle - b.normAngle);
+
+          let straightDist = calculateDistance(startCoords.lat, startCoords.lon, selectedPasses[0].lat, selectedPasses[0].lon);
+          for (let j = 0; j < selectedPasses.length - 1; j++) {
+            straightDist += calculateDistance(selectedPasses[j].lat, selectedPasses[j].lon, selectedPasses[j + 1].lat, selectedPasses[j + 1].lon);
+          }
+          straightDist += calculateDistance(selectedPasses[selectedPasses.length - 1].lat, selectedPasses[selectedPasses.length - 1].lon, startCoords.lat, startCoords.lon);
+
+          const totalKm = Math.round(straightDist * 1.35);
+          const hoursDecimal = totalKm / 45;
+          const hours = Math.floor(hoursDecimal);
+          const mins = Math.round((hoursDecimal - hours) * 60);
+          const estimatedHours = `${hours}h ${mins}m`;
+
+          const maxElevation = Math.max(...selectedPasses.map(p => Number(p.quota) || 0));
+
+          const titles = [
+            `Giro ad Anello dei ${passCount} Valici`,
+            `Anello Alpino ${selectedPasses[0].nome}`,
+            `Circuito delle Curve: ${selectedPasses.map(p => p.nome).slice(0, 2).join(' - ')}`,
+            `Gran Tour ${selectedPasses[0].regione || 'Alpino'}`,
+            `Anello Panoramico del Sole`
+          ];
+          const title = titles[loopsList.length % titles.length];
+
+          const key = selectedPasses.map(p => p.id).sort().join('-');
+          if (!loopsList.some(l => l.passes.map(p => p.id).sort().join('-') === key)) {
+            loopsList.push({
+              id: `loop-${loopsList.length}-${key}`,
+              title,
+              passes: selectedPasses,
+              totalKm,
+              estimatedHours,
+              maxElevation
+            });
+          }
+        }
+      }
+
+      return loopsList;
+    }, [candidatePasses, startCoords, passCount, refreshSeed]);
+
+    const activeLoop = generatedLoops[selectedLoopIndex] || generatedLoops[0];
+
+    const handleExportGpx = () => {
+      if (!activeLoop) return;
+
+      const gpxString = `<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="GAIAA Mototourism - Giro ad Anello" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>${activeLoop.title}</name>
+    <desc>Giro ad anello di ${activeLoop.totalKm} km partendo da ${startCity} con ${activeLoop.passes.length} passi: ${activeLoop.passes.map(p => p.nome).join(', ')}.</desc>
+    <time>${new Date().toISOString()}</time>
+  </metadata>
+  <wpt lat="${startCoords.lat}" lon="${startCoords.lon}">
+    <name>00. Partenza/Arrivo - ${startCity}</name>
+    <desc>Punto di partenza e arrivo del giro ad anello</desc>
+    <sym>Flag, Green</sym>
+  </wpt>
+${activeLoop.passes.map((p, idx) => `  <wpt lat="${p.lat}" lon="${p.lon}">
+    <name>${idx + 1}. Passo: ${p.nome} (${p.quota}m)</name>
+    <desc>${p.regione || ''}, ${p.stato || ''} - Quota ${p.quota}m - Strada: ${p.tipoStrada || 'Asfalto'}</desc>
+    <sym>Summit</sym>
+  </wpt>`).join('\n')}
+  <trk>
+    <name>${activeLoop.title}</name>
+    <trkseg>
+      <trkpt lat="${startCoords.lat}" lon="${startCoords.lon}" />
+${activeLoop.passes.map(p => `      <trkpt lat="${p.lat}" lon="${p.lon}" />`).join('\n')}
+      <trkpt lat="${startCoords.lat}" lon="${startCoords.lon}" />
+    </trkseg>
+  </trk>
+</gpx>`;
+
+      const blob = new Blob([gpxString], { type: 'application/gpx+xml' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `GAIAA_${activeLoop.title.replace(/[^a-zA-Z0-9]/g, '_')}_${activeLoop.totalKm}km.gpx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    };
+
+    const handleOpenGoogleMaps = () => {
+      if (!activeLoop) return;
+      const origin = `${startCoords.lat},${startCoords.lon}`;
+      const destination = `${startCoords.lat},${startCoords.lon}`;
+      const waypoints = activeLoop.passes.map(p => `${p.lat},${p.lon}`).join('|');
+      const url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&waypoints=${encodeURIComponent(waypoints)}&travelmode=driving`;
+      window.open(url, '_blank');
+    };
+
+    const MapLoopBounds = ({ start, passes }: { start: { lat: number, lon: number }, passes: Array<{ lat: number, lon: number }> }) => {
+      const map = useMap();
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          map.invalidateSize();
+          if (passes.length > 0) {
+            const allPoints: [number, number][] = [
+              [start.lat, start.lon],
+              ...passes.map(p => [p.lat, p.lon] as [number, number])
+            ];
+            const bounds = L.latLngBounds(allPoints);
+            map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
+          }
+        }, 150);
+        return () => clearTimeout(timer);
+      }, [map, start, passes]);
+      return null;
+    };
+
+    return (
+      <div className="p-4 sm:p-8 pb-36 max-w-5xl mx-auto space-y-8">
+        <div>
+          <GaiAASmallTitle />
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-[#66FF00]/10 rounded-xl border border-[#66FF00]/30 text-[#66FF00]">
+              <RotateCcw size={28} />
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-black uppercase italic leading-none" style={{ color: KAWASAKI_GREEN }}>
+              Giro ad Anello
+            </h1>
+          </div>
+          <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em] mt-2">
+            Generatore di itinerari circolari moto (Italia, Svizzera, Austria)
+          </p>
+        </div>
+
+        <div className="bg-[#151515] p-6 rounded-3xl border border-white/10 space-y-6 shadow-2xl">
+          <div className="space-y-3">
+            <label className="text-xs font-black uppercase tracking-widest text-[#66FF00] flex items-center gap-2">
+              <MapPin size={16} /> 1. Punto di Partenza e Arrivo
+            </label>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <button
+                onClick={handleUseGps}
+                disabled={isGpsLoading}
+                className="flex items-center justify-center gap-2 py-3.5 px-4 bg-white/5 hover:bg-[#66FF00]/20 border border-white/10 hover:border-[#66FF00]/50 rounded-2xl text-white font-black text-xs uppercase tracking-wider transition-all group"
+              >
+                <Locate size={18} className={`text-[#66FF00] ${isGpsLoading ? 'animate-spin' : 'group-hover:scale-110'} transition-transform`} />
+                <span>{isGpsLoading ? 'Rilevamento GPS in corso...' : 'Usa Posizione GPS Attuale'}</span>
+              </button>
+
+              <div className="relative">
+                <div className="relative">
+                  <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <input
+                    type="text"
+                    placeholder="Cerca o seleziona una città hub..."
+                    value={searchCityQuery || startCity}
+                    onFocus={() => {
+                      setShowCityDropdown(true);
+                      setSearchCityQuery('');
+                    }}
+                    onChange={(e) => {
+                      setSearchCityQuery(e.target.value);
+                      setShowCityDropdown(true);
+                    }}
+                    className="w-full bg-black/50 border border-white/10 focus:border-[#66FF00] rounded-2xl py-3.5 pl-10 pr-4 text-white text-xs font-bold outline-none uppercase transition-all"
+                  />
+                </div>
+
+                {showCityDropdown && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-[#1a1a1a] border border-white/10 rounded-2xl max-h-56 overflow-y-auto z-50 shadow-2xl p-2 space-y-1">
+                    {STARTING_HUBS.filter(h => h.name.toLowerCase().includes(searchCityQuery.toLowerCase())).map(hub => (
+                      <button
+                        key={hub.name}
+                        onClick={() => {
+                          setStartCity(hub.name);
+                          setStartCoords({ lat: hub.lat, lon: hub.lon });
+                          setShowCityDropdown(false);
+                          setSearchCityQuery('');
+                        }}
+                        className="w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-gray-300 hover:text-white hover:bg-[#66FF00]/20 flex items-center justify-between transition-colors"
+                      >
+                        <span className="uppercase">{hub.name}</span>
+                        <span className="text-[10px] text-gray-500">{hub.region}</span>
+                      </button>
+                    ))}
+                    {STARTING_HUBS.filter(h => h.name.toLowerCase().includes(searchCityQuery.toLowerCase())).length === 0 && (
+                      <div className="p-3 text-center text-xs text-gray-500">Nessuna città trovata</div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 text-[11px] text-gray-400 font-medium">
+              <span>Partenza impostata:</span>
+              <span className="text-[#66FF00] font-black uppercase italic">{startCity}</span>
+              <span className="text-gray-600">({startCoords.lat.toFixed(4)}, {startCoords.lon.toFixed(4)})</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-white/5">
+            <div className="space-y-2">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-300 flex items-center gap-2">
+                <Compass size={14} className="text-[#66FF00]" /> Raggio Massimo: <span className="text-[#66FF00]">{maxRadius} km</span>
+              </label>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                {[50, 100, 150, 200, 300].map(r => (
+                  <button
+                    key={r}
+                    onClick={() => setMaxRadius(r)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all border ${
+                      maxRadius === r
+                        ? 'bg-[#66FF00] text-black border-[#66FF00]'
+                        : 'bg-white/5 text-gray-400 border-white/5 hover:border-white/20'
+                    }`}
+                  >
+                    {r} km
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-300 flex items-center gap-2">
+                <Navigation size={14} className="text-[#66FF00]" /> Passi nell'Anello
+              </label>
+              <div className="flex items-center gap-2">
+                {[2, 3, 4].map(count => (
+                  <button
+                    key={count}
+                    onClick={() => setPassCount(count)}
+                    className={`flex-1 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all border ${
+                      passCount === count
+                        ? 'bg-[#66FF00] text-black border-[#66FF00]'
+                        : 'bg-white/5 text-gray-400 border-white/5 hover:border-white/20'
+                    }`}
+                  >
+                    {count} Passi
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-black uppercase tracking-widest text-gray-300 flex items-center gap-2">
+                <Globe size={14} className="text-[#66FF00]" /> Territorio
+              </label>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                {['Tutti', 'Italia', 'Svizzera', 'Austria'].map(country => (
+                  <button
+                    key={country}
+                    onClick={() => setCountryFilter(country)}
+                    className={`px-2.5 py-1.5 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all border ${
+                      countryFilter === country
+                        ? 'bg-white text-black border-white'
+                        : 'bg-white/5 text-gray-400 border-white/5 hover:border-white/20'
+                    }`}
+                  >
+                    {country}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-2">
+            <div className="text-xs text-gray-400 font-medium">
+              Trovati <span className="text-white font-bold">{candidatePasses.length} passi asfaltati</span> nel raggio di {maxRadius} km.
+            </div>
+            <button
+              onClick={() => setRefreshSeed(prev => prev + 1)}
+              className="flex items-center gap-2 py-2.5 px-4 bg-[#66FF00]/10 hover:bg-[#66FF00]/20 border border-[#66FF00]/30 rounded-xl text-[#66FF00] font-black text-xs uppercase tracking-wider transition-all active:scale-95"
+            >
+              <RefreshCw size={14} />
+              <span>Rigenera Altri Giri</span>
+            </button>
+          </div>
+        </div>
+
+        {generatedLoops.length > 0 ? (
+          <div className="space-y-6">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+              {generatedLoops.map((loop, idx) => (
+                <button
+                  key={loop.id}
+                  onClick={() => setSelectedLoopIndex(idx)}
+                  className={`px-5 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all border shrink-0 text-left space-y-1 ${
+                    selectedLoopIndex === idx
+                      ? 'bg-[#66FF00] text-black border-[#66FF00] shadow-[0_5px_20px_rgba(102,255,0,0.3)] scale-[1.02]'
+                      : 'bg-[#151515] text-gray-300 border-white/10 hover:border-white/20'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <span>Opzione {idx + 1}</span>
+                    <span className="font-extrabold">{loop.totalKm} km</span>
+                  </div>
+                  <div className={`text-[10px] font-bold ${selectedLoopIndex === idx ? 'text-black/70' : 'text-gray-500'}`}>
+                    {loop.passes.length} passi • {loop.estimatedHours}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {activeLoop && (
+              <div className="bg-[#151515] rounded-3xl p-6 border border-white/10 space-y-6 shadow-2xl">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#66FF00]">
+                      ITINERARIO AD ANELLO SELEZIONATO
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-black italic uppercase text-white mt-0.5">
+                      {activeLoop.title}
+                    </h2>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <div className="bg-black/50 px-4 py-2.5 rounded-2xl border border-white/10 text-center">
+                      <span className="block text-[10px] text-gray-500 font-bold uppercase">Distanza Totale</span>
+                      <span className="text-xl font-black text-[#66FF00] italic">{activeLoop.totalKm} km</span>
+                    </div>
+                    <div className="bg-black/50 px-4 py-2.5 rounded-2xl border border-white/10 text-center">
+                      <span className="block text-[10px] text-gray-500 font-bold uppercase">Tempo Stimato</span>
+                      <span className="text-xl font-black text-white italic">{activeLoop.estimatedHours}</span>
+                    </div>
+                    <div className="bg-black/50 px-4 py-2.5 rounded-2xl border border-white/10 text-center">
+                      <span className="block text-[10px] text-gray-500 font-bold uppercase">Quota Max</span>
+                      <span className="text-xl font-black text-white italic">{activeLoop.maxElevation}m</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <button
+                    onClick={handleExportGpx}
+                    className="w-full py-4 px-6 bg-[#66FF00] hover:bg-[#52cc00] text-black rounded-2xl font-black text-sm uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-95 shadow-[0_10px_25px_rgba(102,255,0,0.25)] skew-btn"
+                  >
+                    <Download size={20} />
+                    <span>Esporta File GPX</span>
+                  </button>
+
+                  <button
+                    onClick={handleOpenGoogleMaps}
+                    className="w-full py-4 px-6 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-2xl font-black text-sm uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-95 skew-btn"
+                  >
+                    <ExternalLink size={20} className="text-[#66FF00]" />
+                    <span>Apri su Google Maps</span>
+                  </button>
+                </div>
+
+                <div className="w-full h-[450px] sm:h-[520px] rounded-2xl overflow-hidden border border-white/10 relative z-10 shadow-inner">
+                  <MapContainer
+                    center={[startCoords.lat, startCoords.lon]}
+                    zoom={9}
+                    style={{ height: '100%', width: '100%', background: '#111' }}
+                    zoomControl={true}
+                  >
+                    <TileLayer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    />
+
+                    <MapLoopBounds start={startCoords} passes={activeLoop.passes} />
+
+                    <Polyline
+                      positions={[
+                        [startCoords.lat, startCoords.lon],
+                        ...activeLoop.passes.map(p => [p.lat, p.lon] as [number, number]),
+                        [startCoords.lat, startCoords.lon]
+                      ]}
+                      pathOptions={{ color: '#66FF00', weight: 5, opacity: 0.9, dashArray: '8, 8' }}
+                    />
+
+                    <Marker
+                      position={[startCoords.lat, startCoords.lon]}
+                      icon={L.divIcon({
+                        className: 'custom-start-marker',
+                        html: `<div style="background-color: #66FF00; color: #000; font-weight: 900; font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 2px solid #000; box-shadow: 0 0 15px rgba(102,255,0,0.8); text-transform: uppercase; white-space: nowrap;">🚩 PARTENZA: ${startCity}</div>`,
+                        iconSize: [120, 30],
+                        iconAnchor: [60, 15]
+                      })}
+                    >
+                      <Popup>
+                        <div className="p-1 text-black font-sans">
+                          <strong className="block text-sm">Punto di Partenza e Arrivo</strong>
+                          <div className="text-xs text-gray-700">{startCity}</div>
+                        </div>
+                      </Popup>
+                    </Marker>
+
+                    {activeLoop.passes.map((pass, idx) => (
+                      <Marker
+                        key={pass.id + idx}
+                        position={[pass.lat, pass.lon]}
+                        icon={L.divIcon({
+                          className: 'custom-pass-marker',
+                          html: `<div style="background-color: #000; color: #66FF00; font-weight: 900; font-size: 12px; border: 2px solid #66FF00; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.8);">${idx + 1}</div>`,
+                          iconSize: [34, 34],
+                          iconAnchor: [17, 17]
+                        })}
+                      >
+                        <Popup>
+                          <div className="p-2 text-black font-sans space-y-1">
+                            <div className="font-black text-sm uppercase">{idx + 1}. Passo {pass.nome}</div>
+                            <div className="text-xs text-gray-700">Quota: <strong>{pass.quota}m</strong> | Stato: {pass.stato}</div>
+                            <div className="text-xs text-gray-600">{pass.regione} ({pass.provincia})</div>
+                            <button
+                              onClick={() => {
+                                setSelectedRoute(pass);
+                                setCurrentView('dettaglio');
+                              }}
+                              className="mt-2 w-full py-1 bg-black text-[#66FF00] font-black text-[10px] uppercase rounded"
+                            >
+                              Vedi Dettagli Passo
+                            </button>
+                          </div>
+                        </Popup>
+                      </Marker>
+                    ))}
+                  </MapContainer>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-[#66FF00] flex items-center gap-2">
+                    <ListFilter size={16} /> Sequenza dei Passi nell'Anello
+                  </h3>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="bg-black/40 p-4 rounded-2xl border border-[#66FF00]/30 flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#66FF00] text-black font-black text-xs rounded-xl flex items-center justify-center shrink-0">
+                        START
+                      </div>
+                      <div>
+                        <div className="text-white font-black text-sm uppercase">{startCity}</div>
+                        <div className="text-gray-500 text-[10px] font-bold">Punto di partenza dell'itinerario</div>
+                      </div>
+                    </div>
+
+                    {activeLoop.passes.map((pass, idx) => (
+                      <div
+                        key={pass.id}
+                        onClick={() => {
+                          setSelectedRoute(pass);
+                          setCurrentView('dettaglio');
+                        }}
+                        className="bg-black/40 p-4 rounded-2xl border border-white/5 hover:border-[#66FF00]/50 transition-all flex items-center justify-between cursor-pointer group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-black text-[#66FF00] border border-[#66FF00] font-black text-xs rounded-xl flex items-center justify-center shrink-0">
+                            {idx + 1}
+                          </div>
+                          <div>
+                            <div className="text-white font-black text-sm uppercase group-hover:text-[#66FF00] transition-colors">
+                              Passo {pass.nome}
+                            </div>
+                            <div className="text-gray-400 text-[10px] font-medium">
+                              Quota {pass.quota}m • {pass.regione} ({pass.stato})
+                            </div>
+                          </div>
+                        </div>
+
+                        <ChevronRight size={18} className="text-gray-600 group-hover:text-[#66FF00] transition-colors" />
+                      </div>
+                    ))}
+
+                    <div className="bg-black/40 p-4 rounded-2xl border border-[#66FF00]/30 flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#66FF00] text-black font-black text-xs rounded-xl flex items-center justify-center shrink-0">
+                        END
+                      </div>
+                      <div>
+                        <div className="text-white font-black text-sm uppercase">{startCity}</div>
+                        <div className="text-gray-500 text-[10px] font-bold">Rientro e fine del giro</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="bg-[#151515] p-12 rounded-3xl border border-white/10 text-center space-y-4">
+            <ShieldAlert size={48} className="mx-auto text-yellow-500" />
+            <h3 className="text-xl font-black uppercase italic text-white">Nessun anello trovato</h3>
+            <p className="text-gray-400 text-xs font-medium max-w-md mx-auto">
+              Prova ad aumentare il raggio massimo (es. 150 km o 200 km) o a ridurre il numero di passi richiesto nell'anello per trovare più combinazioni.
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   const ContactLink = ({ label, value, href }: { label: string, value: string, href: string }) => (
     <a href={href} target="_blank" rel="noopener noreferrer" className="bg-[#151515] p-6 rounded-2xl flex items-center justify-between group border border-white/5 hover:border-[#66FF00]/30 transition-all">
       <span className="text-gray-500 font-black uppercase text-xs tracking-widest">{label}</span>
@@ -1404,6 +2049,7 @@ export default function App() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           {currentView === 'percorsi' && <PercorsiView />}
+          {currentView === 'anello' && <GiroAnelloView />}
           {currentView === 'mappa' && <MapView />}
           {currentView === 'dettaglio' && <DettaglioView />}
           {currentView === 'confronta' && <ConfrontaView />}
@@ -1415,35 +2061,41 @@ export default function App() {
       {/* Navigation Bar */}
       {currentView !== 'dettaglio' && (
         <nav className="fixed bottom-6 left-4 right-4 z-50">
-          <div className="max-w-md mx-auto bg-[#151515]/80 backdrop-blur-2xl border border-white/10 rounded-3xl px-4 py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex justify-between items-center">
+          <div className="max-w-lg mx-auto bg-[#151515]/80 backdrop-blur-2xl border border-white/10 rounded-3xl px-3 py-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex justify-between items-center gap-1">
             <NavButton 
               active={currentView === 'percorsi'} 
               onClick={() => setCurrentView('percorsi')} 
-              icon={<Navigation size={20} />} 
+              icon={<Navigation size={18} />} 
               label="Percorsi"
+            />
+            <NavButton 
+              active={currentView === 'anello'} 
+              onClick={() => setCurrentView('anello')} 
+              icon={<RotateCcw size={18} />} 
+              label="Anello"
             />
             <NavButton 
               active={currentView === 'mappa'} 
               onClick={() => setCurrentView('mappa')} 
-              icon={<MapIcon size={20} />} 
+              icon={<MapIcon size={18} />} 
               label="Maps"
             />
             <NavButton 
               active={currentView === 'confronta'} 
               onClick={() => setCurrentView('confronta')} 
-              icon={<Scale size={20} />} 
+              icon={<Scale size={18} />} 
               label="Vs"
             />
             <NavButton 
               active={currentView === 'community'} 
               onClick={() => setCurrentView('community')} 
-              icon={<MotorcycleGreetingIcon size={20} />} 
+              icon={<MotorcycleGreetingIcon size={18} />} 
               label="GAIAA"
             />
             <NavButton 
               active={currentView === 'info'} 
               onClick={() => setCurrentView('info')} 
-              icon={<Info size={20} />} 
+              icon={<Info size={18} />} 
               label="Info"
             />
           </div>

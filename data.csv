@@ -1,0 +1,755 @@
+Nome,Stato,Altitudine (m),Latitudine,Longitudine,Regione/Cantone/Bundesland,Provincia/Distretto,Tipo strada,Superficie,Rif. strada,Wikipedia
+Sella di Arpaia,Italia,286,41.03508,14.5398833,Campania,Benevento,primary,asphalt,SS7,https://it.wikipedia.org/wiki/Stretta_di_Arpaia
+Passo del Tonale,Italia,1883,46.2580068,10.5818471,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS42,https://it.wikipedia.org/wiki/Passo_del_Tonale
+Passo di Costalunga - Karerpass,Italia,1745,46.4042798,11.6089903,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS241,https://it.wikipedia.org/wiki/Passo_di_Costalunga
+Passo di Monte Croce Carnico / Plöckenpass / Pas di Mont di Crôs,Italia,1360,46.6035575,12.9451319,Friuli-Venezia Giulia,Udine,primary,asphalt,B110;SS52bis,https://it.wikipedia.org/wiki/Passo_di_Monte_Croce_Carnico
+Goletto di Cadino,Italia,1943,45.9082931,10.4174094,Lombardia,Brescia,secondary,asphalt,SPBS669,
+Passo di Crocedomini,Italia,1892,45.9075303,10.4095085,Lombardia,Brescia,secondary,asphalt,SPBS345;SPBS669,https://it.wikipedia.org/wiki/Passo_di_Crocedomini
+Passo Eira,Italia,2208,46.5383225,10.1664242,Lombardia,Sondrio,secondary;service,asphalt,SS301,https://it.wikipedia.org/wiki/Passo_dell%27Eira
+Passo Forcola di Livigno,Italia,2315,46.4409411,10.0561903,Lombardia,Sondrio,secondary;service,asphalt,,https://de.wikipedia.org/wiki/Forcola_di_Livigno
+Valico Masera,Italia,762,44.1847553,10.8771856,Emilia-Romagna,Bologna,primary;secondary,asphalt,SP324;SP82,
+Passo delle Radici,Italia,1527,44.2093309,10.4887546,Emilia-Romagna,Modena,primary;secondary,asphalt,SP324;SP324dir;SP72,
+Forca di Gualdo,Italia,1496,42.8586174,13.1904042,Marche,Macerata,secondary;service,asphalt,SP136,
+Passo della Raticosa,Italia,968,44.1729133,11.3384155,Toscana,Firenze,primary,asphalt,SS65,https://it.wikipedia.org/wiki/Passo_della_Raticosa
+Passo della Porretta,Italia,932,44.0294523,10.931523,Toscana,Pistoia,tertiary,asphalt,,https://it.wikipedia.org/wiki/Passo_della_Porretta
+Passo della Consuma,Italia,1055,43.7829527,11.6016534,Toscana,Arezzo,primary;service,asphalt,SR70,https://it.wikipedia.org/wiki/Passo_della_Consuma
+Passo San Giovanni,Italia,272,45.8738402,10.9066186,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS240,https://it.wikipedia.org/wiki/Passo_San_Giovanni
+Jaufenpass - Passo di Monte Giovo,Italia,2094,46.8396036,11.3214724,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS44,https://de.wikipedia.org/wiki/Jaufenpass
+Colle San Martino,Italia,1081,39.8947196,16.0488558,Calabria,Cosenza,tertiary;unclassified,asphalt,SP137,
+Valico del Rospatoio,Italia,512,43.1783025,11.3321893,Toscana,Siena,secondary,asphalt,SP33,https://it.wikipedia.org/wiki/Valico_del_Rospatoio
+Col Sant’Angelo,Italia,1756,46.5817264,12.2517572,Veneto,Belluno,secondary,asphalt,SP49,
+Cima Sappada,Italia,1292,46.5701766,12.7212058,Friuli-Venezia Giulia,Udine,primary,asphalt,SR355,https://it.wikipedia.org/wiki/Cima_Sappada
+Passo di Giau,Italia,2236,46.4825196,12.053666,Veneto,Belluno,secondary,asphalt,SP638,https://it.wikipedia.org/wiki/Passo_di_Giau
+Sella del Monte Zoncolan,Italia,1733,46.5018302,12.9268442,Friuli-Venezia Giulia,Udine,unclassified,asphalt,,
+Passo dell'Aprica,Italia,1172,46.1543295,10.1541791,Lombardia,Sondrio,primary,asphalt,SS39,https://de.wikipedia.org/wiki/Apricapass
+Bocca Trabaria,Italia,1049,43.5951168,12.235588,Marche,Pesaro e Urbino,path;primary;track,asphalt,SS73bis,https://it.wikipedia.org/wiki/Bocca_Trabaria
+Passo dello Sceriffo,Italia,745,45.6404317,10.7545044,Veneto,Verona,tertiary,asphalt,SP29;SP9,
+Colla Tre Faggi,Italia,930,43.9275428,11.6780633,Toscana,Firenze,secondary;track,asphalt,SP9ter,
+Forcellino di Bianzano,Italia,664,45.7713797,9.9083534,Lombardia,Bergamo,tertiary,asphalt,SP40,
+Passo Campiano,Italia,375,45.7637409,10.8234399,Veneto,Verona,residential;service;unclassified,asphalt,,
+Colletta di Costafinale,Italia,1111,44.494031,9.2452745,Liguria,Genova,secondary,asphalt,SP56,
+Passo delle Tre Strade,Italia,1101,44.8019949,9.3132721,Lombardia,Pavia,primary;tertiary;unclassified,asphalt,SP17;SS461,https://it.wikipedia.org/wiki/Passo_delle_Tre_strade
+Passo del Penice,Italia,1149,44.7972866,9.3282965,Emilia-Romagna,Piacenza,primary,asphalt,SS461,https://it.wikipedia.org/wiki/Passo_del_Penice
+Passo del Giovà,Italia,1366,44.6837628,9.216941,Lombardia,Pavia,secondary;tertiary,asphalt,SP48;SP88,https://it.wikipedia.org/wiki/Passo_del_Giov%C3%A0
+Foce del Cucco,Italia,520,44.1465987,10.0243816,Toscana,Massa-Carrara,primary;secondary,asphalt,SP72;SP9,
+Passo Rolle,Italia,1971,46.2963002,11.786321,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS50,https://it.wikipedia.org/wiki/Passo_Rolle
+Passo San Nicola,Italia,620,41.3496793,13.5235932,Lazio,Latina,secondary,asphalt,SR82,https://it.wikipedia.org/wiki/Passo_San_Nicola
+Passo della Quercia del Monaco,Italia,540,41.39735,13.4263987,Lazio,Frosinone,secondary,asphalt,SR637,
+Portella San Rizzo,Italia,465,38.2155828,15.5059496,Sicilia,Messina,secondary;tertiary,asphalt,SP50;SP50bis;SS113,
+Portella dello Zoppo,Italia,1263,37.9782016,14.9437705,Sicilia,Messina,secondary;track,asphalt,SS116,
+Valico della Forchetta,Italia,1276,41.9203191,14.1075528,Abruzzo,Chieti,primary,asphalt,SS84,
+Valico di Bosco la Piana,Italia,920,40.6537469,15.9657443,Basilicata,Potenza,secondary,asphalt,SPexSS7,
+Passo Sommo,Italia,1341,45.9195501,11.2062488,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS350,https://it.wikipedia.org/wiki/Passo_Sommo
+Valico della Fricca,Italia,1110,45.9497254,11.2072549,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS349,https://it.wikipedia.org/wiki/Valico_della_Fricca
+Passo della Sambuca,Italia,1080,44.0723968,11.4855584,Toscana,Firenze,secondary,asphalt,SP477,
+Passo di Monte Luco,Italia,794,43.4428328,11.5065058,Toscana,Siena,tertiary,asphalt,SP73,
+Passo della Somma,Italia,655,42.6660469,12.7286549,Umbria,Perugia,primary,asphalt,SS3,https://it.wikipedia.org/wiki/Valico_della_Somma
+Valico la Croce,Italia,548,45.6337627,10.1439104,Lombardia,Brescia,tertiary;unclassified,asphalt,SP10,
+Cavallo di Novezza,Italia,1433,45.7128347,10.8611615,Veneto,Verona,secondary,asphalt,SP8,
+Passo di San Valentino,Italia,1314,45.7831372,10.9122391,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP208;SP3,
+Passo Croce d'Aune,Italia,1011,46.0618045,11.8300803,Veneto,Belluno,secondary,asphalt,SP473,https://it.wikipedia.org/wiki/Passo_Croce_d%27Aune
+Passo Vezzena,Italia,1402,45.9566147,11.328594,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS349,https://it.wikipedia.org/wiki/Passo_Vezzena
+Forcella Aurine,Italia,1299,46.2365722,11.9760487,Veneto,Belluno,secondary,asphalt,SP347,https://it.wikipedia.org/wiki/Forcella_Aurine
+Passo di Lumini,Italia,695,45.6287024,10.7558029,Veneto,Verona,tertiary,asphalt,SP29,
+Passo Staulanza,Italia,1766,46.4207005,12.1045012,Veneto,Belluno,secondary,asphalt,SP251,https://it.wikipedia.org/wiki/Passo_Staulanza
+Genna Artulu,Italia,981,39.813297,9.362245,Sardegna,Nuoro,primary;unclassified,asphalt,SS198,
+Passo del Portello,Italia,1051,44.4954192,9.1786606,Liguria,Genova,secondary,asphalt,SP21,https://it.wikipedia.org/wiki/Passo_del_Portello
+Passo Pozza della Cola,Italia,1289,45.7585494,10.8959216,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP230,
+Colle del Sestriere,Italia,2035,44.9590948,6.882543,Piemonte,Torino,primary,asphalt,SP23,https://it.wikipedia.org/wiki/Colle_del_Sestriere
+Passo della Spina,Italia,1525,45.7926763,10.4383047,Lombardia,Brescia,unclassified,asphalt,,
+Passo Santel,Italia,1040,46.1767418,11.0531348,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP64,
+Portella Mannino,Italia,649,38.0410307,13.2023672,Sicilia,Palermo,primary,asphalt,SS186,
+Valico di Caposs,Italia,889,45.6667862,10.1118594,Lombardia,Brescia,service;unclassified,asphalt,,
+Bocchetta di Sant'Anna,Italia,1206,46.1479551,9.2499301,Lombardia,Como,path;unclassified,asphalt,,
+Colle San Bartolomeo,Italia,625,44.0102229,7.9520538,Liguria,Imperia,secondary,asphalt,SP20;SP21,https://it.wikipedia.org/wiki/Colle_San_Bartolomeo
+Passo della Forcella,Italia,310,45.5979702,10.1772514,Lombardia,Brescia,service;unclassified,asphalt,,
+Passo di Viamaggio,Italia,983,43.6825799,12.1164075,Toscana,Arezzo,primary;secondary,asphalt,SP50;SS258,https://it.wikipedia.org/wiki/Passo_di_Viamaggio
+Jouf de Sela - Passo Sella - Sellajoch,Italia,2240,46.5080689,11.7673265,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS242,https://it.wikipedia.org/wiki/Passo_Sella
+Passo Valles,Italia,2032,46.3386138,11.8002577,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP 81,https://it.wikipedia.org/wiki/Passo_Valles
+Passo del Cimirlo,Italia,730,46.0676009,11.1846466,Trentino-Alto Adige/Südtirol,Trento,residential;tertiary;unclassified,asphalt,,https://it.wikipedia.org/wiki/Passo_del_Cimirlo
+Passo Manghen,Italia,2047,46.1732517,11.4414698,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP31,https://it.wikipedia.org/wiki/Passo_Manghen
+Sella di Interneppo,Italia,314,46.318746,13.0886737,Friuli-Venezia Giulia,Udine,tertiary,asphalt,SP36,
+Passo Rest / Pas di Rest,Italia,1052,46.3559335,12.7827778,Friuli-Venezia Giulia,Pordenone,secondary,asphalt,SR552,https://it.wikipedia.org/wiki/Forcella_di_Monte_Rest
+Giogo del Maniva,Italia,1664,45.8226344,10.4101045,Lombardia,Brescia,path;secondary;unclassified,asphalt,,https://it.wikipedia.org/wiki/Passo_del_Maniva
+Valico di Monte Bondone,Italia,1651,46.0392908,11.0582244,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP85,
+Passo del Monte Trebbio,Italia,565,44.1293316,11.8283151,Emilia-Romagna,Forlì-Cesena,secondary;tertiary,asphalt,SP21,
+Passo Torri di Fraele,Italia,1941,46.5022719,10.3098412,Lombardia,Sondrio,unclassified,asphalt,,
+Passo Scassella,Italia,1076,44.4111059,9.6441932,Liguria,La Spezia,tertiary,asphalt,,
+Passo Falzarego,Italia,2105,46.5187504,12.0084323,Veneto,Belluno,primary,asphalt,SR48,https://it.wikipedia.org/wiki/Passo_di_Falzarego
+Passo Croce,Italia,616,46.1614541,11.1345692,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP131dir,
+Passo del Righetto,Italia,972,44.4524248,9.9188519,Toscana,Massa-Carrara,path;primary,asphalt,SS62,
+Colle di San Zeno,Italia,1418,45.7811966,10.1873656,Lombardia,Brescia,unclassified,asphalt,,https://it.wikipedia.org/wiki/Colle_di_San_Zeno
+Forcella di Brez - Brezer Joch,Italia,1397,46.4513504,11.0824776,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,LS/SP86;SP43,
+Colle Gallo,Italia,754,45.753471,9.8738661,Lombardia,Bergamo,footway;tertiary;unclassified,asphalt,SP39,https://it.wikipedia.org/wiki/Colle_Gallo
+Colle di Zambla,Italia,1264,45.8870965,9.7977431,Lombardia,Bergamo,residential;secondary;unclassified,asphalt,SP27;SP46,https://it.wikipedia.org/wiki/Colle_di_Zambla
+Sella di Vignola,Italia,557,46.0469516,11.2550959,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP228,
+Passo del Silara di Marra,Italia,1197,44.4807869,10.0093285,Emilia-Romagna,Parma,tertiary,asphalt,SP74,
+Passo dei Giovi,Italia,472,44.5521523,8.9368613,Liguria,Genova,primary;residential,asphalt,SS35,https://it.wikipedia.org/wiki/Passo_dei_Giovi
+Passo della Crocetta di Orero,Italia,471,44.5198434,8.9878379,Liguria,Genova,secondary,asphalt,SP2,https://it.wikipedia.org/wiki/Crocetta_d%27Orero
+Forcella Franche,Italia,991,46.2333305,12.0131757,Veneto,Belluno,secondary,asphalt,SP3,https://it.wikipedia.org/wiki/Forcella_Franche
+Sella di Serrada,Italia,1250,45.8912616,11.1541852,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP2,
+Passo dell'Ampola,Italia,747,45.8643954,10.6454504,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS240,https://it.wikipedia.org/wiki/Passo_d%27Ampola
+Passo La Croce,Italia,665,43.4395299,12.6840719,Marche,Pesaro e Urbino,secondary,asphalt,SP50,
+Reiterjoch - Passo di Pampeago,Italia,1983,46.3538109,11.5398288,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,unclassified,asphalt,,https://it.wikipedia.org/wiki/Passo_di_Pampeago
+Passo di San Lugano - San-Lugano-Sattel,Italia,1097,46.3123087,11.3930437,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary;service;unclassified,asphalt,SS48,https://it.wikipedia.org/wiki/Passo_di_San_Lugano
+Sella Cereschiatis,Italia,1072,46.5040184,13.2451519,Friuli-Venezia Giulia,Udine,secondary,asphalt,SP112,
+Valico di Monte Cristo,Italia,1775,42.409691,13.5879294,Abruzzo,L'Aquila,path;primary;track,asphalt,SR17 bis,
+Valico delle Capannelle,Italia,1300,42.459345,13.3514445,Abruzzo,L'Aquila,primary,asphalt,SS80,https://it.wikipedia.org/wiki/Passo_delle_Capannelle
+Passo Xon,Italia,671,45.7202682,11.2210989,Veneto,Vicenza,primary,asphalt,SP246,https://it.wikipedia.org/wiki/Passo_Xon
+Bocca Paolone,Italia,947,45.7468643,10.6538173,Lombardia,Brescia,track,asphalt,,
+Passo della Foppa,Italia,1852,46.2478592,10.3003716,Lombardia,Brescia,secondary;unclassified,asphalt,SS42 dir/A,https://it.wikipedia.org/wiki/Passo_del_Mortirolo
+Passo della Forcella,Italia,910,46.0708706,11.5924163,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP78,https://it.wikipedia.org/wiki/Passo_della_Forcella_%28Trentino-Alto_Adige%29
+Passo di Monte Veri,Italia,1077,44.6220631,9.3729802,Emilia-Romagna,Piacenza,secondary;tertiary,asphalt,SP52;SP72,
+Sella della Giassina,Italia,926,44.4895468,9.1878066,Liguria,Genova,secondary,asphalt,SP21,
+Passo della Borcola,Italia,1207,45.8291608,11.2056337,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP138,https://it.wikipedia.org/wiki/Passo_della_Borcola
+Passo San Udalrico,Italia,585,45.9750476,10.9749759,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP84,
+Genna Antini,Italia,878,39.9325955,9.4804428,Sardegna,Nuoro,primary,asphalt,SS389,
+Passo Bordala,Italia,1250,45.9071405,10.9771399,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP88,https://it.wikipedia.org/wiki/Passo_Bordala
+Passo Santa Barbara,Italia,1169,45.8962966,10.9403437,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP48,
+Colle del Nivolet,Italia,2612,45.4792099,7.1423209,Valle d'Aosta/Vallée d'Aoste,Valle d'Aosta/Vallée d'Aoste,tertiary,asphalt,,https://it.wikipedia.org/wiki/Colle_del_Nivolet
+Bocca del Creer,Italia,1617,45.7986048,10.8937523,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP3,
+Colle del Melogno,Italia,1028,44.2302874,8.196958,Liguria,Savona,secondary,asphalt,SP490,https://it.wikipedia.org/wiki/Colle_del_Melogno
+Pian delle Fugazze,Italia,1163,45.7601964,11.1733246,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS46,https://it.wikipedia.org/wiki/Pian_delle_Fugazze
+Passo di Monte Faè,Italia,932,45.8711714,10.9793966,Trentino-Alto Adige/Südtirol,Trento,tertiary;track,asphalt,SP45,
+Portella di Blasi,Italia,552,37.8964054,13.4848368,Sicilia,Palermo,secondary,asphalt,SP77,
+Forcella Valbona,Italia,1785,45.8682231,11.2719171,Veneto,Vicenza,tertiary,asphalt,SP92,
+Bocchetta degli Alpini,Italia,1566,45.8754284,11.2982449,Veneto,Vicenza,tertiary,asphalt,SP92,
+Passo Xomo,Italia,1058,45.7771002,11.2375529,Veneto,Vicenza,unclassified,asphalt,,https://it.wikipedia.org/wiki/Passo_Xomo
+Goletto di Gaver,Italia,1795,45.9142334,10.4371234,Lombardia,Brescia,secondary;track,asphalt,SPBS669,
+Passo della Ritorta,Italia,1450,44.6973459,9.25356,Lombardia,Pavia,secondary,asphalt,SP88,
+Passo del Sugame,Italia,530,43.5981401,11.3635757,Toscana,Firenze,secondary,asphalt,SP16,
+Passo Ferrarino,Italia,899,44.4305619,10.2653881,Emilia-Romagna,Reggio nell'Emilia,secondary,asphalt,SP15,
+Passo Campo Carlo Magno,Italia,1682,46.24312,10.8402325,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS239,https://en.wikipedia.org/wiki/Campo_Carlo_Magno
+Bassa della Scoggia,Italia,0,44.2472307,8.2620335,Liguria,Savona,secondary;track,asphalt,SP23,
+Bocchetta di Sette Sorelle,Italia,817,44.7138856,9.7813008,Emilia-Romagna,Parma,secondary;unclassified,asphalt,SP359R,
+Valico di Monte Pelizzone,Italia,1044,44.6798626,9.7439378,Emilia-Romagna,Piacenza,path;secondary;track,asphalt,SP359R,https://it.wikipedia.org/wiki/Passo_del_Pellizzone
+Passo del Durone,Italia,1010,46.0371743,10.795667,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP222,
+Colle di Caf,Italia,1242,45.7521101,9.9656871,Lombardia,Bergamo,unclassified,asphalt,,
+Colle d'Oggia,Italia,1157,43.982426,7.8697558,Liguria,Imperia,secondary,asphalt,SP21,
+Cocca di Lodrino,Italia,735,45.7118669,10.2861765,Lombardia,Brescia,residential;secondary;track;unclassified,asphalt,SPIII,
+Colle Langan,Italia,1127,43.9678701,7.7316187,Liguria,Imperia,secondary;tertiary,asphalt,SP65;SP67,
+Passo Zovo,Italia,631,45.6839681,11.3097585,Veneto,Vicenza,secondary;service,asphalt,SP45,https://it.wikipedia.org/wiki/Passo_dello_Zovo
+Passo Lanciano,Italia,1318,42.1889481,14.1045022,Abruzzo,Pescara,tertiary,asphalt,SP220,https://it.wikipedia.org/wiki/Passo_Lanciano
+Passo Ciola,Italia,580,43.9796467,12.1396984,Emilia-Romagna,Forlì-Cesena,tertiary,asphalt,SP53,
+Sella di Villanoce,Italia,950,44.5210047,9.4181076,Liguria,Genova,primary,asphalt,SS654,
+Passo del Tomarlo,Italia,1482,44.5359135,9.5011637,Liguria,Genova,primary,asphalt,SS654,https://it.wikipedia.org/wiki/Passo_del_Tomarlo
+Colle della Cavallina,Italia,1940,44.5270182,7.1040275,Piemonte,Cuneo,tertiary;unclassified,asphalt,,
+Passo del Corso,Italia,532,44.2351112,11.5947273,Emilia-Romagna,Ravenna,secondary;unclassified,asphalt,SP70,
+Colle dei Giovetti,Italia,913,44.279146,8.096348,Liguria,Savona,secondary,asphalt,SP490,https://it.wikipedia.org/wiki/Colle_dei_Giovetti
+Passo della Montagnola,Italia,616,42.6230321,11.8377716,Lazio,Viterbo,primary,asphalt,SR312,https://it.wikipedia.org/wiki/Passo_della_Montagnola
+Passo del Bocco,Italia,956,44.415258,9.4433967,Liguria,Genova,secondary,asphalt,SP27,https://it.wikipedia.org/wiki/Passo_del_Bocco
+Sella di Casaselvatica,Italia,835,44.5489739,10.0375305,Emilia-Romagna,Parma,secondary,asphalt,SP15,
+Passo del Ticchiano,Italia,1154,44.4278134,10.1148569,Emilia-Romagna,Parma,tertiary,asphalt,SP75,
+Passo Mistadella,Italia,1034,44.3385198,9.8142522,Toscana,Massa-Carrara,residential,asphalt,SP36,
+Foce Bertagna,Italia,867,44.3362852,9.7908801,Toscana,Massa-Carrara,residential;track;unclassified,asphalt,SP36,
+Passo Calzavitello,Italia,850,44.3546296,9.733974,Toscana,Massa-Carrara,tertiary;unclassified,asphalt,SP65,
+Passo del Cason di Lanza / Lanzenpass / Pas di Lance,Italia,1555,46.5659799,13.1709748,Friuli-Venezia Giulia,Udine,tertiary;track,asphalt,,https://it.wikipedia.org/wiki/Passo_del_Cason_di_Lanza
+Valico della Valletta,Italia,406,44.2131927,11.7130051,Emilia-Romagna,Ravenna,tertiary;unclassified,asphalt,SP63,
+Passo dell'Eremo,Italia,921,44.0301864,11.641241,Toscana,Firenze,secondary,asphalt,SP74,
+Passo della Peschiera,Italia,925,44.017246,11.6565766,Emilia-Romagna,Forlì-Cesena,secondary,asphalt,SP74,
+Col Agnel / Colle dell'Agnello,Italia,2744,44.6838851,6.9795875,Piemonte,Cuneo,secondary,asphalt,D 205t;SP251,https://fr.wikipedia.org/wiki/Col_Agnel
+Passo Santa Donna,Italia,940,44.5452017,9.7325661,Emilia-Romagna,Parma,residential;secondary;track,asphalt,SP21,
+Passo Croce dello Scrivano,Italia,1143,40.5640738,15.8380942,Basilicata,Potenza,primary;tertiary,asphalt,SS92,
+Valico del Monte Carruozzo,Italia,1228,40.8030666,15.4099224,Basilicata,Potenza,secondary;unclassified,asphalt,SS7,
+Passo di Saragiolo,Italia,935,42.8357635,11.6402047,Toscana,Siena,secondary,asphalt,SP18,
+Im Gemärk - Passo Cimabanche,Italia,1530,46.620591,12.1839834,Veneto,Belluno,primary,asphalt,SS51,https://it.wikipedia.org/wiki/Passo_Cimabanche
+Passo della Forcella,Italia,875,44.4626101,9.3354468,Liguria,Genova,primary,asphalt,SS586,https://it.wikipedia.org/wiki/Passo_della_Forcella_%28Liguria%29
+Genna e Frongia,Italia,384,39.5317201,8.6116748,Sardegna,Sud Sardegna,primary,asphalt,SS126,
+Genna Sartania,Italia,465,39.5129911,8.5287678,Sardegna,Sud Sardegna,tertiary;track,asphalt,SP66,
+Jü de Börz - Würzjoch - Passo delle Erbe,Italia,1987,46.6751109,11.8143123,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,service;tertiary,asphalt,LS/SP29,https://de.wikipedia.org/wiki/W%C3%BCrzjoch
+La Chiesola,Italia,1633,42.2388893,13.365242,Abruzzo,L'Aquila,primary;track,asphalt,SS696,
+Colle della Croce Nera,Italia,859,45.0933784,7.3390671,Piemonte,Torino,service;unclassified,asphalt,SP188,
+Valico di Strambinello,Italia,457,45.4217223,7.7568614,Piemonte,Torino,tertiary,asphalt,SP64,
+Passo di Santa Croce,Italia,359,45.3495564,7.8409078,Piemonte,Torino,secondary,asphalt,,
+Sedda ru Cuntrasto,Italia,1122,37.8506776,14.3976631,Sicilia,Messina,primary,asphalt,SS117,https://it.wikipedia.org/wiki/Colle_del_Contrasto
+Sela de Culac,Italia,2018,46.5384678,11.7833966,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS243,
+Genna Croce,Italia,910,40.1122944,9.5147047,Sardegna,Nuoro,primary;unclassified,asphalt,SS125,
+Ghenna Sìlana,Italia,1002,40.1585378,9.5078599,Sardegna,Nuoro,primary,asphalt,SS125,
+Passo del Casello,Italia,1055,45.6833149,10.8627393,Veneto,Verona,secondary;track,asphalt,SP8,
+Passo dell'Incrociati,Italia,506,43.2941577,11.1837919,Toscana,Siena,tertiary,asphalt,SP52,
+Passo del Santellone,Italia,873,45.7566029,10.2887513,Lombardia,Brescia,secondary,asphalt,SP50;SP53,
+Colletto di Rossana,Italia,617,44.5151395,7.4405201,Piemonte,Cuneo,tertiary,asphalt,SP46,
+Staller Sattel - Passo di Stalle,Italia,2052,46.887716,12.1996903,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,secondary,asphalt,L25;LS/SP44,https://de.wikipedia.org/wiki/Staller_Sattel
+Passo di Sant'Antonio,Italia,1476,46.5720031,12.482356,Veneto,Belluno,secondary,asphalt,SP532,https://it.wikipedia.org/wiki/Passo_di_Sant%27Antonio
+Sella Somdogna / Siele Sompdogne,Italia,1400,46.4621875,13.4487261,Friuli-Venezia Giulia,Udine,unclassified,asphalt,,
+Valico Taglio Grosso,Italia,586,45.4704378,7.9837502,Piemonte,Biella,primary,asphalt,,
+Sapel da Mur,Italia,294,45.3925837,8.0605493,Piemonte,Vercelli,secondary,asphalt,SP41,
+Passo del Branchetto,Italia,1591,45.6790494,11.0701861,Veneto,Verona,secondary,asphalt,SP6,
+Passo Gioiche,Italia,1148,45.6298311,11.1648944,Veneto,Verona,tertiary;track,asphalt,,
+Sella di Fonte Tettone,Italia,1650,42.1704798,14.1150473,Abruzzo,Pescara,tertiary,asphalt,SP64,
+Passo della Pianetta,Italia,1397,45.802121,11.479562,Veneto,Vicenza,track;unclassified,asphalt,,
+Passo della Presolana,Italia,1297,45.9292123,10.0990239,Lombardia,Bergamo,primary,asphalt,SS671,https://it.wikipedia.org/wiki/Passo_della_Presolana
+Valico di Barrea,Italia,1171,41.7412577,13.9925398,Abruzzo,L'Aquila,primary,asphalt,SS83,
+Bocca dei Giù,Italia,1469,45.8072876,10.5886936,Trentino-Alto Adige/Südtirol,Trento,track,asphalt,,
+Passo del Lume Spento,Italia,629,43.0331229,11.4809085,Toscana,Siena,secondary,asphalt,SP14,https://it.wikipedia.org/wiki/Passo_del_Lume_Spento
+Portella Pandolfo,Italia,559,37.8767644,15.2762226,Sicilia,Messina,unclassified,asphalt,,
+Portella del Giasso,Italia,671,37.8795195,15.266331,Sicilia,Messina,unclassified,asphalt,,
+Sella la Rezza,Italia,430,45.0999552,7.8446645,Piemonte,Torino,secondary;tertiary,asphalt,,https://it.wikipedia.org/wiki/Sella_la_Rezza
+Passo del Lucese,Italia,558,43.9364847,10.3821737,Toscana,Lucca,unclassified,asphalt,,
+Bocchetta d'Orimento,Italia,1275,45.9463457,9.0425944,Lombardia,Como,residential;unclassified,asphalt,,
+Colfiorito,Italia,826,43.003027,12.8592522,Umbria,Perugia,secondary,asphalt,SR77,
+Vetta le Croci,Italia,518,43.8659596,11.3418292,Toscana,Firenze,primary,asphalt,SR302,https://it.wikipedia.org/wiki/Vetta_le_Croci
+Passo di Agueglio,Italia,1140,46.0059276,9.322553,Lombardia,Lecco,tertiary,asphalt,SS753,
+Passo del Vivione,Italia,1828,46.0365862,10.1992691,Lombardia,Bergamo,tertiary;track,asphalt,SS294,https://de.wikipedia.org/wiki/Passo_del_Vivione
+Passo dell'Alberaccio,Italia,541,43.86374,11.3479942,Toscana,Firenze,secondary;service;track,asphalt,SP84,
+Passo della Crocina,Italia,672,43.5735901,11.7379526,Toscana,Arezzo,secondary;track,asphalt,SP59,
+Passo di Fletta,Italia,1200,46.1609149,10.3339367,Lombardia,Brescia,unclassified,asphalt,,
+Portella Zilla,Italia,1165,37.9840312,14.9985598,Sicilia,Messina,tertiary,asphalt,SP110,
+Passo della Scalucchia,Italia,1364,44.3582368,10.2278344,Emilia-Romagna,Reggio nell'Emilia,tertiary,asphalt,,https://it.wikipedia.org/wiki/Passo_della_Scalucchia
+Bocchetta Campiglia,Italia,1216,45.7788237,11.2280643,Veneto,Vicenza,unclassified,asphalt,,https://it.wikipedia.org/wiki/Bocchetta_Campiglia
+Colle Braida,Italia,1006,45.0832472,7.3337665,Piemonte,Torino,unclassified,asphalt,SP188,https://it.wikipedia.org/wiki/Colle_Braida
+Passo dell'Incisa,Italia,1068,44.5699586,9.0747655,Liguria,Genova,tertiary,asphalt,,
+Passo di Tralarbia,Italia,874,43.6628179,12.1047922,Toscana,Arezzo,primary,asphalt,SS258,
+Spartiacque Salso/Dittaino,Italia,663,37.5808799,14.2835644,Sicilia,Enna,secondary,asphalt,SS121,
+Passo di Pietragavina,Italia,730,44.8379379,9.2416049,Lombardia,Pavia,secondary;tertiary;unclassified,asphalt,SP168;SP207,
+Passo Coppi,Italia,0,44.8052778,8.9211037,Piemonte,Alessandria,secondary,asphalt,,
+Valico di Monte Pollano,Italia,1050,44.4118237,9.4747474,Emilia-Romagna,Parma,secondary,asphalt,SP27,
+Valico Monte Busca,Italia,0,44.0575357,11.7702903,Emilia-Romagna,Forlì-Cesena,secondary;unclassified,asphalt,SP22,
+Portella Castagnera,Italia,1351,37.9818232,14.8754662,Sicilia,Messina,track,asphalt,,
+Forcorella di Marzio,Italia,788,45.9342494,8.8493295,Lombardia,Varese,tertiary,asphalt,SP41,
+Passo Sulparo,Italia,600,43.9888246,11.9528176,Emilia-Romagna,Forlì-Cesena,unclassified,asphalt,SP76,
+Prato all'Albero,Italia,1036,44.0446543,11.4732825,Toscana,Firenze,secondary,asphalt,SP477,
+Colletto del Moro,Italia,943,44.302268,7.5384256,Piemonte,Cuneo,unclassified,asphalt,,
+Passo della Crocetta,Italia,0,44.1720081,11.4507247,Toscana,Firenze,track;unclassified,asphalt,,
+Sella di Gouta,Italia,1225,43.9396203,7.6082936,Liguria,Imperia,tertiary;track,asphalt,SP69,
+Passo del Mercatello,Italia,1053,44.653996,9.4510271,Emilia-Romagna,Piacenza,secondary;tertiary,asphalt,SP50,https://it.wikipedia.org/wiki/Passo_del_Mercatello
+Passo della Crocetta,Italia,1051,45.8802345,9.7126151,Lombardia,Bergamo,tertiary;unclassified,asphalt,,
+Portella Creta,Italia,877,37.6811885,14.3119701,Sicilia,Enna,tertiary;track,asphalt,SP39;SP58,
+Valico di Cerro Secco,Italia,820,41.6967827,14.8402046,Molise,Campobasso,secondary,asphalt,SP205,
+Portella Schioppettate,Italia,354,37.4678174,14.1728463,Sicilia,Enna,secondary,asphalt,SS560,
+Passo San Boldo,Italia,706,46.006002,12.1696777,Veneto,Treviso,secondary,asphalt,SP635,https://it.wikipedia.org/wiki/Passo_San_Boldo
+Predel / Passo del Predil,Italia,1156,46.418553,13.5781717,Friuli-Venezia Giulia,Udine,secondary,asphalt,203;SS54,https://en.wikipedia.org/wiki/Predil_Pass
+Valico Monte Beccugiano,Italia,537,44.1029981,11.6994426,Toscana,Firenze,secondary;track,asphalt,SP20,
+Passo della Vena di Sopra,Italia,1545,45.8749932,11.3082957,Veneto,Vicenza,secondary,asphalt,SP136 della Vena,
+Passo Coe,Italia,1610,45.8773236,11.2120569,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP143,https://it.wikipedia.org/wiki/Passo_Coe
+Col Tzecore,Italia,1607,45.7280646,7.7184055,Valle d'Aosta/Vallée d'Aoste,Valle d'Aosta/Vallée d'Aoste,tertiary,asphalt,,
+Forca di Arrone,Italia,0,42.5616614,12.7763491,Umbria,Terni,secondary,asphalt,SP4,
+Forcella di Nespello,Italia,900,45.8288427,9.7505127,Lombardia,Bergamo,tertiary;unclassified,asphalt,SP30;SP31,
+Selletta di Cantul,Italia,1020,45.7948157,9.7703949,Lombardia,Bergamo,tertiary,asphalt,SP36,
+Passo della Mauria,Italia,0,46.4544228,12.5133399,Veneto,Belluno,primary;track,asphalt,SS52,https://it.wikipedia.org/wiki/Passo_della_Mauria
+Passo del Praderadego,Italia,925,46.0023281,12.1099172,Veneto,Treviso,tertiary,asphalt,,https://it.wikipedia.org/wiki/Passo_di_Praderadego
+Passo di Gavia,Italia,2621,46.3434797,10.4873336,Lombardia,Brescia,path;secondary,asphalt,SS300,https://it.wikipedia.org/wiki/Passo_di_Gavia
+Forcella Zovo,Italia,1606,46.6026126,12.5916751,Veneto,Belluno,unclassified,asphalt,,
+Passo di Pratizzano,Italia,1243,44.3727163,10.2538961,Emilia-Romagna,Reggio nell'Emilia,tertiary,asphalt,,
+Passo della Zita,Italia,713,38.0481527,14.754751,Sicilia,Messina,tertiary,asphalt,SP157,
+Portella Santa Maria,Italia,746,38.0441355,14.9942645,Sicilia,Messina,tertiary,asphalt,SP122,
+Sella di Andalo,Italia,1042,46.1610702,10.9979033,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS421,
+Passo del Conio,Italia,1147,43.9797686,7.8709182,Liguria,Imperia,secondary,asphalt,SP24,
+Valico di Sant'Antonio,Italia,638,45.9315784,8.6925703,Lombardia,Varese,tertiary,asphalt,SP7,
+Colle del Ghisallo,Italia,754,45.9236858,9.2671519,Lombardia,Como,secondary;unclassified,asphalt,SP41,https://it.wikipedia.org/wiki/Ghisallo
+Col di Pealda Bassa,Italia,1471,45.6812688,10.9628804,Veneto,Verona,track;unclassified,asphalt,,
+Passo Crosetta,Italia,1127,46.0349859,12.4060511,Veneto,Treviso,secondary,asphalt,SP422,
+Sella di Razzo,Italia,1760,46.4784763,12.6081477,Veneto,Belluno,secondary,asphalt,SP619,
+Sella di Leonessa,Italia,1900,42.4737347,13.0061762,Lazio,Rieti,secondary,asphalt,SP10,https://it.wikipedia.org/wiki/Sella_di_Leonessa
+Colle San Bernardo,Italia,957,44.1772968,8.0473792,Piemonte,Cuneo,primary;unclassified,asphalt,SS582,https://it.wikipedia.org/wiki/Colle_San_Bernardo
+Passo Grillarine,Italia,434,43.9402879,8.03444,Liguria,Imperia,path;secondary;service;unclassified,asphalt,SP82,
+Forca di Ancarano,Italia,1008,42.8201313,13.1168162,Umbria,Perugia,secondary,asphalt,SP476/2,
+Passo Santa Caterina,Italia,796,45.6171023,11.2612729,Veneto,Vicenza,tertiary,asphalt,SP44,https://it.wikipedia.org/wiki/Passo_Santa_Caterina_%28Valdagno%29
+Passo Bric Berton,Italia,762,44.5178016,8.5373057,Piemonte,Alessandria,secondary,asphalt,,
+Passo di Frassineto,Italia,929,43.6984787,12.0979584,Toscana,Arezzo,tertiary_link,asphalt,,
+Kreiter Sattel - Sella di Novale al Varco,Italia,382,46.3843588,11.2820338,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,unclassified,asphalt,LS/SP162,https://de.wikipedia.org/wiki/Kreiter_Sattel
+Colle Scravaion,Italia,814,44.1595134,8.1205218,Liguria,Savona,secondary;unclassified,asphalt,SP52,
+Col de Larche / Colle della Maddalena,Italia,1991,44.4218328,6.8984272,Piemonte,Cuneo,path;primary,asphalt,D 900;SS 21,https://it.wikipedia.org/wiki/Colle_della_Maddalena
+Passo di Montereale,Italia,1040,42.5602093,13.2565673,Abruzzo,L'Aquila,primary,asphalt,SS260,https://it.wikipedia.org/wiki/Passo_di_Montereale
+Forca di Cerro,Italia,733,42.7524012,12.8018528,Umbria,Perugia,secondary,asphalt,SR395,
+Passo Cavallara,Italia,0,44.0767635,11.6732846,Toscana,Firenze,path;track;unclassified,asphalt,,
+Passo della Colma / Colma di Civiasco,Italia,930,45.8092364,8.3225034,Piemonte,Verbano-Cusio-Ossola,tertiary,asphalt,SP78,
+Col d'Arlaz,Italia,1030,45.6998543,7.7007011,Valle d'Aosta/Vallée d'Aoste,Valle d'Aosta/Vallée d'Aoste,track;unclassified,asphalt,31,
+Bocca del Passo,Italia,940,40.4318002,15.6841732,Basilicata,Potenza,tertiary,asphalt,SPexSS276,
+Decolla,Italia,970,40.4342,15.7130444,Basilicata,Potenza,tertiary,asphalt,SPexSS276,
+Colle del Lis,Italia,1311,45.1779148,7.3825681,Piemonte,Torino,tertiary,asphalt,,https://it.wikipedia.org/wiki/Colle_del_Lys_%28Alpi_Graie%29
+Passo di Glevizza,Italia,997,46.1933589,13.5101595,Friuli-Venezia Giulia,Udine,path;tertiary;track,asphalt,,
+Portella Cuscheri,Italia,297,37.4269418,13.3990181,Sicilia,Agrigento,tertiary,asphalt,SP29-B,
+La Morca,Italia,735,43.2079278,12.935221,Marche,Macerata,secondary;track,asphalt,SP29,
+Passo Scuppelino,Italia,321,43.9037743,8.0084489,Liguria,Imperia,tertiary;unclassified,asphalt,,
+Passo Valle,Italia,368,44.3835702,8.580074,Liguria,Savona,tertiary;track,asphalt,,
+Passo Croce Ferrata,Italia,0,38.4436039,16.2723668,Calabria,Vibo Valentia,secondary,asphalt,SP45;SP8,
+Passo di Pietra Spada,Italia,1335,38.5030784,16.3513593,Calabria,Vibo Valentia,secondary;track,asphalt,SS110,
+Portella Castanea,Italia,448,38.236376,15.5253225,Sicilia,Messina,path;secondary;tertiary;track,asphalt,SP50;SP51,
+Col Carette di Val Bighera,Italia,2130,46.2557267,10.3625784,Lombardia,Brescia,path;service;track;unclassified,asphalt,,
+Passo Camponzin,Italia,810,46.0721106,11.0777179,Trentino-Alto Adige/Südtirol,Trento,unclassified,asphalt,,
+Passo Marilleva,Italia,1525,46.2984208,10.8191058,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP 206,
+Passo del Bracco,Italia,612,44.2494805,9.5697383,Liguria,La Spezia,primary,asphalt,SS1,https://it.wikipedia.org/wiki/Passo_del_Bracco
+Sella dei Generali,Italia,1211,44.7199495,9.4595047,Emilia-Romagna,Piacenza,tertiary,asphalt,,
+Forcella di Priuso,Italia,654,46.3949044,12.8098038,Friuli-Venezia Giulia,Udine,secondary;track,asphalt,SR552,
+Passo Montevaccà,Italia,805,44.5352042,9.6097392,Emilia-Romagna,Parma,secondary,asphalt,SP359R,https://it.wikipedia.org/wiki/Passo_Montevacc%C3%A0
+Passo dei Guselli,Italia,917,44.7380899,9.6767002,Emilia-Romagna,Piacenza,secondary;tertiary;track,asphalt,SP14;SP15,https://it.wikipedia.org/wiki/Passo_dei_Guselli
+Passo San Rocco,Italia,960,45.7489715,10.5388564,Lombardia,Brescia,secondary;unclassified,asphalt,SP58,
+Valico di San Fermo,Italia,1129,44.6105991,9.1035232,Piemonte,Alessandria,path;secondary,asphalt,SP81,https://it.wikipedia.org/wiki/Valico_di_San_Fermo
+Reschenpass - Passo Resia,Italia,1507,46.8343532,10.5102464,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS40,https://de.wikipedia.org/wiki/Reschenpass
+Valico di Pietra Stretta,Italia,1417,42.7136506,13.5872334,Abruzzo,Teramo,path;tertiary,asphalt,SP51,
+Portella San Martino,Italia,1063,37.8216391,14.4172799,Sicilia,Enna,unclassified,asphalt,,
+Valico San Giovanni delle Formiche,Italia,508,45.6836386,9.9017769,Lombardia,Bergamo,tertiary;unclassified,asphalt,,
+Portella dei Lupi,Italia,394,37.46679,13.8191148,Sicilia,Caltanissetta,unclassified,asphalt,SP41,
+Valico della Foce,Italia,704,44.2932936,9.5897247,Liguria,La Spezia,tertiary,asphalt,,
+Gampenpass - Passo delle Palade,Italia,1518,46.529549,11.111801,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS238,https://de.wikipedia.org/wiki/Gampenpass
+Passo Godi,Italia,1630,41.8349537,13.9315562,Abruzzo,L'Aquila,primary;track,asphalt,SR479,https://it.wikipedia.org/wiki/Passo_Godi
+Poffe de Uciù,Italia,1288,45.6690688,10.2623054,Lombardia,Brescia,unclassified,asphalt,,
+Passo di Connio delle Cascine,Italia,1181,44.5946879,9.3933126,Emilia-Romagna,Piacenza,secondary,asphalt,SP72,
+Valico del Pescino,Italia,1179,44.5849392,9.4061773,Liguria,Genova,secondary,asphalt,SP72,https://it.wikipedia.org/wiki/Valico_del_Pescino
+Plätzwiese - Prato Piazza,Italia,1993,46.6563894,12.1762637,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,track,asphalt,,https://it.wikipedia.org/wiki/Prato_Piazza
+Force Capistrello,Italia,1211,42.6730824,12.9222476,Umbria,Perugia,secondary,asphalt,SP471,
+Panidersattel - Passo Pinei,Italia,1437,46.5801967,11.6225791,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,secondary,asphalt,LS/SP64,
+Passo Cornello,Italia,814,43.1253806,12.8587017,Marche,Macerata,primary;tertiary,asphalt,SS361,
+Passo di Lavazè,Italia,1807,46.3546686,11.4927359,Trentino-Alto Adige/Südtirol,Trento,secondary;service,asphalt,SS620,https://it.wikipedia.org/wiki/Passo_di_Lavaz%C3%A8
+Passo della Croce,Italia,1162,45.3024997,7.4129302,Piemonte,Torino,service;unclassified,asphalt,,
+Passo Cibiana,Italia,1530,46.3744325,12.2598047,Veneto,Belluno,secondary,asphalt,SP347,https://it.wikipedia.org/wiki/Passo_Cibiana
+Passo del Limbara,Italia,674,40.8426701,9.1031119,Sardegna,Sassari,secondary;tertiary,asphalt,SS392,
+Forcella di Pala Barzana,Italia,840,46.1960138,12.6590809,Friuli-Venezia Giulia,Pordenone,tertiary,asphalt,SP63,
+Passo dei Carpinelli,Italia,842,44.2003324,10.2316052,Toscana,Lucca,primary;unclassified,asphalt,SR445,
+Passo di Passabocche,Italia,1297,45.7845099,10.1628534,Lombardia,Brescia,unclassified,asphalt,,
+Passo Vignaga,Italia,550,45.5385071,11.2602452,Veneto,Vicenza,tertiary,asphalt,,
+Portella del Gigliotto,Italia,505,37.2873053,14.3814056,Sicilia,Catania,tertiary,asphalt,SP60,
+Passo dello Spin del Poiero,Italia,895,45.5725259,11.1200497,Veneto,Verona,secondary;unclassified,asphalt,SP16,
+Passo Del Ballino,Italia,750,45.974404,10.8199382,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS421,https://it.wikipedia.org/wiki/Passo_del_Ballino
+Colle di Capenardo,Italia,751,44.4608846,9.0688373,Liguria,Genova,unclassified,asphalt,,
+Passo di Monte Cassio,Italia,910,44.5908281,10.0544215,Emilia-Romagna,Parma,primary,asphalt,SS62,
+Passo delle Fittanze della Sega,Italia,1399,45.6838936,10.9791184,Veneto,Verona,secondary,asphalt,,https://it.wikipedia.org/wiki/Passo_delle_Fittanze_della_Sega
+Passo Brocon,Italia,1616,46.1186135,11.6885369,Trentino-Alto Adige/Südtirol,Trento,secondary;unclassified,asphalt,SP79,https://it.wikipedia.org/wiki/Passo_Brocon
+Passo Dosso Alto,Italia,1674,45.8062221,10.4071583,Lombardia,Brescia,path;unclassified,asphalt,,
+Passo dello Zanchetto,Italia,0,44.1438668,11.1017384,Emilia-Romagna,Bologna,secondary;tertiary,asphalt,SP40;SP62,
+Colle Valcavera,Italia,2416,44.3816361,7.101243,Piemonte,Cuneo,unclassified,asphalt,,https://it.wikipedia.org/wiki/Colle_Valcavera
+Conca dei Parpari,Italia,1392,45.6460831,11.0937204,Veneto,Verona,secondary,asphalt,SP6,
+Bocca di Navene,Italia,1425,45.7879565,10.8725882,Veneto,Verona,tertiary,asphalt,SP8,https://it.wikipedia.org/wiki/Bocca_di_Navene
+Passo Crocetta,Italia,1260,44.3001703,10.2251382,Toscana,Massa-Carrara,tertiary,asphalt,SP58,
+Passo Roverello,Italia,0,45.3064266,11.6983085,Veneto,Padova,secondary,asphalt,SP99,
+Ju de Frara - Grödner Joch - Passo Gardena,Italia,2121,46.549819,11.8083893,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS243,https://it.wikipedia.org/wiki/Passo_Gardena
+Nassfeldpass / Passo di Pramollo / Pas di Pramuel,Italia,1530,46.5599576,13.2755644,Friuli-Venezia Giulia,Udine,secondary,asphalt,B90;SP110,https://it.wikipedia.org/wiki/Passo_di_Pramollo
+Passo della Mendola - Mendelpass,Italia,1363,46.4167623,11.2083285,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS42,https://de.wikipedia.org/wiki/Mendelpass
+Passo di Monte Oppio,Italia,821,44.0429484,10.8362494,Toscana,Pistoia,primary,asphalt,SS66,https://it.wikipedia.org/wiki/Passo_di_Monte_Oppio
+Croce di Salven,Italia,1108,45.947389,10.1512614,Lombardia,Brescia,tertiary,asphalt,SP5,https://it.wikipedia.org/wiki/Croce_di_Salven
+Passo Genna Bogai,Italia,549,39.373707,8.4971557,Sardegna,Sud Sardegna,primary,asphalt,SS126,
+Passo Monte Finocchio,Italia,607,43.9468948,12.1334412,Emilia-Romagna,Forlì-Cesena,tertiary;unclassified,asphalt,SP128,
+Sella Valcalda,Italia,958,46.5241502,12.9317962,Friuli-Venezia Giulia,Udine,secondary,asphalt,SR465,
+Portella San Michele,Italia,551,37.5069225,14.0880989,Sicilia,Caltanissetta,unclassified,asphalt,SP202,
+Valico di Petrella,Italia,553,43.9735813,12.0489918,Emilia-Romagna,Forlì-Cesena,unclassified,asphalt,,
+Passo di Pradarena,Italia,1574,44.2857663,10.30039,Emilia-Romagna,Reggio nell'Emilia,secondary;service,asphalt,SP18,https://it.wikipedia.org/wiki/Passo_della_Pradarena
+Passo del Cost,Italia,1290,45.9372913,11.286785,Trentino-Alto Adige/Südtirol,Trento,path;primary;track,asphalt,SS349,
+Passo Brasa,Italia,895,44.2737446,10.9957733,Emilia-Romagna,Bologna,primary,asphalt,SS623,
+Penser Joch - Passo di Pennes,Italia,2211,46.818775,11.441254,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,path;primary;service,asphalt,SS508,https://de.wikipedia.org/wiki/Penser_Joch
+Passo Valparola,Italia,2192,46.5251106,11.9973847,Veneto,Belluno,secondary,asphalt,SP24,
+Valico dello Spino,Italia,1005,43.7015514,11.9620554,Toscana,Arezzo,primary,asphalt,SP208,
+Passo di Montepiano,Italia,705,44.0893959,11.1590094,Toscana,Prato,primary,asphalt,SR325,
+Croci di Calenzano,Italia,427,43.9454484,11.2136873,Toscana,Firenze,secondary,asphalt,SP8,
+Passo Cereda,Italia,1369,46.1930477,11.9054202,Trentino-Alto Adige/Südtirol,Trento,secondary;track,asphalt,SS347,https://it.wikipedia.org/wiki/Passo_Cereda
+Sella s.Antonio/Na Privale,Italia,790,46.2472494,13.3804372,Friuli-Venezia Giulia,Udine,tertiary,asphalt,,
+Valico di Croce a Mori,Italia,954,43.8501014,11.6366565,Toscana,Firenze,secondary,asphalt,SP556,
+Passo del Lagastrello,Italia,1200,44.3402625,10.1297705,Toscana,Massa-Carrara,primary;secondary;track,asphalt,SP75;SS 665,https://it.wikipedia.org/wiki/Passo_del_Lagastrello
+Portella Rimedio,Italia,654,37.6830676,14.0861681,Sicilia,Palermo,tertiary,asphalt,SP19,
+Passo dei Mandrioli,Italia,1173,43.7975131,11.9150919,Emilia-Romagna,Forlì-Cesena,primary,asphalt,SP142,https://it.wikipedia.org/wiki/Passo_dei_Mandrioli
+Portella Gazzana,Italia,977,37.9941166,14.756374,Sicilia,Messina,tertiary;unclassified,asphalt,SP161/a;SPA105,
+Colma Ballano,Italia,1123,45.8282916,8.3014393,Piemonte,Vercelli,path;track;unclassified,asphalt,,
+Portella Càstani,Italia,553,37.4907874,14.4354052,Sicilia,Enna,unclassified,asphalt,SP8,
+Portella di Acosa,Italia,657,37.7559167,14.0675381,Sicilia,Palermo,tertiary;unclassified,asphalt,,
+Giogo di Toirano,Italia,801,44.1688375,8.159881,Liguria,Savona,secondary,asphalt,SP60,https://it.wikipedia.org/wiki/Giogo_di_Toirano
+Valico della Sellata,Italia,1250,40.5311856,15.7897401,Basilicata,Potenza,secondary;tertiary,asphalt,SP5,
+Bocca dei Cavallin,Italia,358,44.0699217,9.8047305,Liguria,La Spezia,tertiary,asphalt,,
+Portella Colla,Italia,1418,37.8676461,14.0049763,Sicilia,Palermo,secondary,asphalt,SP119,
+Valico della Crocetta,Italia,813,44.0739857,11.1819263,Toscana,Prato,secondary,asphalt,SP1,
+Valico degli Eremiti,Italia,563,44.5997547,8.8071157,Piemonte,Alessandria,path;secondary;unclassified,asphalt,,
+Portella Tropiano,Italia,392,37.8530007,15.259378,Sicilia,Messina,unclassified,asphalt,,
+Boccola del Piano,Italia,982,45.8835382,9.197914,Lombardia,Como,track;unclassified,asphalt,,
+Passo del Turchino,Italia,530,44.4879016,8.7338307,Liguria,Genova,primary,asphalt,SS456,https://it.wikipedia.org/wiki/Passo_del_Turchino
+Passo del Romito,Italia,820,44.2601716,10.1656796,Toscana,Massa-Carrara,path;primary,asphalt,SS63,
+Colle di Santa Libera,Italia,441,44.3435798,8.3466572,Liguria,Savona,secondary,asphalt,SP12,https://it.wikipedia.org/wiki/Colle_di_Santa_Libera
+Passo della Spugna,Italia,752,43.678071,12.2841402,Marche,Pesaro e Urbino,tertiary,asphalt,SP61,
+Passo Fobbia,Italia,1112,45.7262533,10.5043332,Lombardia,Brescia,track;unclassified,asphalt,SP56,
+Kreuzbergpass - Passo Monte Croce di Comelico,Italia,1636,46.6559436,12.4201102,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS52,https://de.wikipedia.org/wiki/Kreuzbergpass
+S'Arcu De Tascussì,Italia,1245,40.0318255,9.2308742,Sardegna,Nuoro,secondary,asphalt,SP7,
+Passo della Crocetta,Italia,871,44.8296485,9.3820675,Emilia-Romagna,Piacenza,tertiary;unclassified,asphalt,SP34,https://it.wikipedia.org/wiki/Colle_della_Crocetta_%28Appennino_ligure%29
+Passo del Termine,Italia,542,44.1538239,9.6725442,Liguria,La Spezia,secondary,asphalt,SP36;SP38;SP51,
+Passo Fedaia,Italia,2057,46.4640236,11.8625899,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SS641,https://it.wikipedia.org/wiki/Passo_Fedaia
+Passo San Pellegrino,Italia,1918,46.3783576,11.7917199,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS346,https://it.wikipedia.org/wiki/Passo_San_Pellegrino
+Passo della Scheggia,Italia,632,43.4109688,12.6594516,Umbria,Perugia,primary,asphalt,SS3,https://it.wikipedia.org/wiki/Passo_della_Scheggia
+Sella di Camporosso,Italia,816,46.5065323,13.5300161,Friuli-Venezia Giulia,Udine,primary,asphalt,SS13,https://it.wikipedia.org/wiki/Sella_di_Camporosso
+Passo dello Scopello,Italia,965,46.1134665,8.528082,Piemonte,Verbano-Cusio-Ossola,tertiary,asphalt,SS631,
+Arcu Genna Arrela,Italia,0,39.4753712,9.6055216,Sardegna,Sud Sardegna,secondary,asphalt,exSS125,
+Passo Quadassoni,Italia,367,39.7583753,9.5845307,Sardegna,Nuoro,trunk,asphalt,SS125var,
+La Forchetta,Italia,781,43.4755844,12.7275779,Marche,Pesaro e Urbino,path;tertiary,asphalt,SP106,
+Portella Grottacalda,Italia,744,37.468984,14.3495819,Sicilia,Enna,secondary,asphalt,SS117bis,
+Sella di Banne / Banovski vrh,Italia,410,45.6735969,13.7968804,Friuli-Venezia Giulia,Trieste,path;service;tertiary,asphalt,,
+Colle dei Bardellini,Italia,237,43.8971983,8.0164619,Liguria,Imperia,service;unclassified,asphalt,,
+Portella Farina,Italia,746,37.4696978,14.3209595,Sicilia,Enna,unclassified,asphalt,SP125,
+Passo di Santa Crocella,Italia,1219,41.382663,14.5814741,Campania,Benevento,path;tertiary,asphalt,SP75;SP94,https://it.wikipedia.org/wiki/Passo_di_Santa_Crocella
+Arcu 'e Tidu,Italia,434,39.3055209,9.3908871,Sardegna,Cagliari,secondary,asphalt,NSA371,
+Genna Filixi,Italia,978,39.9002958,9.4372416,Sardegna,Nuoro,tertiary;unclassified,asphalt,,
+Genna Su Ludu,Italia,840,39.7517719,9.4946068,Sardegna,Nuoro,secondary,asphalt,SP13,
+Passo del Redebus - Sontbisn,Italia,1455,46.1359753,11.3230942,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP224,https://it.wikipedia.org/wiki/Passo_Redebus
+Passo di Nonani,Italia,650,45.4427669,7.884043,Piemonte,Torino,unclassified,asphalt,,
+La Forcella,Italia,1039,45.8833568,9.7472226,Lombardia,Bergamo,residential;secondary,asphalt,SP27,
+Passo di Monte di Mezzo,Italia,1242,44.5592547,9.4416218,Liguria,Genova,path;unclassified,asphalt,,
+Bocchetta di Altare,Italia,462,44.3342865,8.3490904,Liguria,Savona,unclassified,asphalt,,https://it.wikipedia.org/wiki/Bocchetta_di_Altare
+Portella della Paglia,Italia,582,38.0455655,13.3531935,Sicilia,Palermo,unclassified,asphalt,,
+Passo di Carpasio,Italia,1023,43.966729,7.8764071,Liguria,Imperia,secondary,asphalt,SP24,
+Valico di Salmezza,Italia,1106,45.7858812,9.731431,Lombardia,Bergamo,unclassified,asphalt,,
+Sella di Cima Corso,Italia,886,46.3974054,12.7362415,Friuli-Venezia Giulia,Udine,primary,asphalt,SS52,
+Sella Chianzutan,Italia,954,46.3593134,12.9410447,Friuli-Venezia Giulia,Udine,secondary,asphalt,SP1,
+Passo Duran,Italia,1605,46.3249145,12.0960553,Veneto,Belluno,path;secondary,asphalt,SP347,https://it.wikipedia.org/wiki/Passo_Duran
+Colle della Dieta,Italia,1420,45.2589227,7.3620149,Piemonte,Torino,path;residential,asphalt,,
+Sella di Fadalto,Italia,488,46.0809229,12.3364146,Veneto,Belluno,primary,asphalt,SS51,https://it.wikipedia.org/wiki/Sella_di_Fadalto
+Passo dell'Abetone,Italia,1388,44.145636,10.6649593,Toscana,Pistoia,primary;unclassified,asphalt,SS12,https://it.wikipedia.org/wiki/Passo_dell%27Abetone
+Passo della Scoffera,Italia,674,44.481199,9.1200845,Liguria,Genova,secondary,asphalt,SP62,https://it.wikipedia.org/wiki/Passo_della_Scoffera
+Passo dei Tre Termini,Italia,681,45.6605613,10.106026,Lombardia,Brescia,secondary,asphalt,SP48,https://it.wikipedia.org/wiki/Passo_dei_Tre_Termini
+Passo del Brallo,Italia,951,44.7383509,9.2808773,Lombardia,Pavia,secondary,asphalt,SP186,https://it.wikipedia.org/wiki/Passo_del_Brallo
+Passo del Giogo,Italia,882,44.0468431,11.3880595,Toscana,Firenze,primary,asphalt,SP503,https://it.wikipedia.org/wiki/Passo_del_Giogo
+Passo del Monumento,Italia,0,42.7654287,10.273579,Toscana,Livorno,secondary,asphalt,SP30b,
+Portella Papera,Italia,44,37.3388015,14.9320351,Sicilia,Siracusa,unclassified,asphalt,,
+Bocca Magno,Italia,789,45.7136946,10.6366569,Lombardia,Brescia,tertiary,asphalt,,
+Portella Pomo,Italia,821,37.9747027,14.4777776,Sicilia,Messina,tertiary;unclassified,asphalt,SP168,
+Passo di Pramadiccio,Italia,1431,46.3177101,11.4908608,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP215dir,
+Passo della Torricella,Italia,674,44.0548183,11.1850293,Toscana,Prato,path;unclassified,asphalt,,
+Passo di Prato a Ceragiola,Italia,637,43.7366399,10.5492112,Toscana,Pisa,tertiary,asphalt,SP56,
+Colle del Carnaio,Italia,764,43.8857774,11.9592078,Emilia-Romagna,Forlì-Cesena,tertiary,asphalt,SP26,
+Jouf de Pordoi - Passo Pordoi - Pordoijoch,Italia,2239,46.4875517,11.8121935,Veneto,Belluno,primary,asphalt,SS48,https://it.wikipedia.org/wiki/Passo_Pordoi
+Sella della Croce,Italia,1147,45.6384663,11.0307183,Veneto,Verona,secondary,asphalt,,
+Il Colletto,Italia,0,44.3303706,7.800578,Piemonte,Cuneo,unclassified,asphalt,,
+Valico di Pietra Rossa,Italia,674,43.3477657,13.1950982,Marche,Macerata,primary,asphalt,SP502,
+Bocchetta del Santo di Liano,Italia,753,45.6935626,10.634585,Lombardia,Brescia,tertiary,asphalt,,
+Selletta di Colle Botto,Italia,1015,45.7906377,9.7440402,Lombardia,Bergamo,tertiary;unclassified,asphalt,SP36,
+Passo della Calchera,Italia,156,45.8613047,12.0373363,Veneto,Treviso,primary,asphalt,SP34,
+Passo del Segarino,Italia,968,44.5160814,9.5792768,Emilia-Romagna,Parma,track;unclassified,asphalt,,
+Valico di Monte Scuro,Italia,1618,39.3349609,16.3990171,Calabria,Cosenza,tertiary,asphalt,SP209;SP256,
+Passo Guerrini,Italia,409,43.9174637,8.0030086,Liguria,Imperia,path;unclassified,asphalt,,
+Colle del Quasso,Italia,1131,44.20163,8.0677999,Piemonte,Cuneo,residential;secondary;unclassified,asphalt,SP213,https://it.wikipedia.org/wiki/Colle_del_Quazzo
+Martellona,Italia,768,44.5711922,9.0198924,Liguria,Genova,secondary,asphalt,SP12,
+Passo Stretto,Italia,1058,45.827032,11.5986856,Veneto,Vicenza,secondary,asphalt,SP72,
+Passo di Cima Rest,Italia,1204,45.7817891,10.6274604,Lombardia,Brescia,residential;tertiary,asphalt,,
+Portella di Pitta,Italia,485,37.2888186,14.1938233,Sicilia,Caltanissetta,secondary;track,asphalt,SP27,
+Passo delle Pratole,Italia,1001,43.8448232,12.3426835,Emilia-Romagna,Rimini,unclassified,asphalt,,
+Colla Rinella,Italia,1278,44.0940798,7.8136005,Liguria,Imperia,secondary,asphalt,,
+Colle di Nava,Italia,934,44.0849042,7.8728783,Liguria,Imperia,primary,asphalt,SS28,https://it.wikipedia.org/wiki/Colle_di_Nava
+Sella Ciampigotto,Italia,1790,46.4784763,12.6081477,Veneto,Belluno,path;secondary,asphalt,SP619,
+Passo dello Stelvio - Stilfser Joch,Italia,2758,46.5286176,10.4532056,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,secondary,asphalt,SS38,https://it.wikipedia.org/wiki/_Passo_dello_Stelvio
+Colletta di Cumiana,Italia,618,45.006761,7.3590763,Piemonte,Torino,steps;tertiary,asphalt,,
+Valico di Chiunzi,Italia,656,40.7187549,14.6197836,Campania,Salerno,secondary,asphalt,SP2/a,https://it.wikipedia.org/wiki/Chiunzi
+Passo della Braccina,Italia,957,43.9226193,11.774528,Emilia-Romagna,Forlì-Cesena,path;tertiary,asphalt,,
+Passo della Cerventosa,Italia,749,43.2913867,12.0567707,Toscana,Arezzo,secondary,asphalt,SP34,https://it.wikipedia.org/wiki/Passo_di_Cerventosa
+Passo Foscagno,Italia,2291,46.496356,10.207859,Lombardia,Sondrio,secondary,asphalt,SS301,https://it.wikipedia.org/wiki/Passo_del_Foscagno
+Passo di Conio,Italia,1072,43.9719175,7.8755484,Liguria,Imperia,secondary,asphalt,SP24,
+Bocca di Nevese,Italia,750,45.7739976,10.7430197,Lombardia,Brescia,service;unclassified,asphalt,,
+Passo del Capriolo,Italia,1221,46.0957025,11.2584844,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,,
+Passo di Portella Bianca,Italia,346,37.2432578,14.3819546,Sicilia,Catania,primary,asphalt,SS117bis,
+Sella Nevea,Italia,1195,46.3903895,13.4763436,Friuli-Venezia Giulia,Udine,secondary,asphalt,SP76,
+Passo della Madonna,Italia,70,38.7139277,13.1687267,Sicilia,Palermo,residential,asphalt,,
+Portella Castro,Italia,560,37.5343134,14.2650898,Sicilia,Enna,primary;unclassified,asphalt,SS117bis,
+Tavianella,Italia,1030,44.1050565,11.2043712,Emilia-Romagna,Bologna,service;unclassified,asphalt,,
+Sella di Rioda,Italia,1800,46.4750675,12.6351188,Veneto,Belluno,secondary,asphalt,SP33,
+spartiacque Belice/Scanzano,Italia,665,37.9220648,13.3461946,Sicilia,Palermo,secondary,asphalt,SP5,
+Forcella Lavardet,Italia,1542,46.4997806,12.6285732,Veneto,Belluno,unclassified,asphalt,SP465,https://it.wikipedia.org/wiki/Forcella_Lavardet
+Passo di Santa Cristina,Italia,1427,46.1693554,10.1563963,Lombardia,Sondrio,unclassified,asphalt,,
+Bivio del Pidocchio,Italia,1565,45.6917535,11.002948,Veneto,Verona,tertiary,asphalt,SP14,
+Passo Rive del Cerro,Italia,604,44.1872446,11.629748,Emilia-Romagna,Ravenna,path;unclassified,asphalt,,
+Portella Malamogliera,Italia,791,37.6684037,14.2573705,Sicilia,Enna,unclassified,asphalt,SP80,
+Passo del Muraglione,Italia,907,43.9328957,11.6547827,Toscana,Firenze,primary,asphalt,SS67,https://it.wikipedia.org/wiki/Passo_del_Muraglione
+Portella San Lorenzo,Italia,436,37.6345579,14.7072979,Sicilia,Enna,tertiary,asphalt,SP106,
+Portella di Rebuttone,Italia,713,38.0301298,13.3271423,Sicilia,Palermo,secondary,asphalt,SP5,
+Portella delle Serre,Italia,791,37.7611096,13.5782808,Sicilia,Palermo,tertiary;track,asphalt,,
+Valico di Montebello,Italia,450,43.2234718,11.1654247,Toscana,Siena,primary,asphalt,SP73bis,
+Passo Colla,Italia,593,40.0270275,15.7311281,Basilicata,Potenza,secondary,asphalt,SP3,
+Passo Casone Cocca,Italia,1050,41.3343983,14.9202322,Campania,Benevento,secondary,asphalt,SS369,
+Passo Predaia,Italia,1250,46.3265294,11.1407307,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP13dir,https://it.wikipedia.org/wiki/Passo_Predaia
+Passo del Mortirolo,Italia,1852,46.2478567,10.2983094,Lombardia,Sondrio,path;secondary,asphalt,SS42 dir/A,https://it.wikipedia.org/wiki/Passo_del_Mortirolo
+S'Arco de sa Palma,Italia,0,38.89328,8.839312,Sardegna,Sud Sardegna,secondary,asphalt,SP71,
+Passo del Gatto,Italia,1255,44.3041361,10.2205313,Emilia-Romagna,Reggio nell'Emilia,path;tertiary,asphalt,SP58,
+Valico della Forcella,Italia,1403,42.1869037,13.5509542,Abruzzo,L'Aquila,secondary,asphalt,SP11,
+Portella Mitta,Italia,1251,37.9919416,14.8963776,Sicilia,Messina,secondary,asphalt,,
+Sella di Bondo,Italia,823,45.9971334,10.6913228,Trentino-Alto Adige/Südtirol,Trento,primary,asphalt,SS237,
+Valico di Capanne di Carrega,Italia,1415,44.6002797,9.2052623,Liguria,Genova,secondary,asphalt,SP147,
+Passo di Monte Lago,Italia,1096,44.7468268,9.3106696,Emilia-Romagna,Piacenza,unclassified,asphalt,,
+Passo della Serra,Italia,1085,44.6182333,9.3826715,Emilia-Romagna,Piacenza,secondary,asphalt,SP72,
+Colla di Gambaro,Italia,890,44.608903,9.4832582,Emilia-Romagna,Piacenza,primary,asphalt,SS654,
+Passo del Monte Amiata,Italia,1683,42.8907601,11.6266102,Toscana,Siena,secondary,asphalt,SP81,
+Passo del Compet,Italia,1383,46.0393189,11.2999145,Trentino-Alto Adige/Südtirol,Trento,secondary,asphalt,SP12,
+Colle di Creto,Italia,603,44.4721203,9.0089358,Liguria,Genova,secondary,asphalt,SP13,https://it.wikipedia.org/wiki/Colle_di_Creto
+Colli Galena,Italia,1162,45.7443492,9.9804026,Lombardia,Bergamo,unclassified,asphalt,,
+Bocca dei Ravari,Italia,0,44.3004776,11.0149298,Emilia-Romagna,Bologna,primary;secondary,asphalt,SP25;SS623,
+Vado di Sole,Italia,1641,42.3951524,13.7867623,Abruzzo,Pescara,secondary,asphalt,SP80,
+Forcella di Pradalunga,Italia,627,45.7436543,9.7998662,Lombardia,Bergamo,unclassified,asphalt,,
+Colle di Guaitarola,Italia,607,44.2125926,9.5844801,Liguria,La Spezia,secondary,asphalt,,
+Colla di San Grato,Italia,1015,44.2773652,7.9571955,Piemonte,Cuneo,secondary,asphalt,SP326,
+Varco Aia delle Forche,Italia,786,41.3937137,14.8797904,Campania,Benevento,secondary,asphalt,SP56,
+Passo di Sant'Antonio,Italia,1000,45.8071858,9.6353626,Lombardia,Bergamo,unclassified,asphalt,,
+Colle di Berbenno,Italia,708,45.8064748,9.5827433,Lombardia,Bergamo,secondary,asphalt,SP32,
+Valico Monte Masoni,Italia,87,39.505361,9.4228935,Sardegna,Sud Sardegna,primary,asphalt,SS387,
+Passo Sarcerei,Italia,962,39.8719154,9.5139057,Sardegna,Nuoro,primary,asphalt,SS198,
+Valico Strisaili,Italia,898,39.9436679,9.4928342,Sardegna,Nuoro,primary,asphalt,SP27,
+Valico Sa Casa,Italia,1026,39.9187636,9.1344823,Sardegna,Nuoro,primary;track,asphalt,SS295,
+Valico Ortuabis,Italia,840,39.8903321,9.1189668,Sardegna,Nuoro,primary,asphalt,SS128,
+Valico S'Isca sa Mela,Italia,917,40.0335308,9.1422731,Sardegna,Nuoro,primary,asphalt,SS128,
+Valico Nostra Signora di Loreto,Italia,751,40.2212784,9.312113,Sardegna,Nuoro,secondary,asphalt,SP22,
+Passo Masiénnera,Italia,988,40.4736841,9.0475735,Sardegna,Sassari,tertiary;tertiary_link,asphalt,SP36,
+Kniepass - La Serra,Italia,0,46.7888675,11.8713767,Trentino-Alto Adige/Südtirol,Bolzano/Bozen,primary,asphalt,SS49,
+Sella di Carpena,Italia,581,44.1075103,9.768648,Liguria,La Spezia,tertiary,asphalt,,
+Valico della Siligata,Italia,0,43.9428821,12.8230941,Marche,Pesaro e Urbino,primary,asphalt,SS16,
+Valico di San Franco,Italia,1473,42.4511025,13.3811165,Abruzzo,L'Aquila,secondary,asphalt,SP86,
+Valico di Santa Maria Maddalena,Italia,1455,43.0102499,13.2268901,Marche,Macerata,secondary,asphalt,SP120,
+Passo del Diavolo,Italia,1400,41.875789,13.7461355,Abruzzo,L'Aquila,primary,asphalt,SS83,
+Vado di Cornillo,Italia,1325,42.5999637,13.3263844,Lazio,Rieti,primary,asphalt,SR577,
+Colle di San Maurizio,Italia,854,44.3626201,7.4614454,Piemonte,Cuneo,path;service;tertiary,asphalt,SP304,
+Valico di Monte Spaccato / Drašca,Italia,352,45.652966,13.8253537,Friuli-Venezia Giulia,Trieste,primary,asphalt,SS202dir,
+Valico Cantoniera Esterzili,Italia,0,39.7871933,9.2554396,Sardegna,Sud Sardegna,primary,asphalt,SS198,
+S'Arcu Piras Orrubias,Italia,926,40.0014168,9.4117951,Sardegna,Nuoro,secondary,asphalt,SPexSS389,
+Passo Plebi,Italia,358,40.976736,9.4631651,Sardegna,Sassari,unclassified,asphalt,,
+Scala Sos Pezzos,Italia,760,40.4255851,8.9243638,Sardegna,Sassari,secondary,asphalt,SP43,
+S'Arcu,Italia,791,39.9666443,9.1619835,Sardegna,Nuoro,secondary,asphalt,SP61bis,
+Valico del Soglio,Italia,828,42.9049846,12.8962303,Umbria,Perugia,secondary,asphalt,SR319,
+Portella Mucini,Italia,786,37.5994492,13.9242107,Sicilia,Caltanissetta,secondary,asphalt,SP42,
+Col delle Bagole,Italia,881,46.0649509,11.6535641,Trentino-Alto Adige/Südtirol,Trento,tertiary,asphalt,SP212,
+Sella di Balisio,Italia,728,45.9206813,9.4387951,Lombardia,Lecco,secondary,asphalt,SP62,
+S'arcu De Is Cassadoris,Italia,629,39.0065637,8.865324,Sardegna,Cagliari,track;unclassified,asphalt,,
+Passo del Quaranta,Italia,973,42.8483076,11.6553785,Toscana,Siena,tertiary,asphalt,SP25;SP81,
+Passo della Futa,Italia,903,44.0961646,11.275304,Toscana,Firenze,primary,asphalt,SS65,https://it.wikipedia.org/wiki/Passo_della_Futa
+Passo Crocetta,Italia,979,39.3208081,16.1131497,Calabria,Cosenza,tertiary,asphalt,SP35,
+Passo di Coltibuono,Italia,703,43.4938895,11.4420957,Toscana,Siena,primary,asphalt,SR429,
+Valico Macia Morta,Italia,606,43.4933148,11.2558344,Toscana,Siena,secondary,asphalt,SP76/a,
+Valico di Montegrossi,Italia,596,43.4894096,11.4507156,Toscana,Siena,primary,asphalt,SP408,
+Passo di Lucerena,Italia,595,43.3247314,11.1770792,Toscana,Siena,tertiary,asphalt,SP101,
+Passo Seragio,Italia,1120,42.9171037,11.6572258,Toscana,Siena,secondary,asphalt,SP65,
+Bivio delle Guardie,Italia,1060,44.1687082,11.2588298,Emilia-Romagna,Bologna,residential;tertiary;unclassified,asphalt,,
+Valico di Montecoronaro,Italia,865,43.7859774,12.0252674,Emilia-Romagna,Forlì-Cesena,secondary,asphalt,SP137,
+Passo di San Martino,Italia,0,46.1657081,13.5753398,Friuli-Venezia Giulia,Udine,tertiary,asphalt,,
+spartiacque Belice/Scanzano,Italia,605,37.8909943,13.3703796,Sicilia,Palermo,unclassified,asphalt,,
+spartiacque costa tirrenica/costa ionica,Italia,785,37.7952111,14.2441666,Sicilia,Palermo,primary,asphalt,SS120,
+spartiacque costa africana/costa tirrenica,Italia,785,37.7959287,14.2147419,Sicilia,Palermo,primary,asphalt,SS120,
+Strada Provinciale 15,Italia,0,40.083042,8.9638741,Sardegna,Oristano,secondary,asphalt,SP15,
+Hirschenbergl,Austria,197,48.2409324,16.3488476,Wien,Wien(Stadt),secondary,asphalt,,
+Pötschenpass,Austria,993,47.6220308,13.6952212,Steiermark,Liezen,primary,asphalt,B145,de:Pötschenpass
+Klostertaler Gscheid,Austria,764,47.8101971,15.799456,Niederösterreich,Wiener Neustadt(Land),secondary,asphalt,L134,de:Klostertaler Gscheid
+Kniepass,Austria,554,47.6318095,12.727906,Salzburg,Zell am See,primary,asphalt,B178,
+Hochtor,Austria,2504,47.0811877,12.8425858,Kärnten,Spittal an der Drau,tertiary,asphalt,,de:Großglockner-Hochalpenstraße
+Fuscher Törl,Austria,2428,47.1167877,12.8239057,Salzburg,Zell am See,tertiary,asphalt,,
+Allander Höhe,Austria,423,48.0540759,16.1090082,Niederösterreich,Baden,primary;tertiary,asphalt,B11;L4001,
+Annaberg,Austria,976,47.8713912,15.3778037,Niederösterreich,Lilienfeld,primary,asphalt,B20,de:Annaberg (Pass)
+Josefsberg,Austria,1012,47.8453081,15.3142303,Niederösterreich,Lilienfeld,primary,asphalt,B20,de:Josefsberg
+Zellerrain,Austria,1121,47.7915017,15.2151491,Steiermark,Bruck-Mürzzuschlag,primary,asphalt,B71,de:Zellerrain
+geschriebene Buche,Austria,516,48.1102454,16.0420769,Niederösterreich,Mödling,secondary,asphalt,L127,
+Triebener Tauern,Austria,1274,47.4333392,14.4801963,Steiermark,Murtal,primary,asphalt,B114,de:Triebener Tauern
+Perchauer Sattel,Austria,995,47.1101079,14.4577267,Steiermark,Murau,primary,asphalt,B317,de:Perchauer Sattel
+Kaiserhöhe,Austria,379,48.163013,15.9627322,Niederösterreich,Sankt Pölten(Land),secondary;tertiary,asphalt,L124;L2259,
+Schloffereck,Austria,941,47.3664957,15.7847538,Steiermark,Hartberg-Fürstenfeld,secondary,asphalt,L405;L406,
+Mendlingpass,Austria,686,47.7481754,14.8982969,Niederösterreich,Scheibbs,primary,asphalt,B25,de:Mendlingpass
+Niederalpl,Austria,1221,47.6809519,15.3777692,Steiermark,Bruck-Mürzzuschlag,secondary,asphalt,L113,de:Niederalpl
+Obdacher Sattel,Austria,955,47.0451798,14.7187416,Steiermark,Murtal,primary;residential,asphalt,B78,de:Obdacher Sattel
+Wastl am Wald,Austria,1110,47.8939688,15.3038458,Niederösterreich,Scheibbs,primary,asphalt,B28,de:Wastl am Wald
+Pyhrnpass,Austria,954,47.6190877,14.2979681,Oberösterreich,Kirchdorf,primary,asphalt,B138,de:Pyhrnpass
+Forsthof,Austria,564,48.1038566,15.9114958,Niederösterreich,Baden,secondary;unclassified,asphalt,L110,de:Forsthof (Pass)
+Grattinger Sattel,Austria,1170,47.0266665,14.1452604,Kärnten,Sankt Veit an der Glan,secondary,asphalt,L62a,de:Grattinger Sattel
+Sölkpass,Austria,1790,47.2716898,14.0796747,Steiermark,Liezen,secondary,asphalt,L704,de:Sölkpass
+Rauriserhöhe,Austria,978,47.2847433,12.9696121,Salzburg,Zell am See,secondary,asphalt,L112,
+Kühtaisattel,Austria,2017,47.2138031,11.0243734,Tirol,Imst,secondary,asphalt,L13,de:Kühtaisattel
+Schöfftaler Höhe,Austria,666,47.9379262,14.4837303,Oberösterreich,Steyr-Land,tertiary,asphalt,L1342,
+In der Luft,Austria,628,48.0498092,15.3958426,Niederösterreich,Sankt Pölten(Land),secondary;track;unclassified,asphalt,L103,de:Luft (Pass)
+Weißenbacher Sattel,Austria,566,47.771251,13.6226505,Oberösterreich,Gmunden,primary,asphalt,B153,
+Kniepass,Austria,872,47.5265573,10.709072,Tirol,Reutte,tertiary,asphalt,L288,
+Formarinjoch,Austria,1871,47.1710482,9.9987205,Vorarlberg,Bludenz,service,asphalt,,
+Hochtannbergpass,Austria,1676,47.2694738,10.130451,Vorarlberg,Bregenz,primary,asphalt,L200,de:Hochtannbergpass
+Grestner Höhe,Austria,631,47.9720743,14.971192,Niederösterreich,Scheibbs,primary,asphalt,B22,
+Seefelder Sattel,Austria,1185,47.3179828,11.1985505,Tirol,Innsbruck-Land,primary,asphalt,B177,de:Seefelder Sattel
+Gadenweit-Pass,Austria,652,47.9239255,15.005343,Niederösterreich,Scheibbs,tertiary;unclassified,asphalt,L6169,
+Ramssattel,Austria,824,47.6333706,15.9748521,Niederösterreich,Neunkirchen,secondary,asphalt,L137,de:Ramssattel
+Radlpass / Radeljski prelaz,Austria,661,46.6450894,15.2064879,Steiermark,Deutschlandsberg,primary;secondary,asphalt,434;B76,sl:Radeljski prelaz
+Kerschbaumer Sattel,Austria,1113,47.3874903,11.8766865,Tirol,Kufstein,residential;track;unclassified,asphalt,,de:Kerschbaumer Sattel (Tirol)
+Michelbühel,Austria,999,47.8428827,15.4582559,Niederösterreich,Lilienfeld,secondary,asphalt,L101,de:Michelbühel
+Furkajoch,Austria,1758,47.2666273,9.8329014,Vorarlberg,Feldkirch,secondary,asphalt,L51,de:Furkajoch
+Losenpass,Austria,1137,47.4239113,9.809096,Vorarlberg,Bregenz,secondary,asphalt,L48,de:Losenpass
+Prekowa,Austria,1288,46.9409336,14.2726787,Kärnten,Sankt Veit an der Glan,service;tertiary,asphalt,L62c,
+Flattnitzer Höhe,Austria,1429,46.9409377,14.0366298,Kärnten,Sankt Veit an der Glan,secondary;track,asphalt,L63,de:Flattnitzer Höhe
+Rohrer Sattel,Austria,864,47.8705527,15.7986951,Niederösterreich,Wiener Neustadt(Land),path;primary;track,asphalt,B21,de:Rohrer Sattel
+Lienbachsattel,Austria,1304,47.6266378,13.4140171,Salzburg,Hallein,tertiary,asphalt,,de:Lienbachsattel
+Hebalm,Austria,1420,46.9128571,15.0305705,Steiermark,Voitsberg,secondary,asphalt,L606,de:Hebalm
+Hengstlhöhe,Austria,517,48.1380847,16.0492336,Niederösterreich,Sankt Pölten(Land),tertiary,asphalt,L2111,de:Hengstlsattel
+Präbichl,Austria,1226,47.5242441,14.9472379,Steiermark,Leoben,primary,asphalt,B115,de:Präbichl
+Buchauer Sattel,Austria,861,47.6104959,14.5178002,Steiermark,Liezen,primary,asphalt,B117,de:Buchauer Sattel
+Radstädter Tauern,Austria,1738,47.2479945,13.5592609,Salzburg,Tamsweg,primary;residential;service,asphalt,B99,de:Radstädter Tauernpass
+Faschinajoch,Austria,1486,47.2717338,9.9072637,Vorarlberg,Bludenz,primary,asphalt,L193,de:Faschinajoch
+Lahnsattel,Austria,1015,47.7748942,15.4856786,Niederösterreich,Lilienfeld,primary;track,asphalt,B23,de:Lahnsattel (Pass)
+Brennerpass - Passo del Brennero,Austria,1370,47.0073993,11.5066996,Tirol,Innsbruck-Land,primary,asphalt,B182,de:Brennerpass
+Soboth,Austria,1347,46.668346,15.0099843,Kärnten,Wolfsberg,primary;track;unclassified,asphalt,B69,de:Soboth (Pass)
+Buchener Höhe,Austria,1247,47.3376313,11.1227507,Tirol,Innsbruck-Land,tertiary,asphalt,L35,de:Buchener Höhe
+Gerichtsberg,Austria,581,48.0299619,15.8590954,Niederösterreich,Lilienfeld,primary;unclassified,asphalt,B18,de:Gerichtsberg
+Hals,Austria,662,47.9270322,15.988639,Niederösterreich,Wiener Neustadt(Land),secondary;service;track,asphalt,L138,de:Hals (Gebirgspass)
+Pass Gschütt,Austria,957,47.5913708,13.5056271,Oberösterreich,Gmunden,primary,asphalt,B166,de:Pass Gschütt
+Finstermünzpass,Austria,1186,46.9133356,10.4933452,Tirol,Landeck,primary,asphalt,B180,de:Finstermünzpass
+Ascher,Austria,738,47.814094,15.9413874,Niederösterreich,Neunkirchen,secondary;track,asphalt,L138,de:Ascher (Pass)
+Hocheggersattel,Austria,1328,47.2312821,14.3608504,Steiermark,Murau,secondary,asphalt,L514,de:Hocheggersattel
+Kartitscher Sattel,Austria,1525,46.7179498,12.5410422,Tirol,Lienz,primary,asphalt,B111,de:Kartitscher Sattel
+Eibeggsattel,Austria,1001,47.4217882,15.4482518,Steiermark,Bruck-Mürzzuschlag,path;track;unclassified,asphalt,,de:Eibeggsattel
+Feistritzsattel,Austria,1287,47.5674662,15.8654837,Steiermark,Weiz,secondary,asphalt,L175;L407,de:Feistritzsattel
+Wieserhöhe,Austria,534,47.9817777,14.6915433,Niederösterreich,Waidhofen an der Ybbs(Stadt),secondary;unclassified,asphalt,L6196;L88,
+Grünbacher Sattel,Austria,678,47.7957287,15.9613573,Niederösterreich,Neunkirchen,primary,asphalt,B26,de:Grünbacher Sattel
+Norbertshöhe,Austria,1405,46.8950995,10.4849879,Tirol,Landeck,primary,asphalt,B185,de:Norbertshöhe
+Schwarzenbichl,Austria,1241,47.1480814,13.9288018,Salzburg,Tamsweg,secondary,asphalt,B96,
+Riederberg,Austria,384,48.2500807,16.0945332,Niederösterreich,Tulln,primary,asphalt,B1,de:Riederberg (Wienerwald)
+Hirschbichl-Pass,Austria,1183,47.552699,12.7947954,Salzburg,Zell am See,unclassified,asphalt,L110,
+Alpl,Austria,1091,47.5006315,15.6453052,Steiermark,Weiz,primary;track;unclassified,asphalt,B72,de:Alpl (Pass)
+Semmeringpass,Austria,984,47.6326545,15.8290591,Niederösterreich,Neunkirchen,secondary,asphalt,L118,de:Semmering-Pass
+Korensko Sedlo - Wurzenpass,Austria,1071,46.5233245,13.7515611,Kärnten,Villach Land,primary,asphalt,B109,de:Wurzenpass
+Junge Prosset,Austria,387,47.8033324,16.0828659,Niederösterreich,Wiener Neustadt(Land),tertiary;unclassified,asphalt,L4075,
+Schiestelscharte,Austria,2024,46.8900564,13.793513,Kärnten,Feldkirchen,tertiary,asphalt,,de:Nockalmstraße
+Fernpass,Austria,1216,47.3639192,10.8349398,Tirol,Reutte,primary,asphalt,B179,de:Fernpass
+Sattel,Austria,1110,47.4190088,10.8352022,Tirol,Reutte,unclassified,asphalt,,
+Pass Grießen,Austria,975,47.4563609,12.6432086,Salzburg,Zell am See,primary,asphalt,B164,de:Grießenpass
+Hafnerberg,Austria,478,48.0181224,16.0141094,Niederösterreich,Baden,residential;secondary,asphalt,L131,de:Hafnerberg (Pass)
+Arlberg,Austria,1793,47.129845,10.2106302,Tirol,Landeck,primary,asphalt,B197,de:Arlberg
+Namlospass,Austria,1359,47.3715759,10.6934033,Tirol,Reutte,secondary,asphalt,L21,
+Hengstpass,Austria,985,47.7022066,14.4603516,Oberösterreich,Kirchdorf,secondary,asphalt,L550,de:Hengstpass
+Seebergsattel,Austria,1246,47.6258575,15.2821989,Steiermark,Bruck-Mürzzuschlag,primary,asphalt,B20,de:Steirischer Seeberg
+Hahntennjoch,Austria,1894,47.2873483,10.6554709,Tirol,Imst,secondary,asphalt,L72,de:Hahntennjoch
+Ammersattel,Austria,1115,47.5331576,10.883854,Tirol,Reutte,secondary,asphalt,L255,de:Ammersattel
+Katschberghöhe,Austria,1641,47.0591486,13.6156628,Kärnten,Spittal an der Drau,primary,asphalt,B99,de:Katschberg
+Paulitschsattel / Pavličevo sedlo,Austria,1338,46.4252064,14.5851927,Kärnten,Völkermarkt,tertiary,asphalt,L132,de:Paulitschsattel
+Perfalleck,Austria,822,47.7776693,13.301864,Salzburg,Salzburg-Umgebung,unclassified,asphalt,,de:Perfalleck
+Taferlhöhe,Austria,829,47.8447131,13.6199462,Oberösterreich,Gmunden,secondary,asphalt,L544,
+Pass Thurn,Austria,1273,47.3085876,12.4084885,Salzburg,Zell am See,primary,asphalt,B161,de:Pass Thurn
+Scharflingerhöhe,Austria,600,47.7863638,13.3901223,Salzburg,Salzburg-Umgebung,primary,asphalt,B154,de:Scharflinger Höhe
+Filzensattel,Austria,1290,47.3972515,13.0009717,Salzburg,Zell am See,primary,asphalt,B164,de:Filzensattel
+Dientner Sattel,Austria,1370,47.3915377,13.0575304,Salzburg,Sankt Johann im Pongau,primary,asphalt,B164,de:Dientner Sattel
+Gerlospass,Austria,1531,47.2428554,12.1093917,Salzburg,Zell am See,primary,asphalt,B165,de:Gerlospass
+Haselrast,Austria,778,47.9045957,15.8006293,Niederösterreich,Wiener Neustadt(Land),unclassified,asphalt,,de:Haselrast
+Gaberl,Austria,1551,47.107337,14.9167383,Steiermark,Voitsberg,primary,asphalt,B77,de:Gaberl
+Iselsberg,Austria,1209,46.8542485,12.8581239,Kärnten,Spittal an der Drau,primary,asphalt,B107,de:Iselsberg (Pass)
+Koppenpass,Austria,690,47.5735021,13.7204855,Oberösterreich,Gmunden,secondary,asphalt,L547,de:Koppenpass
+Holzleitensattel,Austria,1119,47.3053428,10.8934178,Tirol,Imst,primary,asphalt,B189,de:Holzleitensattel
+Gapfohlfürkele,Austria,1663,47.2767161,9.7674513,Vorarlberg,Feldkirch,track,asphalt,,
+Kleiner Semmering,Austria,461,48.1438387,16.1266711,Niederösterreich,Mödling,secondary,asphalt,L128,de:Kleiner Semmering
+Kernhofer Gscheid,Austria,970,47.8283088,15.4839008,Niederösterreich,Lilienfeld,primary,asphalt,B21,de:Kernhofer Gscheid
+Bielerhöhe,Austria,2037,46.9180441,10.0956108,Vorarlberg,Bludenz,secondary,asphalt,,de:Bielerhöhe
+Gaichtpass,Austria,1093,47.4526345,10.6249458,Tirol,Reutte,primary,asphalt,B199,de:Gaichtpass
+Pillerhöhe,Austria,1559,47.1180564,10.6669403,Tirol,Landeck,secondary,asphalt,L63,de:Pillerhöhe
+Flexenpass,Austria,1773,47.1583475,10.164861,Vorarlberg,Bludenz,primary,asphalt,L198,de:Flexenpass
+Gailbergsattel,Austria,981,46.7177924,12.9670121,Kärnten,Hermagor,primary;track,asphalt,B110,de:Gailbergsattel
+Ziehberg,Austria,683,47.8879399,14.0805134,Oberösterreich,Kirchdorf,secondary,asphalt,L553,
+Sommeralm,Austria,1400,47.3452479,15.5523978,Steiermark,Weiz,secondary,asphalt,L355,
+Straßegg,Austria,1163,47.3898947,15.5311233,Steiermark,Weiz,secondary,asphalt,L104,de:Straßegg
+Weinebene,Austria,1668,46.8399073,15.016477,Steiermark,Deutschlandsberg,secondary,asphalt,L619,de:Weinebene
+Kreuzwirt,Austria,1037,47.3803444,15.7923886,Steiermark,Hartberg-Fürstenfeld,secondary,asphalt,L405,
+Timmelsjoch - Passo Rombo,Austria,2474,46.9053451,11.0973198,Tirol,Imst,secondary,asphalt,SS44bis,de:Timmelsjoch
+Promau,Austria,809,47.7617961,14.8295273,Niederösterreich,Amstetten,unclassified,asphalt,,de:Promau (Hollenstein an der Ybbs)
+Schöcklkreuz,Austria,1125,47.2044301,15.485048,Steiermark,Graz-Umgebung,secondary,asphalt,L319,
+Göttweiger Sattel,Austria,303,48.3621106,15.6221233,Niederösterreich,Krems(Land),secondary;tertiary,asphalt,L100;L7071;L7102,
+Kleiner Loiblpass / Sopotnica,Austria,770,46.4881901,14.2683763,Kärnten,Klagenfurt Land,primary,asphalt,B91,
+Preiner Gscheid,Austria,1069,47.6757574,15.7236114,Niederösterreich,Neunkirchen,secondary,asphalt,L135,de:Preiner Gscheid
+Pass Lueg,Austria,553,47.5756073,13.1946919,Salzburg,Hallein,primary,asphalt,B159,de:Pass Lueg
+Eisenberger Sattel,Austria,350,47.1912863,16.3915731,Burgenland,Oberwart,tertiary;track,asphalt,L390,
+Hellmonsödter Sattel,Austria,782,48.4309625,14.2948269,Oberösterreich,Urfahr-Umgebung,primary,asphalt,B126,
+Pöllauer Sattel,Austria,1092,47.199645,14.1903919,Steiermark,Murau,secondary,asphalt,L512,de:Schwarze Sau (Niedere Tauern)
+Prekowahöhe,Austria,973,46.7714876,14.0040514,Kärnten,Feldkirchen,primary,asphalt,B95,de:Prekowahöhe
+Schöffbaumhöhe,Austria,766,47.8086519,13.2916492,Salzburg,Salzburg-Umgebung,tertiary,asphalt,L227,
+Turracher Höhe,Austria,1795,46.9131659,13.8764531,Kärnten,Feldkirchen,primary,asphalt,B95,de:Turracher Höhe
+Franz-Josefs-Höhe,Austria,951,48.3409941,15.3405038,Niederösterreich,Krems(Land),service,asphalt,,
+Hochrindl,Austria,1617,46.8599522,13.9941599,Kärnten,Feldkirchen,tertiary,asphalt,L65,de:Hochrindl
+Pfarralm,Austria,924,47.8507658,15.3907006,Niederösterreich,Lilienfeld,secondary,asphalt,L101,de:Pfarralm
+Windische Höhe,Austria,1110,46.6359582,13.546681,Kärnten,Hermagor,secondary,asphalt,L33,de:Windische Höhe
+Leber,Austria,735,47.1691163,15.4167908,Steiermark,Graz-Umgebung,tertiary,asphalt,,de:Leber (Gemeinde Stattegg)
+Marblinger Höhe,Austria,683,47.6004057,12.14761,Tirol,Kufstein,secondary,asphalt,L37,
+Schönenbachpass,Austria,1048,47.3737701,10.0129518,Vorarlberg,Bregenz,unclassified,asphalt,,
+Sausteigpass,Austria,1047,47.4415065,10.0126695,Vorarlberg,Bregenz,tertiary,asphalt,L24,
+Türli,Svizzera,615,47.2639846,8.7129321,Zürich,Meilen,tertiary;unclassified,asphalt,,
+Passo del Bernina,Svizzera,2330,46.4109207,10.0276209,Graubünden,Bernina,primary,asphalt,29,de:Berninapass
+Pass dal Fuorn,Svizzera,2150,46.639767,10.2921702,Graubünden,Engiadina B./Val Müstair,primary,asphalt,28,de:Ofenpass
+Col du Pillon,Svizzera,1546,46.3534286,7.2045971,Vaud,Aigle,secondary,asphalt,142,fr:Col du Pillon
+Regensberger Pass,Svizzera,0,47.482174,8.4363804,Zürich,Dielsdorf,service;tertiary,asphalt,,
+Multenegg,Svizzera,1083,46.7605657,7.692178,Bern,Thun,tertiary;unclassified,asphalt,,
+Albispass,Svizzera,790,47.276007,8.5211431,Zürich,Horgen,secondary,asphalt,,de:Albispass
+Col de Pétra Félix,Svizzera,1144,46.6591315,6.3481321,Vaud,Morges,secondary;service,asphalt,129,
+Malojapass,Svizzera,1815,46.3999357,9.6958071,Graubünden,Maloja,primary;residential,asphalt,3,de:Malojapass
+Bänkelloch,Svizzera,623,47.2814554,8.0875615,Aargau,Zofingen,residential,asphalt,,
+Waldegg,Svizzera,986,47.4027307,9.4110952,Appenzell Ausserrhoden,Mittelland,service;track;unclassified,asphalt,,
+Passo dell'Alpe di Neggia,Svizzera,1395,46.1106685,8.8454537,Ticino,Locarno,service;tertiary,asphalt,,it:Alpe di Neggia
+Staffelegg,Svizzera,621,47.433821,8.0604612,Aargau,Aarau,primary;tertiary,asphalt,24;K 474,de:Staffelegg
+Col du Chasseral,Svizzera,1502,47.1194229,7.0322992,Bern,Jura bernois,tertiary;unclassified,asphalt,1384,
+Col des Etroits,Svizzera,1152,46.8298657,6.4950363,Vaud,Jura-Nord vaudois,secondary;unclassified,asphalt,151,
+Oberalppass,Svizzera,2044,46.658739,8.6711693,Uri,,primary,asphalt,19,de:Oberalppass
+Stockerehöchi,Svizzera,692,46.9876059,7.5096959,Bern,Bern-Mittelland,secondary,asphalt,234.3,
+Vue des Alpes,Svizzera,1283,47.072722,6.869822,Neuchâtel,,primary;service,asphalt,1320,fr:Vue des Alpes
+Benkerjoch,Svizzera,674,47.4354357,8.0300873,Aargau,Aarau,service;tertiary,asphalt,,
+Bööler Passhöchi,Svizzera,611,47.3073384,8.0841865,Aargau,Kulm,secondary;unclassified,asphalt,285,
+Col du Mollendruz,Svizzera,1180,46.6499071,6.3658882,Vaud,Morges,path;secondary;service,asphalt,129,
+Whiskypass,Svizzera,558,47.3495675,8.460075,Zürich,Affoltern,tertiary,asphalt,,
+Michaelskreuz,Svizzera,793,47.1133305,8.4157942,Luzern,Luzern-Land,tertiary,asphalt,,
+Salhöhe,Svizzera,779,47.4289261,7.9859682,Solothurn,Gösgen,secondary;track,asphalt,536,de:Salhöhe
+Gwattegg,Svizzera,636,46.7168328,7.6211253,Bern,Thun,unclassified,asphalt,,
+Talhöchi,Svizzera,769,46.980575,7.517062,Bern,Bern-Mittelland,service;track;unclassified,asphalt,,
+Wissegg,Svizzera,1058,47.3923592,9.4609275,Appenzell Ausserrhoden,Mittelland,tertiary,asphalt,AR 47,
+Siglistorfer,Svizzera,506,47.5317481,8.3729953,Aargau,Zurzach,residential;secondary,asphalt,K 431,
+Belchen,Svizzera,526,47.5557093,8.3857487,Aargau,Zurzach,tertiary;track,asphalt,K 283,
+Hochwacht Roset,Svizzera,638,47.4560446,9.0040401,Thurgau,Münchwilen,track;unclassified,asphalt,,
+Rothenfluh Passhöhe,Svizzera,471,47.4690583,7.9425689,Aargau,Laufenburg,tertiary,asphalt,,
+Sankt Luzisteig,Svizzera,713,47.0296057,9.5281921,Graubünden,Landquart,secondary,asphalt,414,
+Col de Chaude,Svizzera,1621,46.4217732,6.997642,Vaud,Aigle,unclassified,asphalt,,
+St. Anton,Svizzera,1110,47.4099424,9.5351717,Appenzell Innerrhoden,,tertiary,asphalt,,de:St. Anton (Pass)
+Mutschellenpass,Svizzera,551,47.3624038,8.3669924,Aargau,Bremgarten,primary,asphalt,1,de:Mutschellen
+Mittelberg,Svizzera,1632,46.5468938,7.2571001,Bern,Obersimmental-Saanen,unclassified,asphalt,,
+Punt dal Gall,Svizzera,1805,46.6243598,10.1959583,Graubünden,Engiadina B./Val Müstair,secondary;service,asphalt,,
+Albulapass,Svizzera,2312,46.5822515,9.8376821,Graubünden,Maloja,secondary,asphalt,,de:Albulapass
+Ruppenpass,Svizzera,1016,47.396096,9.5026123,Appenzell Ausserrhoden,Mittelland,tertiary,asphalt,AR 29,de:Ruppenpass
+Buchenegg,Svizzera,786,47.2961438,8.5078089,Zürich,Affoltern,service;tertiary,asphalt,,de:Buechenegg
+Mänziwilegg,Svizzera,907,46.9568526,7.6028303,Bern,Bern-Mittelland,residential;unclassified,asphalt,,
+Winterlücke,Svizzera,1391,46.7224218,8.2341995,Bern,Interlaken-Oberhasli,track;unclassified,asphalt,,
+Vorder Höhi,Svizzera,1537,47.1693475,9.1996504,St. Gallen,See-Gaster,track,asphalt,,de:Vorder Höhi
+Col des Mosses,Svizzera,1445,46.3989758,7.1026303,Vaud,Aigle,primary;track,asphalt,11,de:Col des Mosses
+Höhtal,Svizzera,0,47.4863978,8.3347783,Aargau,Baden,secondary,asphalt,279,
+Buseregg,Svizzera,581,47.4952196,7.855764,Basel-Landschaft,Sissach,secondary;service;unclassified,asphalt,,
+Glaubenbielen,Svizzera,1611,46.8188105,8.0931667,Obwalden,,tertiary,asphalt,,
+Heitlig,Svizzera,516,47.5091096,8.453998,Zürich,Dielsdorf,cycleway,asphalt,,
+Glaubenbergpass,Svizzera,1540,46.8924559,8.1076661,Obwalden,,tertiary,asphalt,,de:Glaubenberg
+Jaunpass,Svizzera,1508,46.5921588,7.3390803,Bern,Obersimmental-Saanen,secondary,asphalt,219,de:Jaunpass
+Sustenpass,Svizzera,2224,46.7291199,8.4465197,Bern,Interlaken-Oberhasli,primary,asphalt,11,de:Sustenpass
+Simplonpass,Svizzera,2006,46.2502113,8.0316806,Valais,Brig,primary,asphalt,9S,de:Simplonpass
+Grimselpass,Svizzera,2164,46.5615193,8.3376971,Valais,Goms,primary,asphalt,6,de:Grimselpass
+Brünigpass,Svizzera,1005,46.7568632,8.1369857,Bern,Interlaken-Oberhasli,primary,asphalt,4,de:Brünigpass
+Flüelapass,Svizzera,2383,46.7474997,9.9502838,Graubünden,Engiadina B./Val Müstair,primary,asphalt,28,de:Flüelapass
+Wolfgangpass,Svizzera,1630,46.8326555,9.8537391,Graubünden,Prättigau / Davos,primary,asphalt,28,de:Wolfgang (Pass)
+Stoss,Svizzera,943,47.3608479,9.4948877,Appenzell Ausserrhoden,Mittelland,secondary,asphalt,448,de:Stoss AR
+Passo del Lucomagno,Svizzera,1972,46.5743059,8.8011831,Graubünden,Surselva,secondary,asphalt,416,de:Lukmanierpass
+Nufenenpass / Passo della Novena,Svizzera,2480,46.4771192,8.3878277,Ticino,Leventina,secondary,asphalt,413,de:Nufenenpass
+Col des Rangiers,Svizzera,856,47.3848171,7.219149,Jura,Porrentruy,primary;residential,asphalt,6,de:Col des Rangiers
+Monte Ceneri,Svizzera,558,46.1391772,8.9070853,Ticino,Lugano,primary,asphalt,2,
+Unterer Hauenstein,Svizzera,690,47.3813435,7.8689804,Solothurn,Gösgen,primary,asphalt,2,de:Unterer Hauenstein
+Pragelpass,Svizzera,1548,46.9993678,8.8695,Schwyz,Schwyz,tertiary,asphalt,,de:Pragelpass
+Schallenbergpass,Svizzera,1167,46.8261526,7.7968569,Bern,Emmental,secondary,asphalt,229.4,de:Schallenbergpass
+Julierpass,Svizzera,2284,46.4722136,9.7281463,Graubünden,Albula,primary,asphalt,3,
+Klausenpass,Svizzera,1952,46.868191,8.8554418,Uri,,primary,asphalt,17,de:Klausenpass
+Oberer Hauenstein,Svizzera,734,47.3516584,7.7639828,Basel-Landschaft,Waldenburg,primary;tertiary,asphalt,12,de:Oberer Hauenstein
+Wildhaus,Svizzera,1098,47.2033287,9.3505063,St. Gallen,Toggenburg,primary;tertiary,asphalt,16,de:Wildhaus (Pass)
+Wasserfluh,Svizzera,848,47.3260492,9.1145655,St. Gallen,Toggenburg,primary,asphalt,8,de:Wasserfluh
+Etzelpass,Svizzera,950,47.173448,8.7722721,Schwyz,Einsiedeln,tertiary,asphalt,,de:Etzelpass
+Sternenbergpass,Svizzera,952,47.376628,8.942942,Zürich,Pfäffikon,path;tertiary,asphalt,808;K 49,
+Oberricken,Svizzera,908,47.2732357,9.0276053,St. Gallen,See-Gaster,tertiary;track,asphalt,,de:Oberricken
+Pass Umbrail - Giogo di Santa Maria,Svizzera,2501,46.5416453,10.4331767,Graubünden,Engiadina B./Val Müstair,secondary,asphalt,559;SS38 dir/B,de:Umbrailpass
+Bözbergpass,Svizzera,569,47.4809317,8.1387466,Aargau,Brugg,primary;service,asphalt,3,
+Biberegg,Svizzera,932,47.0933842,8.6694322,Schwyz,Schwyz,primary,asphalt,8,
+Col de Pierre Pertuis,Svizzera,827,47.2100173,7.1942258,Bern,Jura bernois,primary,asphalt,6;30,de:Col de Pierre Pertuis
+Glaspass,Svizzera,1843,46.676747,9.3452475,Graubünden,Viamala,track;unclassified,asphalt,,
+Ornpass,Svizzera,925,47.2892117,8.8835557,Zürich,Hinwil,tertiary;unclassified,asphalt,,
+Col du Fuet,Svizzera,935,47.2506827,7.1836947,Bern,Jura bernois,secondary;unclassified,asphalt,248.4,
+Col du Grand Saint-Bernard,Svizzera,2469,45.8690526,7.1704088,Valais,Entremont,tertiary,asphalt,21,fr:Col du Grand-Saint-Bernard
+Gurnigelpass,Svizzera,1608,46.7320348,7.4478818,Bern,Bern-Mittelland,secondary;track,asphalt,230.1,de:Gurnigel
+Binzberg,Svizzera,1014,47.2519758,7.4308296,Solothurn,Thal,path;unclassified,asphalt,,
+Col de la Croix,Svizzera,1776,46.3247023,7.1267183,Vaud,Aigle,tertiary,asphalt,,
+Col de la Gueulaz,Svizzera,1965,46.0685607,6.9372683,Valais,Saint-Maurice,unclassified,asphalt,,
+Col de la Givrine,Svizzera,1232,46.4560036,6.0884435,Vaud,Nyon,secondary,asphalt,123,
+Pas de Morgins,Svizzera,1371,46.2497016,6.8458901,Valais,Monthey,secondary,asphalt,D 22,fr:Pas de Morgins
+Raten,Svizzera,1077,47.1418019,8.6632942,Zug,,tertiary,asphalt,,de:Raten
+Saanenmöser,Svizzera,1279,46.5144482,7.3046961,Bern,Obersimmental-Saanen,primary,asphalt,11,
+Col des Pontins,Svizzera,1110,47.1325771,6.9966847,Bern,Jura bernois,secondary,asphalt,1328,
+Grenchenbergpass,Svizzera,1348,47.2235231,7.3696918,Bern,Jura bernois,unclassified,asphalt,,
+Schwägalp Passhöhe,Svizzera,1300,47.253535,9.3036882,St. Gallen,Toggenburg,secondary,asphalt,448,de:Schwägalp
+Col du Chalet-à-Gobet,Svizzera,872,46.5664651,6.6966118,Vaud,Lausanne,primary,asphalt,1,fr:Col du Chalet-à-Gobet
+Ricken,Svizzera,786,47.26273,9.0443388,St. Gallen,See-Gaster,primary;residential;secondary,asphalt,427;8,
+Oberschönegg,Svizzera,783,46.798068,7.4927736,Bern,Thun,service;track;unclassified,asphalt,,
+Passo del San Gottardo,Svizzera,2106,46.5593092,8.5611537,Ticino,Leventina,primary,asphalt,2,de:Gotthardpass
+Hüttiker Berg,Svizzera,521,47.4396414,8.3867046,Zürich,Dielsdorf,unclassified,asphalt,,
+Col de Champex,Svizzera,1498,46.0318109,7.106786,Valais,Entremont,service;tertiary,asphalt,,
+Bättlerchuchi Pass,Svizzera,1074,47.2748714,7.5999335,Bern,Oberaargau,unclassified,asphalt,,
+Ibergeregg,Svizzera,1406,47.0174278,8.7332101,Schwyz,Schwyz,secondary,asphalt,,de:Ibergeregg
+Sattelegg,Svizzera,1190,47.1273339,8.8468234,Schwyz,March,tertiary,asphalt,,de:Sattelegg
+Passo dello Spluga - Splügenpass,Svizzera,2115,46.5056163,9.3303355,Graubünden,Viamala,secondary,asphalt,567,de:Splügenpass
+Hulftegg,Svizzera,954,47.3621664,8.9666455,St. Gallen,Toggenburg,tertiary,asphalt,SG 40,de:Hulftegg
+Zurzacherberg Passhöhe,Svizzera,490,47.5755906,8.2775172,Aargau,Zurzach,secondary,asphalt,295.1,
+Col du Mont Crosin,Svizzera,1226,47.1906218,7.0399124,Bern,Jura bernois,secondary,asphalt,248.2,
+Siblingerhöhe,Svizzera,554,47.7218946,8.5044671,Schaffhausen,Schleitheim,primary;tertiary,asphalt,14,
+Ovronnaz,Svizzera,1360,46.201546,7.1780864,Valais,Conthey,tertiary,asphalt,,
+Balmberg Passhöhe,Svizzera,1078,47.2661415,7.5395778,Solothurn,Lebern,tertiary,asphalt,,
+Vorderer Pfannenstiel,Svizzera,727,47.2864413,8.6812376,Zürich,Meilen,tertiary,asphalt,714,
+Col de la Tourne,Svizzera,0,46.9837201,6.7788587,Neuchâtel,,secondary,asphalt,170,

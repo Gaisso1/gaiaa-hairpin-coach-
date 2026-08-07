@@ -1,23 +1,26 @@
 export interface Route {
   id: string;
   nome: string;
-  quota: string;
+  stato: string;
+  quota: number | string;
   provincia: string;
   regione: string;
   coordinate: string;
-  km: string;
-  pendenza: string;
-  larghezza: string;
-  tornanti: string;
-  raggioCurva: string;
-  grip: string;
-  esposizione: string;
-  apertura: string;
-  dislivello: string;
-  rifornimento: string;
-  descrizione: string;
-  recensione: string;
-  voto: string;
+  lat?: number;
+  lon?: number;
+  tipoStrada: string;
+  superficie: string;
+  rifStrada: string;
+  wikipedia?: string;
+  voto?: string;
+  lunghezza?: string;
+  pendenza?: string;
+  difficolta?: string;
+  tornanti?: number;
+  periodo?: string;
+  descrizione?: string;
+  rating?: number;
+  gpxAvailable?: boolean;
 }
 
 export type View = 'onboarding' | 'disclaimer' | 'percorsi' | 'dettaglio' | 'confronta' | 'info' | 'mappa' | 'community';

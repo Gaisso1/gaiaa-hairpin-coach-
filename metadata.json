@@ -1,5 +1,6 @@
 {
   "name": "GAIAA - 1000 Curve",
   "description": "Applicazione per motociclisti per consultare e confrontare i migliori percorsi stradali.",
-  "requestFramePermissions": ["geolocation"]
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

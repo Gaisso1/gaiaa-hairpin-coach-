@@ -32,7 +32,8 @@ import {
   Thermometer,
   Droplets,
   Snowflake,
-  CloudLightning
+  CloudLightning,
+  Globe
 } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -59,14 +60,20 @@ L.Marker.prototype.options.icon = DefaultIcon;
 const KAWASAKI_GREEN = '#66FF00';
 
 const parseCoordinates = (coordStr: string) => {
+  if (!coordStr || typeof coordStr !== 'string') return { lat: 45.0, lon: 9.0 };
   if (coordStr.includes(',')) {
     const parts = coordStr.split(',').map(p => p.trim());
-    return { lat: parseFloat(parts[0]), lon: parseFloat(parts[1]) };
+    const lat = parseFloat(parts[0]);
+    const lon = parseFloat(parts[1]);
+    if (!isNaN(lat) && !isNaN(lon)) return { lat, lon };
   }
   const parts = coordStr.split(' ');
-  const lat = parseFloat(parts[0].replace('°', ''));
-  const lon = parseFloat(parts[2].replace('°', ''));
-  return { lat, lon };
+  if (parts.length >= 3) {
+    const lat = parseFloat(parts[0].replace('°', ''));
+    const lon = parseFloat(parts[2].replace('°', ''));
+    if (!isNaN(lat) && !isNaN(lon)) return { lat, lon };
+  }
+  return { lat: 45.0, lon: 9.0 };
 };
 
 const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
@@ -86,6 +93,7 @@ export default function App() {
   const [selectedRoute, setSelectedRoute] = useState<Route | null>(null);
   const [isAdult, setIsAdult] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [stateFilter, setStateFilter] = useState('Tutti');
   const [regionFilter, setRegionFilter] = useState('Tutte');
   const [compareIds, setCompareIds] = useState<[string, string]>(['', '']);
   const [userLocation, setUserLocation] = useState<{ lat: number, lon: number } | null>(null);
@@ -120,22 +128,40 @@ export default function App() {
     );
   };
 
-  const regions = useMemo(() => {
-    const uniqueRegions = Array.from(new Set(routes.map(r => r.regione)));
-    return ['Tutte', 'Preferiti', ...uniqueRegions];
+  const states = useMemo(() => {
+    const uniqueStates = Array.from(new Set(routes.map(r => r.stato || 'N/D'))).sort();
+    return ['Tutti', ...uniqueStates];
   }, []);
+
+  const regions = useMemo(() => {
+    const relevantRoutes = stateFilter === 'Tutti' 
+      ? routes 
+      : routes.filter(r => r.stato === stateFilter);
+    const uniqueRegions = Array.from(new Set(relevantRoutes.map(r => r.regione))).sort();
+    return ['Tutte', 'Preferiti', ...uniqueRegions];
+  }, [stateFilter]);
 
   const filteredRoutes = useMemo(() => {
     return routes.filter(r => {
-      const matchesSearch = r.nome.toLowerCase().includes(searchQuery.toLowerCase());
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q || 
+        r.nome.toLowerCase().includes(q) ||
+        (r.stato && r.stato.toLowerCase().includes(q)) ||
+        (r.regione && r.regione.toLowerCase().includes(q)) ||
+        (r.provincia && r.provincia.toLowerCase().includes(q)) ||
+        (r.rifStrada && r.rifStrada.toLowerCase().includes(q));
+
+      const matchesState = stateFilter === 'Tutti' ? true : r.stato === stateFilter;
+
       const matchesRegion = regionFilter === 'Tutte' 
         ? true 
         : regionFilter === 'Preferiti'
           ? favorites.includes(r.id)
           : r.regione === regionFilter;
-      return matchesSearch && matchesRegion;
+
+      return matchesSearch && matchesState && matchesRegion;
     });
-  }, [searchQuery, regionFilter, favorites]);
+  }, [searchQuery, stateFilter, regionFilter, favorites]);
 
   const handleRouteClick = (route: Route) => {
     setSelectedRoute(route);
@@ -367,21 +393,44 @@ export default function App() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
             <input 
               type="text"
-              placeholder="CERCA PERCORSO..."
+              placeholder="CERCA PERCORSO, STATO, REGIONE..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-transparent py-4 pl-12 pr-4 text-white font-bold placeholder:text-gray-700 outline-none uppercase text-sm"
             />
           </div>
           
+          {/* Filter by Stato */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar px-2 pb-2 flex-nowrap border-b border-white/5 mb-2">
+            <span className="text-[10px] text-gray-500 font-black uppercase shrink-0 mr-1">Stato:</span>
+            {states.map(s => (
+              <button
+                key={s}
+                onClick={() => {
+                  setStateFilter(s);
+                  setRegionFilter('Tutte');
+                }}
+                className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all border shrink-0 whitespace-nowrap ${
+                  stateFilter === s 
+                    ? 'bg-[#66FF00] text-black border-[#66FF00]' 
+                    : 'bg-white/5 text-gray-400 border-white/5 hover:border-white/20'
+                }`}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+
+          {/* Filter by Regione */}
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar px-2 pb-2 flex-nowrap">
+            <span className="text-[10px] text-gray-500 font-black uppercase shrink-0 mr-1">Regione:</span>
             {regions.map(region => (
               <button
                 key={region}
                 onClick={() => setRegionFilter(region)}
-                className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all border shrink-0 whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all border shrink-0 whitespace-nowrap ${
                   regionFilter === region 
-                    ? 'bg-[#66FF00] text-black border-[#66FF00]' 
+                    ? 'bg-white text-black border-white' 
                     : 'bg-white/5 text-gray-500 border-white/5 hover:border-white/20'
                 }`}
               >
@@ -406,38 +455,34 @@ export default function App() {
               <div className="p-6 relative">
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <Badge className="border-cyan-400 text-cyan-400 font-bold">{route.stato}</Badge>
                       <Badge className="border-[#66FF00] text-[#66FF00]">{route.regione}</Badge>
-                      <Badge className="border-white/20 text-gray-500">{route.provincia}</Badge>
+                      <Badge className="border-white/20 text-gray-400">{route.provincia}</Badge>
+                      {route.rifStrada && route.rifStrada !== 'N/D' && (
+                        <Badge className="border-white/10 text-gray-300">{route.rifStrada}</Badge>
+                      )}
                     </div>
                     <h3 className="text-3xl font-black text-white group-hover:text-[#66FF00] transition-colors italic uppercase leading-none">{route.nome}</h3>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
-                    <div className="flex flex-col items-end">
-                      <div className="text-[10px] text-gray-400 font-black uppercase mb-1">Rating</div>
-                      <div className="bg-[#66FF00] text-black px-3 py-1 rounded font-black text-xl italic">
-                        {route.voto}
-                      </div>
-                    </div>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFavorite(route.id);
-                      }}
-                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all"
-                    >
-                      <Star 
-                        size={20} 
-                        className={favorites.includes(route.id) ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-500"} 
-                      />
-                    </button>
-                  </div>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavorite(route.id);
+                    }}
+                    className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-all border border-white/5"
+                  >
+                    <Star 
+                      size={20} 
+                      className={favorites.includes(route.id) ? "fill-[#FFD700] text-[#FFD700]" : "text-gray-500"} 
+                    />
+                  </button>
                 </div>
               
               <div className="grid grid-cols-3 gap-3">
-                <StatBox label="Lunghezza" value={`${route.km} KM`} icon={<Activity size={12} />} />
-                <StatBox label="Tornanti" value={route.tornanti} icon={<Gauge size={12} />} />
                 <StatBox label="Quota" value={`${route.quota}M`} icon={<Compass size={12} />} />
+                <StatBox label="Tipo" value={route.tipoStrada || 'N/D'} icon={<Gauge size={12} />} />
+                <StatBox label="Fondo" value={route.superficie || 'N/D'} icon={<Activity size={12} />} />
               </div>
               
               <div className="mt-6 flex items-center justify-end text-[#66FF00] font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
@@ -527,7 +572,7 @@ export default function App() {
     const current = weather.current;
     const daily = weather.daily;
     const hourly = weather.hourly;
-    const isHighAltitude = parseInt(route.quota) > 1000;
+    const isHighAltitude = Number(route.quota) > 1000;
 
     return (
       <div className="bg-[#151515] rounded-3xl p-8 border border-white/5 relative overflow-hidden">
@@ -671,64 +716,21 @@ export default function App() {
             </button>
             <div>
               <h1 className="text-3xl font-black text-white uppercase italic leading-none">{selectedRoute.nome}</h1>
-              <p className="text-[#66FF00] text-[10px] font-black uppercase tracking-widest mt-1">{selectedRoute.regione}</p>
+              <p className="text-[#66FF00] text-[10px] font-black uppercase tracking-widest mt-1">{selectedRoute.stato} • {selectedRoute.regione}</p>
             </div>
-          </div>
-          <div className="bg-[#66FF00] text-black px-4 py-2 rounded-xl font-black text-2xl italic">
-            {selectedRoute.voto}
           </div>
         </div>
 
         <div className="px-6 pt-10 max-w-3xl mx-auto space-y-12">
           {/* Dashboard Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <DashboardStat label="Quota Massima" value={`${selectedRoute.quota}m`} />
-            <DashboardStat label="Lunghezza" value={`${selectedRoute.km}km`} />
-            <DashboardStat label="Tornanti" value={selectedRoute.tornanti} />
-            <DashboardStat label="Dislivello" value={`${selectedRoute.dislivello}m`} />
-          </div>
-
-          {/* Technical Specs Grid */}
-          <div className="bg-[#151515] rounded-3xl p-8 border border-white/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-5">
-              <Gauge size={120} />
-            </div>
-            
-            <SectionHeader title="Specifiche Tecniche" icon={Activity} />
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 relative z-10">
-              <SpecItem label="Provincia" value={selectedRoute.provincia} />
-              <SpecItem label="Pendenza Media/Max" value={selectedRoute.pendenza} />
-              <SpecItem label="Larghezza Media Carreggiata" value={`${selectedRoute.larghezza}m`} />
-              <SpecItem label="Grip Rating" value={`${selectedRoute.grip}/10`} />
-              <SpecItem label="Esposizione" value={selectedRoute.esposizione} />
-              <SpecItem label="Apertura" value={selectedRoute.apertura} />
-              <SpecItem label="Rifornimento" value={`${selectedRoute.rifornimento}km`} />
-              <SpecItem label="Raggio Curva" value={selectedRoute.raggioCurva} />
-              <SpecItem label="Coordinate" value={selectedRoute.coordinate} />
-            </div>
-          </div>
-
-          {/* Narrative */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <SectionHeader title="Descrizione" icon={Compass} />
-              <p className="text-gray-400 leading-relaxed font-medium italic text-lg border-l-2 border-white/10 pl-6">
-                {selectedRoute.descrizione}
-              </p>
-            </div>
-            <div className="space-y-4">
-              <SectionHeader title="Recensione Rider" icon={Heart} />
-              <div className="bg-[#66FF00]/5 p-6 rounded-2xl border border-[#66FF00]/20">
-                <p className="text-white italic text-2xl font-black leading-tight mb-4">
-                  "{selectedRoute.recensione}"
-                </p>
-                <div className="flex items-center gap-2">
-                  <div className="h-0.5 flex-grow bg-gradient-to-r from-[#66FF00] to-transparent" />
-                  <span className="text-[#66FF00] font-black text-xs uppercase tracking-widest">Top Rider Choice</span>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <DashboardStat label="Stato" value={selectedRoute.stato || 'N/D'} />
+            <DashboardStat label="Quota Massima" value={`${selectedRoute.quota} m`} />
+            <DashboardStat label="Rif. Strada" value={selectedRoute.rifStrada || 'N/D'} />
+            <DashboardStat label="Tipo Strada" value={selectedRoute.tipoStrada || 'N/D'} />
+            <DashboardStat label="Superficie" value={selectedRoute.superficie || 'N/D'} />
+            <DashboardStat label="Regione / Prov." value={`${selectedRoute.regione} (${selectedRoute.provincia})`} />
+            <DashboardStat label="Coordinate" value={selectedRoute.coordinate || 'N/D'} />
           </div>
 
           {/* Nearby Routes */}
@@ -784,6 +786,21 @@ export default function App() {
 
           {/* Action Area */}
           <div className="pt-12 pb-20 space-y-4">
+            {selectedRoute.wikipedia && selectedRoute.wikipedia.startsWith('http') && (
+              <a 
+                href={selectedRoute.wikipedia}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-5 bg-[#151515] text-[#66FF00] rounded-2xl border border-[#66FF00]/30 flex items-center justify-center gap-3 hover:bg-[#66FF00]/10 transition-all group shadow-lg cursor-pointer"
+              >
+                <Globe size={22} className="text-[#66FF00] group-hover:scale-110 transition-transform" />
+                <span className="text-sm font-black uppercase tracking-widest">
+                  Scheda Wikipedia
+                </span>
+                <ExternalLink size={16} className="text-[#66FF00]/70 group-hover:text-[#66FF00]" />
+              </a>
+            )}
+
             <button 
               onClick={() => toggleFavorite(selectedRoute.id)}
               className="w-full py-5 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center gap-3 hover:bg-white/10 transition-all group"
@@ -851,7 +868,7 @@ export default function App() {
               className="w-full bg-[#151515] border border-white/10 rounded-xl p-5 text-white font-black outline-none focus:border-[#66FF00] appearance-none cursor-pointer uppercase text-sm italic"
             >
               <option value="">-- SELEZIONA --</option>
-              {routes.map(r => <option key={r.id} value={r.id}>{r.nome}</option>)}
+              {routes.map(r => <option key={r.id} value={r.id}>{r.nome} ({r.stato})</option>)}
             </select>
           </div>
           <div className="space-y-2">
@@ -862,20 +879,20 @@ export default function App() {
               className="w-full bg-[#151515] border border-white/10 rounded-xl p-5 text-white font-black outline-none focus:border-[#66FF00] appearance-none cursor-pointer uppercase text-sm italic"
             >
               <option value="">-- SELEZIONA --</option>
-              {routes.map(r => <option key={r.id} value={r.id}>{r.nome}</option>)}
+              {routes.map(r => <option key={r.id} value={r.id}>{r.nome} ({r.stato})</option>)}
             </select>
           </div>
         </div>
 
         {route1 && route2 ? (
           <div className="space-y-3">
+            <CompareMetric label="Stato" v1={route1.stato || 'N/D'} v2={route2.stato || 'N/D'} />
             <CompareMetric label="Quota Valico" v1={`${route1.quota}m`} v2={`${route2.quota}m`} />
+            <CompareMetric label="Riferimento Strada" v1={route1.rifStrada || 'N/D'} v2={route2.rifStrada || 'N/D'} />
+            <CompareMetric label="Tipo Strada" v1={route1.tipoStrada || 'N/D'} v2={route2.tipoStrada || 'N/D'} />
+            <CompareMetric label="Superficie" v1={route1.superficie || 'N/D'} v2={route2.superficie || 'N/D'} />
             <CompareMetric label="Regione" v1={route1.regione} v2={route2.regione} />
-            <CompareMetric label="Lunghezza" v1={`${route1.km}km`} v2={`${route2.km}km`} />
-            <CompareMetric label="Tornanti" v1={route1.tornanti} v2={route2.tornanti} />
-            <CompareMetric label="Pendenza Max" v1={route1.pendenza} v2={route2.pendenza} />
-            <CompareMetric label="Grip Rating" v1={`${route1.grip}/10`} v2={`${route2.grip}/10`} />
-            <CompareMetric label="Voto Rider" v1={`${route1.voto}/10`} v2={`${route2.voto}/10`} highlight />
+            <CompareMetric label="Provincia" v1={route1.provincia} v2={route2.provincia} />
           </div>
         ) : (
           <div className="text-center py-32 border-2 border-dashed border-white/5 rounded-3xl">
@@ -901,42 +918,53 @@ export default function App() {
 
   const MapView = () => {
     const mapMarkers = useMemo(() => {
-      return routes.map(route => {
+      const sourceRoutes = filteredRoutes.length > 0 ? filteredRoutes : routes;
+      return sourceRoutes.map(route => {
         const coords = parseCoordinates(route.coordinate);
         return {
           ...route,
           lat: coords.lat,
           lon: coords.lon
         };
-      });
-    }, []);
+      }).filter(m => !isNaN(m.lat) && !isNaN(m.lon) && m.lat !== 0 && m.lon !== 0);
+    }, [filteredRoutes]);
 
     const MapBounds = () => {
       const map = useMap();
       useEffect(() => {
-        if (mapMarkers.length > 0) {
-          const bounds = L.latLngBounds(mapMarkers.map(m => [m.lat, m.lon]));
-          if (userLocation) {
-            bounds.extend([userLocation.lat, userLocation.lon]);
+        const timer = setTimeout(() => {
+          map.invalidateSize();
+          if (mapMarkers.length > 0) {
+            const validMarkers = mapMarkers.filter(m => !isNaN(m.lat) && !isNaN(m.lon));
+            if (validMarkers.length > 0) {
+              const bounds = L.latLngBounds(validMarkers.map(m => [m.lat, m.lon]));
+              if (userLocation && !isNaN(userLocation.lat) && !isNaN(userLocation.lon)) {
+                bounds.extend([userLocation.lat, userLocation.lon]);
+              }
+              map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+            }
           }
-          map.fitBounds(bounds, { padding: [50, 50] });
-        }
+        }, 200);
+
+        return () => clearTimeout(timer);
       }, [map, mapMarkers]);
       return null;
     };
 
     return (
-      <div className="p-8 pb-40 max-w-5xl mx-auto h-screen flex flex-col">
-        <div className="mb-8">
+      <div className="p-4 sm:p-8 pb-36 max-w-6xl mx-auto flex flex-col">
+        <div className="mb-6">
           <GaiAASmallTitle />
-          <h1 className="text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Mappa</h1>
-          <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">Esplora i percorsi sul territorio</p>
+          <h1 className="text-4xl sm:text-5xl font-black uppercase italic leading-none mb-2" style={{ color: KAWASAKI_GREEN }}>Mappa</h1>
+          <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.3em]">
+            Esplora {mapMarkers.length} percorsi sul territorio {stateFilter !== 'Tutti' ? `(${stateFilter})` : ''}
+          </p>
         </div>
         
-        <div className="flex-grow w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
+        <div className="w-full h-[550px] sm:h-[650px] min-h-[450px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
           <MapContainer 
-            center={userLocation ? [userLocation.lat, userLocation.lon] : [45.5, 10.5]} 
-            zoom={userLocation ? 10 : 7} 
+            center={userLocation ? [userLocation.lat, userLocation.lon] : [46.5, 11.5]} 
+            zoom={7} 
             style={{ height: '100%', width: '100%', background: '#151515' }}
             zoomControl={true}
           >
@@ -949,9 +977,15 @@ export default function App() {
               {mapMarkers.map(marker => (
                 <Marker key={marker.id} position={[marker.lat, marker.lon]}>
                   <Popup>
-                    <div className="p-1 min-w-[150px]">
+                    <div className="p-1 min-w-[170px]">
                       <h3 className="font-black uppercase italic text-sm mb-1 text-black">{marker.nome}</h3>
-                      <div className="text-[9px] text-gray-500 uppercase font-bold mb-3">{marker.regione}</div>
+                      <div className="text-[9px] text-gray-600 uppercase font-bold mb-1">{marker.stato} • {marker.provincia} ({marker.regione})</div>
+                      <div className="text-[10px] text-gray-800 font-mono mb-2 space-y-0.5">
+                        <div>Quota: <strong>{marker.quota}m</strong></div>
+                        {marker.rifStrada && marker.rifStrada !== 'N/D' && <div>Rif: <strong>{marker.rifStrada}</strong></div>}
+                        {marker.tipoStrada && marker.tipoStrada !== 'N/D' && <div>Tipo: <strong>{marker.tipoStrada}</strong></div>}
+                        {marker.superficie && marker.superficie !== 'N/D' && <div>Fondo: <strong>{marker.superficie}</strong></div>}
+                      </div>
                       <button 
                         onClick={() => handleRouteClick(marker)}
                         className="w-full py-2 bg-[#66FF00] text-black rounded font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-opacity"
@@ -964,7 +998,7 @@ export default function App() {
               ))}
             </MarkerClusterGroup>
 
-            {userLocation && (
+            {userLocation && !isNaN(userLocation.lat) && !isNaN(userLocation.lon) && (
               <Marker 
                 position={[userLocation.lat, userLocation.lon]}
                 icon={L.divIcon({
@@ -1125,6 +1159,95 @@ export default function App() {
           <div className="space-y-4">
             <h5 className="text-[#66FF00] font-black uppercase text-xs tracking-wider">8. Aggiornamenti</h5>
             <p>La presente informativa potrà essere aggiornata qualora l’App introduca funzionalità che comportino trattamenti di dati personali.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <SectionHeader title="Spiegazione delle Informazioni Esposte" icon={Gauge} />
+        <div className="bg-[#151515] p-8 rounded-3xl border border-white/5 text-gray-400 font-medium text-sm leading-relaxed space-y-8">
+          <div className="text-center mb-6">
+            <h4 className="text-white font-black uppercase tracking-widest text-base mb-1">GUIDA AI DATI DEI PERCORSI</h4>
+            <p className="text-[10px] opacity-60">Come interpretare le schede tecniche dei valici e dei tratti stradali</p>
+          </div>
+
+          <div className="space-y-4">
+            <h5 className="text-[#66FF00] font-black uppercase text-xs tracking-wider">1. Informazioni Generali</h5>
+            <ul className="space-y-3">
+              <li className="bg-white/5 p-4 rounded-xl border border-white/5">
+                <span className="text-white font-black uppercase text-xs block mb-1">Stato / Nazione</span>
+                Indica lo Stato in cui si trova il valico o percorso (es. Italia, Svizzera, Austria). Consente di filtrare i percorsi per nazione e prepararsi a eventuali requisiti di circolazione (vignette autostradali, dotazioni di sicurezza obbligatorie).
+              </li>
+              <li className="bg-white/5 p-4 rounded-xl border border-white/5">
+                <span className="text-white font-black uppercase text-xs block mb-1">Quota / Altitudine (m)</span>
+                Indica la quota massima sul livello del mare raggiunta dal valico o passo stradale. Questo valore è fondamentale per valutare le variazioni termiche attese, l'apertura stagionale dei passi e il rischio di brina o neve in alta quota.
+              </li>
+              <li className="bg-white/5 p-4 rounded-xl border border-white/5">
+                <span className="text-white font-black uppercase text-xs block mb-1">Regione / Cantone / Bundesland e Provincia / Distretto</span>
+                Riferimento amministrativo del valico o percorso per orientarsi geograficamente sul territorio (italiano, svizzero, austriaco, ecc.).
+              </li>
+              <li className="bg-white/5 p-4 rounded-xl border border-white/5">
+                <span className="text-white font-black uppercase text-xs block mb-1">Riferimento Strada (Rif. Strada)</span>
+                Indica il codice identificativo ufficiale della strada (es. SS38 del Passo dello Stelvio, SP38, SR222 della Chiantigiana) utile per riscontrare la segnaletica reale e impostare i navigatori.
+              </li>
+              <li className="bg-white/5 p-4 rounded-xl border border-white/5">
+                <span className="text-white font-black uppercase text-xs block mb-1">Superficie / Fondo</span>
+                Descrive il manto del percorso (es. Asfalto regolare, Pavé, Ghiaia / Sterrato). Permette al motociclista di capire subito se la strada richiede gomme o assetti specifici.
+              </li>
+              <li className="bg-white/5 p-4 rounded-xl border border-white/5">
+                <span className="text-white font-black uppercase text-xs block mb-1">Scheda Wikipedia</span>
+                Ove disponibile, fornisce un link diretto alla pagina enciclopedica di approfondimento storico, geografico e turistico del valico.
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h5 className="text-[#66FF00] font-black uppercase text-xs tracking-wider">2. Significato delle Tipologie Stradali (Classificazione)</h5>
+            <p className="text-xs text-gray-300">
+              Per aiutarti a capire subito cosa aspettarti a livello di guida, carreggiata e traffico, le strade sono classificate in base alla rete OpenStreetMap e cartografica ufficiale:
+            </p>
+
+            <div className="space-y-3 mt-4">
+              <div className="bg-white/5 p-4 rounded-xl border border-white/5 border-l-4 border-l-[#66FF00]">
+                <div className="text-white font-black uppercase text-sm mb-1 flex items-center justify-between">
+                  <span>Strada Primaria (Primary)</span>
+                  <span className="text-[10px] text-[#66FF00] bg-[#66FF00]/10 px-2 py-0.5 rounded font-mono">Alta Scorrevolezza</span>
+                </div>
+                <p className="text-xs text-gray-300">
+                  Strade statali e arterie di grande comunicazione. Carreggiata ampia, corsie ben delimitate, ottimo manto asfaltato e segnaletica chiara. Adatte a tutti i tipi di moto e a qualsiasi livello di esperienza di guida, ideali per trasferimenti veloci.
+                </p>
+              </div>
+
+              <div className="bg-white/5 p-4 rounded-xl border border-white/5 border-l-4 border-l-blue-400">
+                <div className="text-white font-black uppercase text-sm mb-1 flex items-center justify-between">
+                  <span>Strada Secondaria (Secondary)</span>
+                  <span className="text-[10px] text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded font-mono">Mototurismo D.O.C.</span>
+                </div>
+                <p className="text-xs text-gray-300">
+                  Strade regionali e provinciali che collegano valli e valici. Solitamente molto panoramiche, offrono ottime sequenze di curve e raccordi guidati. L'asfalto è generalmente buono, anche se in quota possono comparire pezze o sconnessioni. Rappresentano il cuore del mototurismo stradale.
+                </p>
+              </div>
+
+              <div className="bg-white/5 p-4 rounded-xl border border-white/5 border-l-4 border-l-yellow-400">
+                <div className="text-white font-black uppercase text-sm mb-1 flex items-center justify-between">
+                  <span>Strada Terziaria (Tertiary)</span>
+                  <span className="text-[10px] text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded font-mono">Guida Tecnica & Stretta</span>
+                </div>
+                <p className="text-xs text-gray-300">
+                  Strade locali o minori di montagna. Carreggiata più stretta, tornanti serrati e raggio di curvatura ridotto. Il fondo stradale può presentare avvallamenti, brecciolino negli angoli o fogliame. Richiedono attenzione e velocità moderate, ma ripagano con paesaggi incontaminati e guida molto tecnica.
+                </p>
+              </div>
+
+              <div className="bg-white/5 p-4 rounded-xl border border-white/5 border-l-4 border-l-orange-500">
+                <div className="text-white font-black uppercase text-sm mb-1 flex items-center justify-between">
+                  <span>Non Classificata / Pista / Sentiero / Servizio</span>
+                  <span className="text-[10px] text-orange-400 bg-orange-400/10 px-2 py-0.5 rounded font-mono">Avventura & Sterrato</span>
+                </div>
+                <p className="text-xs text-gray-300">
+                  Strade comunali secondarie, percorsi agro-silvo-pastorali o strade bianche d'alta quota a fondo naturale (ghiaia, terra, roccia affiorante). Possono essere prive di asfaltatura. È caldamente consigliata la guida con moto da fuoristrada (enduro, maxi-enduro, scrambler) ed è fondamentale verificare la presenza di eventuali divieti o transiti regolamentati.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
